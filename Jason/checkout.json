@@ -1,0 +1,215 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Checkout",
+      "styles": {
+        "row_bold": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold"
+        },
+        "row_normal": {
+          "size": "15"
+        },
+        "button_ok": {
+          "background": "#2377d9"
+        },
+        "button_wl": {
+          "background": "#2377d9"
+        },
+        "button_def": {
+          "background": "#dee3ea"
+        },
+        "cancel_btn": {
+          "background": "#ce0208"
+        },
+        "btn_main": {
+          "width": "50%",
+          "align": "center",
+          "height": "40",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        },
+        "label_header": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "align": "center"
+        }
+      },
+      "actions": {
+        "$load": {
+          "trigger": "fetch"
+        },
+        "$pull": {
+          "type": "$reload"
+        },
+        "$show": {
+          "type": "$reload"
+        },
+        "fetch": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/check_out.json?token={{$global.token}}"
+          },
+          "success": {
+            "type": "$render"
+          }
+        },
+        "submit_order": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/submit_order.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.token}}&cardID={{$get.cardID}}"
+          },
+          "success": {
+            "type": "$href",
+            "options": {
+              "url": "https://jasonbase.com/things/ww2D",
+              "transition": "replace"
+            }
+          },
+          "error": {
+            "type": "$util.banner",
+            "options": {
+              "title": "Error",
+              "description": "something didn't work. please review and try again",
+              "type": "error"
+            }
+          }
+        },
+        "add_card": {
+          "type": "$href",
+          "options": {
+            "url": "https://jasonbase.com/things/JkA5",
+            "transition": "modal"
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Checkout",
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "item"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "price"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{$params.item}}"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "${{$params.price}}"
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "align": "bottom"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "payment method:"
+                    },
+                    {
+                      "type": "button",
+                      "text": "{{$get.card || 'Select a card'}}",
+                      "class": "btn_main button_def",
+                      "style": {
+                        "align": "center",
+                        "color": "#000000"
+                      },
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Cards",
+                          "items": {
+                            "{{#each $jason.card_info}}": {
+                              "text": "{{Brand}} ...{{number}}",
+                              "action": [
+                                {
+                                  "{{#if Brand == 'Add new card'}}": {
+                                    "trigger": "add_card"
+                                  }
+                                },
+                                {
+                                  "{{#else}}": {
+                                    "type": "$set",
+                                    "options": {
+                                      "cardID": "{{cardID}}",
+                                      "card": "{{Brand}} ends with...{{number}}"
+                                    },
+                                    "success": {
+                                      "type": "$render"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "right"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "text": "Submit purchase",
+                      "class": "btn_main button_ok",
+                      "action": {
+                        "trigger": "submit_order"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -121,7 +121,13 @@
                           "action": {
                             "type": "$href",
                             "options": {
-                              "url": "{{button}}"
+                              "url": "https://jasonbase.com/things/Mw8A",
+                              "options": {
+                                "item": "{{description}}",
+                                "price": "{{prices.dropin}}",
+                                "date": "{{$params.date}}",
+                                "clsID": "{{$params.clsID}}"
+                              }
                             }
                           }
                         }

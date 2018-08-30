@@ -105,7 +105,7 @@
                       "type": "image",
                       "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
                       "style": {
-                        "width": "70%"
+                        "width": "62%"
                       }
                     }
                   ]
@@ -113,7 +113,7 @@
                 {
                   "type": "label",
                   "class": "title",
-                  "text": "Trv|X 09:00 AM August 11, 2018"
+                  "text": "{{$jason.class_name}} {{$jason.date}}"
                 },
                 {
                   "type": "space",
@@ -124,14 +124,25 @@
                 {
                   "type": "horizontal",
                   "components": [
-                    {
-                      "type": "button",
-                      "class": "btn_add_class",
-                      "text": "+ Add a user",
-                      "action": {
-                        "trigger": "user_lookup"
+                    [
+                      {
+                        "{{#if ($jason.space == 'open')}}": {
+                          "type": "button",
+                          "class": "btn_add_class",
+                          "text": "+ Add a user",
+                          "action": {
+                            "trigger": "user_lookup"
+                          }
+                        }
+                      },
+                      {
+                        "{{#else}}": {
+                          "type": "label",
+                          "text": "Class is full",
+                          "class": "input_class"
+                        }
                       }
-                    },
+                    ],
                     {
                       "type": "label",
                       "text": ""

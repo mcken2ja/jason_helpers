@@ -1,0 +1,29 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Add Card",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Add Card",
+            "style": {
+              "background": "#ecf0f5"
+            }
+          },
+          "background": {
+            "type": "html",
+            "url": "https://www.trufitportal.com/demo/api/stripe?token={{$global.token}}",
+            "action": {
+              "type": "$default"
+            }
+          }
+        }
+      }
+    }
+  }
+}

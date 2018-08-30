@@ -4,15 +4,31 @@
       "title": "User Lookup",
       "actions": {
         "$load": {
-          "type": "$render"
+          "trigger": "get_users"
+        },
+        "get_users": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/get_checkin_users.json"
+          },
+          "success": {
+            "type": "$render"
+          }
         },
         "check_in": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/demo/api/manual_checkin.json?clsID={{$params.clsID}}&date={{$params.date}}&cuID={{$get.userid}}"
+            "url": "https://www.trufitportal.com/demo/api/manual_checkin.json?clsID={{$params.clsID}}&date={{$params.date}}&cuID={{$get.user_id}}"
           },
           "success": {
             "type": "$back"
+          },
+          "error": {
+            "type": "$util.banner",
+            "options": {
+              "title": "Hold up!",
+              "description": "User looks to be checked in already"
+            }
           }
         }
       },
@@ -71,7 +87,7 @@
           "sections": [
             {
               "items": {
-                "{{#each users}}": {
+                "{{#each $jason.users}}": {
                   "type": "horizontal",
                   "components": [
                     {
@@ -103,85 +119,6 @@
             }
           ]
         }
-      },
-      "data": {
-        "users": [
-          {
-            "id": 2,
-            "name": "Jake McKenna",
-            "email": "jacob_mckenna@sbcglobal.net"
-          },
-          {
-            "id": 4,
-            "name": "Jack Joahanson",
-            "email": "jj@example.com"
-          },
-          {
-            "id": 5,
-            "name": "Tester Testing",
-            "email": "mcken2ja@gmail.com"
-          },
-          {
-            "id": 6,
-            "name": "Hannah McKenna",
-            "email": "hanmckenna28@gmail.com"
-          },
-          {
-            "id": 7,
-            "name": "Fenton Teacher",
-            "email": "fenton_teacher@trvfitfenton.com"
-          },
-          {
-            "id": 8,
-            "name": "Howell Teacher",
-            "email": "howell@trvfithowell.com"
-          },
-          {
-            "id": 11,
-            "name": "Mark Markie",
-            "email": "mm@example.com"
-          },
-          {
-            "id": 12,
-            "name": "Jake Mckenna",
-            "email": "jake.mckenna@servicenow.com"
-          },
-          {
-            "id": 13,
-            "name": "Trufit Studio",
-            "email": "demo@trufit.com"
-          },
-          {
-            "id": 14,
-            "name": "John Wick",
-            "email": "john.wick.com"
-          },
-          {
-            "id": 15,
-            "name": "Landon McKenna",
-            "email": "lando.commando@example.com"
-          },
-          {
-            "id": 16,
-            "name": "Hudsyn Mckenna",
-            "email": "hudsyn.mckenna@icloud"
-          },
-          {
-            "id": 17,
-            "name": "Facebook Demo",
-            "email": "10215754722808512.fakemail"
-          },
-          {
-            "id": 18,
-            "name": "Hannah McKenna",
-            "email": "trufitfenton@gmail.com"
-          },
-          {
-            "id": 19,
-            "name": null,
-            "email": "trvfit.software@gmail.com"
-          }
-        ]
       }
     }
   }

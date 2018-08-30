@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "Just a simple Demo",
+      "title": "Registration",
       "styles": {
         "input_class": {
           "placeholder_color": "#2377d9",
@@ -49,31 +49,12 @@
               "{{#elseif ($get.first_name == '' || $get.last_name == '')}}": "missing_value"
             },
             {
-              "{{#elseif ($get.location == 'Select a location') || $get.location == undefined}}": "need_location"
+              "{{#elseif ($get.location == 'Select a location')}}": "need_location"
             },
             {
-              "{{#elseif ($get.agreement == false) || ($get.agreement == undefined)}}": "accept_agree"
-            },
-            {
-              "{{#else}}": "register_test"
+              "{{#else}}": "register"
             }
           ]
-        },
-        "register_test": {
-          "type": "$util.banner",
-          "options": {
-            "title": "All Good",
-            "description": "Looks like it all checks out",
-            "type": "error"
-          }
-        },
-        "accept_agree": {
-          "type": "$util.banner",
-          "options": {
-            "title": "Accept Agreement",
-            "description": "Read the terms and accept before proceeding",
-            "type": "error"
-          }
         },
         "missing_value": {
           "type": "$util.banner",
@@ -175,11 +156,11 @@
           },
           {
             "name": "Hartland, MI",
-            "key": "hartland"
+            "key": "demo"
           },
           {
             "name": "Howell, MI",
-            "key": "howell"
+            "key": "demo"
           }
         ]
       },

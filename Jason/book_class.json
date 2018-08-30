@@ -86,10 +86,12 @@
             "menu": {
               "text": "Logout",
               "action": {
-                "type": "$global.reset",
-                "items": [
-                  "token"
-                ],
+                "options": {
+                  "type": "$global.reset",
+                  "items": [
+                    "token"
+                  ]
+                },
                 "success": {
                   "type": "$href",
                   "options": {

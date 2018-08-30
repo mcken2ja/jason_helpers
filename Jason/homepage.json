@@ -74,6 +74,38 @@
             "title": "Home",
             "style": {
               "theme": "dark"
+            },
+            "menu": {
+              "text": "Logout",
+              "action": {
+                "type": "$global.reset",
+                "options": {
+                  "items": [
+                    "token"
+                  ]
+                },
+                "success": {
+                  "type": "$href",
+                  "options": {
+                    "url": "https://jasonbase.com/things/BqG1",
+                    "transition": "replace",
+                    "preload": {
+                      "background": "#ffffff",
+                      "layers": [
+                        {
+                          "type": "image",
+                          "url": "https://i.imgur.com/tao8mUD.png",
+                          "style": {
+                            "width": "200",
+                            "top": "50%-100",
+                            "left": "50%-100"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
             }
           },
           "footer": {
@@ -148,7 +180,7 @@
                     },
                     [
                       {
-                        "{{#if (date != 'No Classes Scheduled')}}": {
+                        "{{#if (link != '')}}": {
                           "type": "button",
                           "text": "cancel",
                           "class": "cancel_btn btn_main",

@@ -161,12 +161,13 @@
           "options": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}",
-            "token": "{{$jason.id}}"
+            "token": "{{$jason.id}}",
+            "start": "{{$jason.start}}"
           },
           "success": {
             "type": "$href",
             "options": {
-              "url": "https://jasonbase.com/things/Kjnz",
+              "url": "{{$global.start}}",
               "transition": "replace",
               "preload": {
                 "background": "#ffffff",

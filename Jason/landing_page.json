@@ -6,12 +6,19 @@
         "$load": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/usercheck.json?token={{$global.token}}"
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/usercheck.json?token={{$global.token || ''}}"
           },
           "success": {
             "type": "$href",
             "options": {
-              "url": "https://jasonbase.com/things/Kjnz",
+              "url": [
+                {
+                  "{{#if $jason.start == 'selfcheckin'}}": "https://jasonbase.com/things/r4AM"
+                },
+                {
+                  "{{#else}}": "https://jasonbase.com/things/Kjnz"
+                }
+              ],
               "transition": "replace",
               "preload": {
                 "background": "#ffffff",
