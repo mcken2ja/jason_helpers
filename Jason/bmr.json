@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "BMR Calculation",
+      "title": "BMR Calculations",
       "actions": {
         "$load": {
           "type": "$script.include",
