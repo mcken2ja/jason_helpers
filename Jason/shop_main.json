@@ -1,0 +1,68 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Shop Main",
+            "description": "",
+            "styles": {
+
+            },
+            "actions": {
+                "fetch": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.location_key}}/api/shop_items.json"
+                    }
+                }
+
+            },
+            "templates": {
+                "body": {
+                    "header": {
+                        "title": "Shop",
+                        "style": {
+                            "theme": "dark"
+                        }
+                    },
+                    "sections": [
+                        {
+                            "items": [
+                                {
+                                    "type": "label",
+                                    "text": "Check out current pricing on Memberships"
+                                },
+                                {
+                                    "type": "label",
+                                    "text": "Memberships",
+                                    "href": {
+                                        "url": "https://json.trufitportal.com/Jason/shop_items.json",
+                                        "options": {
+                                            "type": "memberships"
+                                        },
+                                        "transition": "push"
+                                    }
+                                },
+                                {
+                                    "type": "label",
+                                    "text": "Check out current pricing on limited time items"
+                                },
+                                {
+                                    "type": "label",
+                                    "text": "Class cards",
+                                    "href": {
+                                        "url": "https://json.trufitportal.com/Jason/shop_items.json",
+                                        "options": {
+                                            "type": "cards"
+                                        },
+                                        "transition": "push"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "data": {
+            }
+        }
+    }
+}

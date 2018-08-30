@@ -37,6 +37,28 @@
         }
       },
       {
+        "image": "https://json.trufitportal.com/images/shopping-cart.png",
+        "text": "Shop",
+        "style": {
+          "height": "21"
+        },
+        "url": "https://json.trufitportal.com/Jason/shop_main.json",
+        "preload": {
+          "background": "#ffffff",
+          "layers": [
+            {
+              "type": "image",
+              "url": "https://json.trufitportal.com/images/kettle_512.png",
+              "style": {
+                "width": "200",
+                "top": "50%-100",
+                "left": "50%-100"
+              }
+            }
+          ]
+        }
+      },
+      {
         "image": "https://i.imgur.com/X1wkamx.png",
         "text": "My BMR",
         "style": {
