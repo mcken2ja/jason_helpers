@@ -16,7 +16,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/demo/api/checkin_classes.json"
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/checkin_classes.json"
           },
           "success": {
             "type": "$render"

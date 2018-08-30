@@ -19,7 +19,7 @@
         "$pull": {
           "type": "$network.request",
           "options": {
-            "url": "http://jambo88.pythonanywhere.com/demo/api/get_reservations.json"
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/contact_info.json"
           },
           "success": {
             "type": "$render"
