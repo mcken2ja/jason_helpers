@@ -20,7 +20,7 @@
         "style": {
           "height": "21"
         },
-        "url": "https://json.trufitportal.com/Jason/book_classes.json",
+        "url": "https://json.trufitportal.com/Jason/book_class.json",
         "preload": {
           "background": "#ffffff",
           "layers": [
