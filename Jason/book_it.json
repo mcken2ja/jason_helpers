@@ -1,0 +1,155 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Book IT",
+      "styles": {
+        "row_bold": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold"
+        },
+        "row_normal": {
+          "size": "15"
+        },
+        "button_ok": {
+          "background": "#2377d9"
+        },
+        "button_wl": {
+          "background": "#2377d9"
+        },
+        "button_def": {
+          "background": "#dee3ea"
+        },
+        "cancel_btn": {
+          "background": "#ce0208"
+        },
+        "btn_main": {
+          "width": "50%",
+          "align": "center",
+          "height": "40",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        },
+        "label_header": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold"
+        }
+      },
+      "actions": {
+        "$load": {
+          "trigger": "fetch"
+        },
+        "fetch": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/book_class.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.token}}"
+          },
+          "success": {
+            "type": "$render"
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Confirm selection",
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{$jason.content.class_date}}"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "{{$jason.content.class_time + ' ' + $jason.content.class_type}}"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "Booking option"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.content.options}}": {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{type}}"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "{{description}}"
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "60"
+                      }
+                    },
+                    [
+                      {
+                        "{{#if (type == 'Drop in')}}": {
+                          "type": "button",
+                          "class": "btn_main button_ok",
+                          "text": "Pay fee",
+                          "action": {
+                            "type": "$href",
+                            "options": {
+                              "url": "{{button}}"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "{{#else}}": {
+                          "type": "button",
+                          "text": "Book",
+                          "class": "btn_main button_ok",
+                          "action": {
+                            "type": "$network.request",
+                            "options": {
+                              "url": "{{button}}"
+                            },
+                            "success": {
+                              "type": "$back"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

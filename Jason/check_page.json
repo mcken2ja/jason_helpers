@@ -1,0 +1,199 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Check-in",
+      "description": "Shows the users for a class to checkin",
+      "actions": {
+        "$pull": {
+          "type": "$reload"
+        },
+        "$load": {
+          "trigger": "fetch"
+        },
+        "$show": {
+          "trigger": "fetch"
+        },
+        "user_lookup": {
+          "type": "$href",
+          "options": {
+            "url": "https://jasonbase.com/things/kRg7",
+            "options": {
+              "clsID": "{{$params.clsID}}",
+              "date": "{{$params.date}}"
+            },
+            "transition": "modal"
+          }
+        },
+        "fetch": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/checkin_class.json?clsID={{$params.clsID}}&date={{$params.date}}"
+          },
+          "success": {
+            "type": "$render"
+          }
+        },
+        "checked_in": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Checked in",
+            "description": "You are now checked in!",
+            "type": "success"
+          },
+          "success": {
+            "trigger": "fetch"
+          }
+        }
+      },
+      "styles": {
+        "title": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold"
+        },
+        "input_class": {
+          "font": "HelveticaNeue",
+          "size": "18"
+        },
+        "btn_add_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#ffffff",
+          "color": "#2377d9",
+          "corner_radius": "5",
+          "size": "18"
+        },
+        "btn_ready_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "18"
+        },
+        "btn_done_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#dee3ea",
+          "color": "#000000",
+          "corner_radius": "5",
+          "size": "18"
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
+                      "style": {
+                        "width": "70%"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "label",
+                  "class": "title",
+                  "text": "Trv|X 09:00 AM August 11, 2018"
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": "40"
+                  }
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "button",
+                      "class": "btn_add_class",
+                      "text": "+ Add a user",
+                      "action": {
+                        "trigger": "user_lookup"
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": ""
+                    },
+                    {
+                      "type": "label",
+                      "text": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.users}}": {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "align": "bottom"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "input_class",
+                      "text": "{{name}}"
+                    },
+                    {
+                      "type": "label",
+                      "text": ""
+                    },
+                    [
+                      {
+                        "{{#if url == 'done'}}": {
+                          "type": "button",
+                          "class": "btn_done_class",
+                          "text": "Checked in"
+                        }
+                      },
+                      {
+                        "{{#else}}": {
+                          "type": "button",
+                          "class": "btn_ready_class",
+                          "text": "Check in >",
+                          "action": {
+                            "type": "$network.request",
+                            "options": {
+                              "url": "{{url}}"
+                            },
+                            "success": {
+                              "trigger": "checked_in"
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

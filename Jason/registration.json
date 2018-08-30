@@ -1,0 +1,339 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Just a simple Demo",
+      "styles": {
+        "input_class": {
+          "placeholder_color": "#2377d9",
+          "color": "#2377d9",
+          "background": "rgba(240, 240, 240, 0.5)",
+          "font": "ArialMT",
+          "padding": "20",
+          "corner_radius": "25",
+          "width": "80%",
+          "height": "60",
+          "size": "14"
+        },
+        "btn_class": {
+          "width": "80%",
+          "align": "center",
+          "height": "60",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        }
+      },
+      "actions": {
+        "save": {
+          "type": "$global.set",
+          "options": {
+            "location_key": "{{$global.location_key}}"
+          }
+        },
+        "validate": {
+          "trigger": [
+            {
+              "{{#if ($get.password != $get.password_confirm) || ($get.password == '')}}": "mismatch_pass"
+            },
+            {
+              "{{#elseif  ($get.password.length < 8)}}": "short_pass"
+            },
+            {
+              "{{#elseif ($get.email.indexOf('@') == -1)}}": "invaid_email"
+            },
+            {
+              "{{#elseif ($get.first_name == '' || $get.last_name == '')}}": "missing_value"
+            },
+            {
+              "{{#elseif ($get.location == 'Select a location') || $get.location == undefined}}": "need_location"
+            },
+            {
+              "{{#elseif ($get.agreement == false) || ($get.agreement == undefined)}}": "accept_agree"
+            },
+            {
+              "{{#else}}": "register_test"
+            }
+          ]
+        },
+        "register_test": {
+          "type": "$util.banner",
+          "options": {
+            "title": "All Good",
+            "description": "Looks like it all checks out",
+            "type": "error"
+          }
+        },
+        "accept_agree": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Accept Agreement",
+            "description": "Read the terms and accept before proceeding",
+            "type": "error"
+          }
+        },
+        "missing_value": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Check name values",
+            "description": "Seems like you forgot something",
+            "type": "error"
+          }
+        },
+        "need_location": {
+          "type": "$util.banner",
+          "options": {
+            "title": "No Location",
+            "description": "Please pick a TRVFIT location",
+            "type": "error"
+          }
+        },
+        "mismatch_pass": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Passwords do not match",
+            "description": "Password is not valid",
+            "type": "error"
+          }
+        },
+        "short_pass": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Password",
+            "description": "Password is too short!",
+            "type": "error"
+          }
+        },
+        "invaid_email": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Invalid email",
+            "description": "Please check email",
+            "type": "error"
+          }
+        },
+        "register": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/{{$get.location_key}}/api/register.json?email={{$get.email}}&password={{$get.password}}&fname={{$get.first_name}}&lname={{$get.last_name}}",
+            "method": "get"
+          },
+          "success": {
+            "type": "$global.set",
+            "options": {
+              "location_key": "{{$get.location_key}}",
+              "token": "{{$jason.id}}",
+              "location": "{{$get.location}}"
+            },
+            "success": {
+              "type": "$util.banner",
+              "options": {
+                "Title": "Success",
+                "description": "welcome to the club"
+              },
+              "success": {
+                "type": "$href",
+                "options": {
+                  "url": "https://jasonbase.com/things/Kjnz",
+                  "transition": "replace",
+                  "preload": {
+                    "background": "#ffffff",
+                    "layers": [
+                      {
+                        "type": "image",
+                        "url": "https://i.imgur.com/tao8mUD.png",
+                        "style": {
+                          "width": "200",
+                          "top": "50%-100",
+                          "left": "30%-100"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "error": {
+            "type": "$util.banner",
+            "options": {
+              "title": "Error",
+              "description": "User already exists",
+              "type": "error"
+            }
+          }
+        }
+      },
+      "data": {
+        "locations": [
+          {
+            "name": "Fenton, MI",
+            "key": "demo"
+          },
+          {
+            "name": "Hartland, MI",
+            "key": "hartland"
+          },
+          {
+            "name": "Howell, MI",
+            "key": "howell"
+          }
+        ]
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Registration form",
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center",
+                    "spacing": "20"
+                  },
+                  "components": [
+                    {
+                      "type": "textfield",
+                      "name": "first_name",
+                      "placeholder": "First name...",
+                      "class": "input_class",
+                      "style": {
+                        "autocapitalize": "true"
+                      }
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "last_name",
+                      "placeholder": "Last name...",
+                      "class": "input_class",
+                      "style": {
+                        "autocapitalize": "true"
+                      }
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "email",
+                      "placeholder": "Email...",
+                      "keyboard": "email",
+                      "class": "input_class"
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "password",
+                      "placeholder": "Password...",
+                      "class": "input_class",
+                      "style": {
+                        "secure": "true"
+                      }
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "password_confirm",
+                      "placeholder": "Repeat Password...",
+                      "class": "input_class",
+                      "style": {
+                        "secure": "true"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": [
+                        {
+                          "{{#if $get && ('location' in $get)}}": "{{$get.location}}"
+                        },
+                        {
+                          "{{#else}}": "Select a location"
+                        }
+                      ],
+                      "class": "input_class",
+                      "style": {
+                        "align": "left"
+                      },
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Location",
+                          "items": {
+                            "{{#each locations}}": {
+                              "text": "{{name}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "location": "{{name}}",
+                                  "location_key": "{{key}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "label",
+                  "text": "Terms and Conditions",
+                  "href": {
+                    "url": "https://jasonbase.com/things/BqM1",
+                    "transition": "modal"
+                  }
+                },
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "text": "I have read and agree to the terms"
+                    },
+                    {
+                      "type": "switch",
+                      "name": "agreement",
+                      "style": {
+                        "color": "#2377d9"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center",
+                    "spacing": "20"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "text": "Register",
+                      "class": "btn_class",
+                      "action": {
+                        "type": "$render",
+                        "success": {
+                          "trigger": "validate"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

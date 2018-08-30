@@ -1,0 +1,124 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Profile Page",
+      "description": "",
+      "styles": {
+        "header": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "align": "center"
+        },
+        "link": {
+          "size": "18"
+        }
+      },
+      "actions": {
+        "$pull": {
+          "type": "$network.request",
+          "options": {
+            "url": "http://jambo88.pythonanywhere.com/demo/api/get_reservations.json"
+          },
+          "success": {
+            "type": "$render"
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Contact",
+            "style": {
+              "theme": "dark"
+            },
+            "menu": {
+              "text": "logout"
+            }
+          },
+          "footer": {
+            "@": "https://jasonbase.com/things/e8K1"
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "class": "header",
+                  "text": "CALL US"
+                },
+                {
+                  "type": "label",
+                  "class": "link",
+                  "text": "810-373-2022",
+                  "href": {
+                    "url": "tel://8103732022",
+                    "view": "app"
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": "40"
+                  }
+                },
+                {
+                  "type": "label",
+                  "class": "header",
+                  "text": "MESSAGE US"
+                },
+                {
+                  "type": "label",
+                  "class": "link",
+                  "text": "TRUFITFENTON@GMAIL.COM",
+                  "href": {
+                    "url": "mailto:trufitfenton@gmail.com?subject=Question",
+                    "view": "app"
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": "40"
+                  }
+                },
+                {
+                  "type": "label",
+                  "class": "header",
+                  "text": "VISIT US"
+                },
+                {
+                  "type": "label",
+                  "class": "link",
+                  "text": "1460 Torrey Rd \nFenton, MI 48430",
+                  "href": {
+                    "url": "comgooglemaps://?daddr=1460+Torrey+Road+Fenton,+MI+48430",
+                    "view": "app"
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": "40"
+                  }
+                },
+                {
+                  "type": "label",
+                  "class": "link",
+                  "text": "TRUFITSTUDIO.COM",
+                  "href": {
+                    "url": "https://trufitstudio.com",
+                    "view": "web"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "data": {
+      }
+    }
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "$jason": {
+    "head": {
+      "title": "My Homepage",
+      "description": "The page that is really considered home...",
+      "styles": {
+        "row_bold": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold"
+        },
+        "row_normal": {
+          "size": "15"
+        },
+        "button_ok": {
+          "background": "#2377d9"
+        },
+        "button_wl": {
+          "background": "#2377d9"
+        },
+        "button_def": {
+          "background": "#dee3ea"
+        },
+        "cancel_btn": {
+          "background": "#ce0208"
+        },
+        "btn_main": {
+          "width": "50%",
+          "align": "center",
+          "height": "40",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        },
+        "label_header": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "align": "center"
+        }
+      },
+      "actions": {
+        "$pull": {
+          "trigger": "fetch"
+        },
+        "$load": {
+          "trigger": "fetch"
+        },
+        "fetch": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/get_reservations.json?token={{$global.token}}"
+          },
+          "success": {
+            "type": "$render"
+          }
+        },
+        "start_trial": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/start_trial.json?token={{$global.token}}"
+          },
+          "success": {
+            "type": "$reload"
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Home",
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "footer": {
+            "@": "https://jasonbase.com/things/e8K1"
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "Announcements",
+                  "class": "label_header"
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.announcements}}": {
+                  "type": "vertical",
+                  "components": [
+                    {
+                      "type": "label",
+                      "text": "{{title}}",
+                      "class": "row_bold"
+                    },
+                    {
+                      "type": "label",
+                      "text": "{{annoucement}}",
+                      "class": "row_normal"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "Upcoming Classes",
+                  "class": "label_header"
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.reservations}}": {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "spacing": "25"
+                  },
+                  "components": [
+                    {
+                      "type": "vertical",
+                      "components": [
+                        {
+                          "type": "label",
+                          "text": "{{date}}",
+                          "class": "row_normal"
+                        },
+                        {
+                          "type": "label",
+                          "text": "{{class_type}}",
+                          "class": "row_bold"
+                        },
+                        {
+                          "type": "label",
+                          "text": "{{time}}",
+                          "class": "row_normal"
+                        }
+                      ]
+                    },
+                    [
+                      {
+                        "{{#if (date != 'No Classes Scheduled')}}": {
+                          "type": "button",
+                          "text": "cancel",
+                          "class": "cancel_btn btn_main",
+                          "action": {
+                            "type": "$util.alert",
+                            "options": {
+                              "title": "Unregister",
+                              "success": "Yes",
+                              "cancel": "No",
+                              "description": "Are you sure you want to cancel your booking for this class?"
+                            },
+                            "success": {
+                              "type": "$network.request",
+                              "options": {
+                                "url": "{{link}}"
+                              },
+                              "success": {
+                                "trigger": "fetch"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            },
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "Status",
+                  "class": "label_header"
+                },
+                {
+                  "type": "vertical",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{$jason.user_status.description}}"
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "15"
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "{{$jason.user_status.status}}"
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "15"
+                      }
+                    },
+                    [
+                      {
+                        "{{#if $jason.user_status.start_trial == 'Yes'}}": {
+                          "type": "button",
+                          "text": "Start Trial",
+                          "class": "button_ok btn_main",
+                          "action": {
+                            "trigger": "start_trial"
+                          }
+                        }
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

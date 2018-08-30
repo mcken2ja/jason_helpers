@@ -1,0 +1,441 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Login Page",
+      "description": "This is the page where you login",
+      "styles": {
+        "label_class": {
+          "color": "#2377d9",
+          "font": "HelveticaNeue-Bold"
+        },
+        "input_class": {
+          "placeholder_color": "#2377d9",
+          "color": "#2377d9",
+          "background": "rgba(240, 240, 240, 0.5)",
+          "font": "ArialMT",
+          "padding": "20",
+          "corner_radius": "25",
+          "width": "80%",
+          "height": "60",
+          "size": "14"
+        },
+        "btn_class": {
+          "width": "80%",
+          "align": "center",
+          "height": "60",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        }
+      },
+      "actions": {
+        "login": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/{{$get.location_key}}/api/demo.json?user={{$get.email}}&key={{$get.password}}",
+            "method": "get"
+          },
+          "success": {
+            "trigger": "save"
+          },
+          "error": {
+            "type": "$util.banner",
+            "options": {
+              "title": "Error",
+              "description": "Login failed!",
+              "type": "error"
+            }
+          }
+        },
+        "validate_email": [
+          {
+            "{{#if $get && ('location' in $get) && ($get.agreement != undefined && $get.agreeement != false)}}": {
+              "trigger": "login"
+            }
+          },
+          {
+            "{{#else}}": {
+              "type": "$util.banner",
+              "options": {
+                "title": "Ope, before we start...",
+                "description": "please select a Studio before logging in & accept the terms",
+                "type": "error"
+              }
+            }
+          }
+        ],
+        "validate_fb": [
+          {
+            "{{#if $get && ('location' in $get) && ($get.agreement != undefined && $get.agreeement != false)}}": {
+              "trigger": "fb_login"
+            }
+          },
+          {
+            "{{#else}}": {
+              "type": "$util.banner",
+              "options": {
+                "title": "Before we start...",
+                "description": "please select a Studio before logging in & accept the terms",
+                "type": "error"
+              }
+            }
+          }
+        ],
+        "validate_gl": [
+          {
+            "{{#if $get && ('location' in $get) && ($get.agreement != undefined && $get.agreeement != false)}}": {
+              "trigger": "gl_login"
+            }
+          },
+          {
+            "{{#else}}": {
+              "type": "$util.banner",
+              "options": {
+                "title": "Before we start...",
+                "description": "please select a Studio before logging in & accept the terms",
+                "type": "error"
+              }
+            }
+          }
+        ],
+        "gl_login": {
+          "type": "$global.set",
+          "options": {
+            "location_key": "{{$get.location_key}}",
+            "location": "{{$get.location}}"
+          },
+          "success": {
+            "trigger": "gl_oauth"
+          }
+        },
+        "gl_oauth": {
+          "type": "$oauth.auth",
+          "options": {
+            "version": "2",
+            "authorize": {
+              "client_id": "200190694435-8jlklpe0nbu9njc6g1o6ovugqrec0h7r.apps.googleusercontent.com",
+              "scheme": "https",
+              "host": "accounts.google.com",
+              "path": "/o/oauth2/auth",
+              "data": {
+                "response_type": "code",
+                "redirect_uri": "https://www.trufitportal.com/{{$get.location_key}}/api/callback_google",
+                "scope": "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+                "state": "auth_provider=google"
+              }
+            }
+          }
+        },
+        "fb_login": {
+          "type": "$global.set",
+          "options": {
+            "location_key": "{{$get.location_key}}",
+            "location": "{{$get.location}}"
+          },
+          "success": {
+            "trigger": "fb_oauth"
+          }
+        },
+        "fb_oauth": {
+          "type": "$oauth.auth",
+          "options": {
+            "version": "2",
+            "authorize": {
+              "client_id": "466658053779097",
+              "scheme": "https",
+              "host": "www.facebook.com",
+              "path": "/v3.0/dialog/oauth",
+              "data": {
+                "response_type": "code",
+                "redirect_uri": "https://www.trufitportal.com/{{$get.location_key}}/api/callback"
+              }
+            }
+          }
+        },
+        "save": {
+          "type": "$global.set",
+          "options": {
+            "location_key": "{{$get.location_key}}",
+            "location": "{{$get.location}}",
+            "token": "{{$jason.id}}"
+          },
+          "success": {
+            "type": "$href",
+            "options": {
+              "url": "https://jasonbase.com/things/Kjnz",
+              "transition": "replace",
+              "preload": {
+                "background": "#ffffff",
+                "layers": [
+                  {
+                    "type": "image",
+                    "url": "https://i.imgur.com/fOAWl8Q.gif",
+                    "style": {
+                      "width": "350",
+                      "top": "50%-100",
+                      "left": "30%-100"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
+                      "style": {
+                        "width": "70%"
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "40"
+                      }
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "email",
+                      "keyboard": "email",
+                      "placeholder": "enter your email",
+                      "class": "input_class"
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "20"
+                      }
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "password",
+                      "placeholder": "enter your password",
+                      "class": "input_class",
+                      "style": {
+                        "secure": "true"
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "20"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "{{$get.location || 'Select a Studio'}}",
+                      "class": "input_class",
+                      "style": {
+                        "align": "left"
+                      },
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Location",
+                          "items": {
+                            "{{#each locations}}": {
+                              "text": "{{name}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "location": "{{name}}",
+                                  "location_key": "{{key}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "label",
+                  "text": "Terms and Conditions",
+                  "class": "label_class",
+                  "href": {
+                    "url": "https://jasonbase.com/things/BqM1",
+                    "transition": "modal"
+                  }
+                },
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "label_class",
+                      "text": "I have read and agree to the terms"
+                    },
+                    {
+                      "type": "switch",
+                      "name": "agreement",
+                      "style": {
+                        "color": "#2377d9"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": "40"
+                  }
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "text": "Log In",
+                      "class": "btn_class",
+                      "action": {
+                        "type": "$render",
+                        "success": {
+                          "trigger": "validate_email"
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "10"
+                      }
+                    },
+                    [
+                      {
+                        "{{#if $env.device.os.name == 'ios'}}": {
+                          "type": "label",
+                          "text": "Or Login with...",
+                          "class": "label_class"
+                        }
+                      }
+                    ],
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "10"
+                      }
+                    },
+                    [
+                      {
+                        "{{#if $env.device.os.name == 'ios'}}": {
+                          "type": "horizontal",
+                          "style": {
+                            "align": "bottom",
+                            "distribution": "equalsize"
+                          },
+                          "components": [
+                            {
+                              "type": "button",
+                              "url": "http://www.stickpng.com/assets/images/584ac2d03ac3a570f94a666d.png",
+                              "style": {
+                                "width": "70",
+                                "height": "70"
+                              },
+                              "action": {
+                                "trigger": "validate_fb"
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": ""
+                            },
+                            {
+                              "type": "button",
+                              "url": "https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png",
+                              "style": {
+                                "width": "70",
+                                "height": "70"
+                              },
+                              "action": {
+                                "trigger": "validate_gl"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "35"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "button",
+                      "text": "New here? Sign up with an email address",
+                      "class": "label_class",
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "https://jasonbase.com/things/zKEV",
+                          "transtion": "push"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "data": {
+        "locations": [
+          {
+            "name": "Fenton, MI",
+            "key": "demo"
+          },
+          {
+            "name": "Hartland, MI",
+            "key": "demo"
+          },
+          {
+            "name": "Howell, MI",
+            "key": "demo"
+          },
+          {
+            "name": "Ann Arbor, MI",
+            "key": "demo"
+          }
+        ]
+      }
+    }
+  }
+}

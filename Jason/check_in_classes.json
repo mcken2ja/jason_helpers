@@ -1,0 +1,128 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Check-in Classes",
+      "description": "Shows the classes going on today",
+      "actions": {
+        "$pull": {
+          "type": "$reload"
+        },
+        "$load": {
+          "trigger": "fetch"
+        },
+        "fetch": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/checkin_classes.json"
+          },
+          "success": {
+            "type": "$render"
+          }
+        }
+      },
+      "styles": {
+        "title": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold"
+        },
+        "input_class": {
+          "font": "HelveticaNeue",
+          "size": "18"
+        },
+        "btn_add_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#ffffff",
+          "color": "#2377d9",
+          "corner_radius": "5",
+          "size": "18"
+        },
+        "btn_ready_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "18"
+        },
+        "btn_done_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#dee3ea",
+          "color": "#000000",
+          "corner_radius": "5",
+          "size": "18"
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
+                      "style": {
+                        "width": "70%"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "vertical",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "title",
+                      "text": "{{$jason.pretty_date}}"
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": "40"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.classes}}": {
+                  "type": "label",
+                  "text": "{{time}}\n{{class_type}}",
+                  "class": "input_class",
+                  "href": {
+                    "url": "https://jasonbase.com/things/aLej",
+                    "transition": "push",
+                    "options": {
+                      "clsID": "{{clsID}}",
+                      "date": "{{date}}"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "$jason": {
+    "head": {
+      "title": "User Lookup",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        },
+        "check_in": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/demo/api/manual_checkin.json?clsID={{$params.clsID}}&date={{$params.date}}&cuID={{$get.userid}}"
+          },
+          "success": {
+            "type": "$back"
+          }
+        }
+      },
+      "styles": {
+        "title": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold"
+        },
+        "input_class": {
+          "font": "HelveticaNeue",
+          "size": "18"
+        },
+        "btn_add_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#ffffff",
+          "color": "#2377d9",
+          "corner_radius": "5",
+          "size": "18"
+        },
+        "btn_ready_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "18"
+        },
+        "btn_done_class": {
+          "align": "center",
+          "height": "60",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "background": "#dee3ea",
+          "color": "#000000",
+          "corner_radius": "5",
+          "size": "18"
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "User Search",
+            "search": {
+              "name": "query_text",
+              "placeholder": "Search name"
+            },
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "sections": [
+            {
+              "items": {
+                "{{#each users}}": {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "input_class",
+                      "text": "{{name}}\n{{email}}"
+                    },
+                    {
+                      "type": "label",
+                      "text": ""
+                    },
+                    {
+                      "type": "button",
+                      "class": "btn_ready_class",
+                      "text": "+ Add to class",
+                      "action": {
+                        "type": "$set",
+                        "options": {
+                          "user_id": "{{id}}"
+                        },
+                        "success": {
+                          "trigger": "check_in"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+        "users": [
+          {
+            "id": 2,
+            "name": "Jake McKenna",
+            "email": "jacob_mckenna@sbcglobal.net"
+          },
+          {
+            "id": 4,
+            "name": "Jack Joahanson",
+            "email": "jj@example.com"
+          },
+          {
+            "id": 5,
+            "name": "Tester Testing",
+            "email": "mcken2ja@gmail.com"
+          },
+          {
+            "id": 6,
+            "name": "Hannah McKenna",
+            "email": "hanmckenna28@gmail.com"
+          },
+          {
+            "id": 7,
+            "name": "Fenton Teacher",
+            "email": "fenton_teacher@trvfitfenton.com"
+          },
+          {
+            "id": 8,
+            "name": "Howell Teacher",
+            "email": "howell@trvfithowell.com"
+          },
+          {
+            "id": 11,
+            "name": "Mark Markie",
+            "email": "mm@example.com"
+          },
+          {
+            "id": 12,
+            "name": "Jake Mckenna",
+            "email": "jake.mckenna@servicenow.com"
+          },
+          {
+            "id": 13,
+            "name": "Trufit Studio",
+            "email": "demo@trufit.com"
+          },
+          {
+            "id": 14,
+            "name": "John Wick",
+            "email": "john.wick.com"
+          },
+          {
+            "id": 15,
+            "name": "Landon McKenna",
+            "email": "lando.commando@example.com"
+          },
+          {
+            "id": 16,
+            "name": "Hudsyn Mckenna",
+            "email": "hudsyn.mckenna@icloud"
+          },
+          {
+            "id": 17,
+            "name": "Facebook Demo",
+            "email": "10215754722808512.fakemail"
+          },
+          {
+            "id": 18,
+            "name": "Hannah McKenna",
+            "email": "trufitfenton@gmail.com"
+          },
+          {
+            "id": 19,
+            "name": null,
+            "email": "trvfit.software@gmail.com"
+          }
+        ]
+      }
+    }
+  }
+}

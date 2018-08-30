@@ -1,0 +1,57 @@
+{
+  "tabs": {
+    "style": {
+      "background": "rgba(255,255,255,0.8)",
+      "color:disabled": "#cecece",
+      "color": "#2377d9"
+    },
+    "items": [
+      {
+        "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/home.png",
+        "text": "Home",
+        "style": {
+          "height": "21"
+        },
+        "url": "https://jasonbase.com/things/Kjnz"
+      },
+      {
+        "image": "https://i.imgur.com/OJLW7MH.png",
+        "text": "Classes",
+        "style": {
+          "height": "21"
+        },
+        "url": "https://jasonbase.com/things/ww2D",
+        "preload": {
+          "background": "#ffffff",
+          "layers": [
+            {
+              "type": "image",
+              "url": "https://i.imgur.com/fOAWl8Q.gif",
+              "style": {
+                "width": "350",
+                "top": "50%-100",
+                "left": "30%-100"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "image": "https://i.imgur.com/X1wkamx.png",
+        "text": "My BMR",
+        "style": {
+          "height": "21"
+        },
+        "url": "https://jasonbase.com/things/Ey40"
+      },
+      {
+        "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/me.png",
+        "text": "My Studio",
+        "style": {
+          "height": "21"
+        },
+        "url": "https://jasonbase.com/things/MEXG"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Terms and Conditions"
+    },
+    "body": {
+      "background": {
+        "type": "html",
+        "style": {
+          "background": "#ffffff"
+        },
+        "action": {
+          "type": "$default"
+        },
+        "text": "<p style='text-align: center;'><strong>RELEASE, INDEMNIFICATION AND HOLD HARMLESS AGREEMENT</strong></p> <p><strong>&nbsp;</strong></p> <p>In consideration of participating in health or fitness club activities, and for other good and valuable consideration, I hereby agree to release and discharge from liability arising from negligence <strong>TRUFIT FITNESS</strong>&nbsp;and its owners, directors, officers employees, agents, volunteers, participants, and all other persons or entities acting for them (hereinafter collectively referred to as &ldquo;Releasees&rdquo;), on behalf of myself and my children, parents, heirs, assigns, personal representative and estate, and also agree as follows:</p> <ol> <li>I acknowledge that health or fitness club activities involve known and unanticipated risks which could result in physical or emotional injury, paralysis or permanent disability, death, and property damage. Risks include, but are not limited to, musculoskeletal injuries, broken bones, and/or overuse injuries, injuries caused by equipment that breaks or otherwise fails; death as a result of drowning or brain damage caused by near drowning; medical conditions resulting from physical activity; and damaged clothing or other property. I understand such risks simply cannot be eliminated, despite the use of safety equipment, without jeopardizing the essential qualities of the activity.</li> <li>I expressly accept and assume all of the risks inherent in this activity or that might have been caused by the negligence of the Releasees. My participation in this activity is purely voluntary and I elect to participate despite the risks. In addition, if at any time I believe that event conditions are unsafe or that I am unable to participate due to physical or medical conditions, then I will immediately discontinue participation.</li> <li>I hereby voluntarily release, forever discharge, and agree to indemnify and hold harmless Releasees from any and all claims, demands, or causes of action which are in any way connected with my participation in this activity, or my use of their equipment or facilities, arising from negligence. This release does not apply to claims arising from intentional conduct. Should Releasees or anyone acting on their behalf be required to incur attorney&rsquo;s fees and costs to enforce this agreement, I agree to indemnify and hold them harmless for all such fees and costs.</li> <li>I represent that I have adequate insurance to cover any injury or damage I may suffer or cause while participating in this activity, or else I agree to bear the costs of such injury or damage myself. I further represent that I have no medical or physical condition which could interfere with my safety in this activity, or else I am willing to assume &ndash; and bear the costs of &ndash; all risks that may be created, directly or indirectly, by any such condition.</li> <li>In the event that I file a lawsuit, I agree to do so solely in the state where Releasees&rsquo; facility is located, and I further agree that the substantive law of that state shall apply.</li> <li>I agree that if any portion of this agreement is found to be void or unenforceable, the remaining portions shall remain in full force and effect.</li> </ol> <p><strong>By signing this document, I agree that if I am hurt or my property is damaged during my participation in this activity, then I may be found by a court of law to have waived my right to maintain a lawsuit against the parties being released on the basis of any claim for negligence.</strong></p> <p>I fully understand and agree that Trv|Fit has my permission to use any video or photograph captured while at their facility or at a Trv|Fit hosted event. By signing below I am providing consent to release said images.<strong>&nbsp;</strong></p> <p>I have had sufficient time to read this entire document and, should I choose to do so, consult with legal counsel prior to signing. Also, I understand that this activity might not be made available to me or that the cost to engage in this activity would be significantly greater if I were to choose not to sign this release, and agree that the opportunity to participate at the stated cost in return for the execution of this release is a reasonable bargain.<strong> I have read and understood this document and I agree to be bound by its terms.</strong></p>"
+      },
+      "header": {
+        "title": "T&C",
+        "style": {
+          "theme": "dark"
+        }
+      }
+    }
+  }
+}

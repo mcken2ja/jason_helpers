@@ -1,0 +1,406 @@
+{
+  "$jason": {
+    "head": {
+      "title": "BMR Calc",
+      "actions": {
+        "$load": {
+          "type": "$script.include",
+          "options": {
+            "items": [
+              {
+                "text": "var bmr = function doMath(weight, feet, inches, age, sex, goal) { if (!weight || !feet || !inches || !age) { return 'Missing value for calculation!'; } var weight = parseInt(weight); var feet = parseInt(feet); var inches = parseInt(inches); var age = parseInt(age); if (sex == 'Male') { var answer = 66 + (6.23 * weight) + (12.7 * ((feet * 12) + inches)) - (6.8 * age); } else { var answer = 655 + (4.35 * weight) + (4.7 * ((feet * 12) + inches)) - (4.7 * age); } if (goal == 'Define') { answer += 200 } if (goal == 'Gain') { answer += 500 } return Math.round(answer); };"
+              }
+            ]
+          }
+        },
+        "save": {
+          "type": "$render",
+          "success": {
+            "trigger": "calc"
+          }
+        },
+        "calc": {
+          "type": "$util.alert",
+          "options": {
+            "title": "Your daily calories should be:",
+            "description": "{{bmr($get.weight, $get.feet, $get.inches, $get.age, $get.sex, $get.goal)}}",
+            "success": "Yes",
+            "cancel": "No"
+          }
+        }
+      },
+      "styles": {
+        "row_style": {
+          "size": "18",
+          "align": "center"
+        },
+        "row_label": {
+          "size": "18",
+          "font": "HelveticaNeue-Bold"
+        },
+        "btn_class": {
+          "width": "50%",
+          "align": "center",
+          "height": "60",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        }
+      },
+      "data": {
+        "types": [
+          "Male",
+          "Female"
+        ],
+        "goals": [
+          "Shred",
+          "Define",
+          "Gain"
+        ],
+        "feets": [
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "ages": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98
+        ],
+        "inch": [
+          "0",
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Calculate BMR",
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "footer": {
+            "@": "https://jasonbase.com/things/e8K1"
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_label",
+                      "text": "Sex:"
+                    },
+                    {
+                      "type": "button",
+                      "class": "row_style",
+                      "text": "{{$get.sex || 'Select option'}}",
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Select option",
+                          "items": {
+                            "{{#each types}}": {
+                              "text": "{{this}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "sex": "{{this}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_label",
+                      "text": "Height (ft):"
+                    },
+                    {
+                      "type": "button",
+                      "class": "row_style",
+                      "text": "{{$get.feet || 'Select option'}}",
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Select option",
+                          "items": {
+                            "{{#each feets}}": {
+                              "text": "{{this}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "feet": "{{this}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_label",
+                      "text": "Height (in):"
+                    },
+                    {
+                      "type": "button",
+                      "class": "row_style",
+                      "text": "{{$get.inches || 'Select option'}}",
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Select option",
+                          "items": {
+                            "{{#each inch}}": {
+                              "text": "{{this}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "inches": "{{this}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_label",
+                      "text": "Age:"
+                    },
+                    {
+                      "type": "button",
+                      "class": "row_style",
+                      "text": "{{$get.age || 'Select option'}}",
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Select option",
+                          "items": {
+                            "{{#each ages}}": {
+                              "text": "{{this}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "age": "{{this}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_label",
+                      "text": "Weight (lbs):"
+                    },
+                    {
+                      "type": "textfield",
+                      "class": "row_style",
+                      "placeholder": "Set weight",
+                      "keyboard": "number",
+                      "name": "weight",
+                      "style": {
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_label",
+                      "text": "Goal:"
+                    },
+                    {
+                      "type": "button",
+                      "class": "row_style",
+                      "text": "{{$get.goal || 'Select option'}}",
+                      "action": {
+                        "type": "$util.picker",
+                        "options": {
+                          "title": "Goal",
+                          "items": {
+                            "{{#each goals}}": {
+                              "text": "{{this}}",
+                              "action": {
+                                "type": "$set",
+                                "options": {
+                                  "goal": "{{this}}"
+                                },
+                                "success": {
+                                  "type": "$render"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "text": "Calculate",
+                      "class": "btn_class",
+                      "action": {
+                        "trigger": "save"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
