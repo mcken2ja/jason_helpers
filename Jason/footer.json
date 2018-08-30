@@ -10,7 +10,7 @@
         "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/home.png",
         "text": "Home",
         "style": {
-          "height": "21"
+          "height": "30"
         },
         "url": "https://json.trufitportal.com/Jason/homepage.json"
       },
@@ -18,7 +18,7 @@
         "image": "https://i.imgur.com/OJLW7MH.png",
         "text": "Classes",
         "style": {
-          "height": "21"
+          "height": "30"
         },
         "url": "https://json.trufitportal.com/Jason/book_class.json",
         "preload": {
@@ -40,7 +40,7 @@
         "image": "https://json.trufitportal.com/images/shopping-cart.png",
         "text": "Shop",
         "style": {
-          "height": "21"
+          "height": "30"
         },
         "url": "https://json.trufitportal.com/Jason/shop_main.json",
         "preload": {
@@ -62,7 +62,7 @@
         "image": "https://i.imgur.com/X1wkamx.png",
         "text": "My BMR",
         "style": {
-          "height": "21"
+          "height": "30"
         },
         "url": "https://json.trufitportal.com/Jason/bmr.json"
       },
@@ -70,7 +70,7 @@
         "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/me.png",
         "text": "My Studio",
         "style": {
-          "height": "21"
+          "height": "30"
         },
         "url": "https://json.trufitportal.com/Jason/profile.json"
       }
