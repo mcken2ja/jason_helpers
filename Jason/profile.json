@@ -75,7 +75,7 @@
                 {
                   "type": "label",
                   "class": "header",
-                  "text": "CALL US"
+                  "text": "Call us"
                 },
                 {
                   "type": "label",
@@ -95,7 +95,7 @@
                 {
                   "type": "label",
                   "class": "header",
-                  "text": "MESSAGE US"
+                  "text": "Message us"
                 },
                 {
                   "type": "label",
@@ -115,7 +115,7 @@
                 {
                   "type": "label",
                   "class": "header",
-                  "text": "VISIT US"
+                  "text": "Visit us"
                 },
                 {
                   "type": "label",
