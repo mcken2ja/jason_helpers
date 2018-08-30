@@ -174,11 +174,11 @@
                 "layers": [
                   {
                     "type": "image",
-                    "url": "https://i.imgur.com/fOAWl8Q.gif",
+                    "url": "https://json.trufitportal.com/images/kettle_512.png",
                     "style": {
-                      "width": "350",
+                      "width": "200",
                       "top": "50%-100",
-                      "left": "30%-100"
+                      "left": "50%-100"
                     }
                   }
                 ]
@@ -205,7 +205,7 @@
                   "components": [
                     {
                       "type": "image",
-                      "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
+                      "url": "https://json.trufitportal.com/images/TruFit-Logo.png",
                       "style": {
                         "width": "70%"
                       }
@@ -280,7 +280,7 @@
                   "text": "Terms and Conditions",
                   "class": "label_class",
                   "href": {
-                    "url": "https://jasonbase.com/things/BqM1",
+                    "url": "https://json.trufitportal.com/Jason/tc.json",
                     "transition": "modal"
                   }
                 },
@@ -359,7 +359,7 @@
                           "components": [
                             {
                               "type": "button",
-                              "url": "http://www.stickpng.com/assets/images/584ac2d03ac3a570f94a666d.png",
+                              "url": "https://json.trufitportal.com/images/fb.png",
                               "style": {
                                 "width": "70",
                                 "height": "70"
@@ -374,7 +374,7 @@
                             },
                             {
                               "type": "button",
-                              "url": "https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png",
+                              "url": "https://json.trufitportal.com/images/google.png",
                               "style": {
                                 "width": "70",
                                 "height": "70"
@@ -405,7 +405,7 @@
                       "action": {
                         "type": "$href",
                         "options": {
-                          "url": "https://jasonbase.com/things/zKEV",
+                          "url": "https://json.trufitportal.com/Jason/registration.json",
                           "transtion": "push"
                         }
                       }

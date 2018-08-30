@@ -121,7 +121,7 @@
                           "action": {
                             "type": "$href",
                             "options": {
-                              "url": "https://jasonbase.com/things/Mw8A",
+                              "url": "https://json.trufitportal.com/Jason/checkout.json",
                               "options": {
                                 "item": "{{description}}",
                                 "price": "{{prices.dropin}}",

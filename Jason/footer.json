@@ -12,7 +12,7 @@
         "style": {
           "height": "21"
         },
-        "url": "https://jasonbase.com/things/Kjnz"
+        "url": "https://json.trufitportal.com/Jason/homepage.json"
       },
       {
         "image": "https://i.imgur.com/OJLW7MH.png",
@@ -20,17 +20,17 @@
         "style": {
           "height": "21"
         },
-        "url": "https://jasonbase.com/things/ww2D",
+        "url": "https://json.trufitportal.com/Jason/book_classes.json",
         "preload": {
           "background": "#ffffff",
           "layers": [
             {
               "type": "image",
-              "url": "https://i.imgur.com/fOAWl8Q.gif",
+              "url": "https://json.trufitportal.com/images/kettle_512.png",
               "style": {
-                "width": "350",
+                "width": "200",
                 "top": "50%-100",
-                "left": "30%-100"
+                "left": "50%-100"
               }
             }
           ]
@@ -42,7 +42,7 @@
         "style": {
           "height": "21"
         },
-        "url": "https://jasonbase.com/things/Ey40"
+        "url": "https://json.trufitportal.com/Jason/bmr.json"
       },
       {
         "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/me.png",
@@ -50,7 +50,7 @@
         "style": {
           "height": "21"
         },
-        "url": "https://jasonbase.com/things/MEXG"
+        "url": "https://json.trufitportal.com/Jason/profile.json"
       }
     ]
   }

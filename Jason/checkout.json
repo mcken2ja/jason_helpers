@@ -54,7 +54,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/demo/api/check_out.json?token={{$global.token}}"
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/check_out.json?token={{$global.token}}"
           },
           "success": {
             "type": "$render"
@@ -63,12 +63,12 @@
         "submit_order": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/demo/api/submit_order.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.token}}&cardID={{$get.cardID}}"
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/submit_order.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.token}}&cardID={{$get.cardID}}"
           },
           "success": {
             "type": "$href",
             "options": {
-              "url": "https://jasonbase.com/things/ww2D",
+              "url":"https://json.trufitportal.com/Jason/homepage.json",
               "transition": "replace"
             }
           },
@@ -84,7 +84,7 @@
         "add_card": {
           "type": "$href",
           "options": {
-            "url": "https://jasonbase.com/things/JkA5",
+            "url": "https://json.trufitportal.com/Jason/add_card.json",
             "transition": "modal"
           }
         }

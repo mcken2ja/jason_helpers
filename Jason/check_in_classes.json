@@ -81,14 +81,14 @@
                 "success": {
                   "type": "$href",
                   "options": {
-                    "url": "https://jasonbase.com/things/BqG1",
+                    "url": "https://json.trufitportal.com/Jason/login.json",
                     "transition": "replace",
                     "preload": {
                       "background": "#ffffff",
                       "layers": [
                         {
                           "type": "image",
-                          "url": "https://i.imgur.com/tao8mUD.png",
+                          "url": "https://json.trufitportal.com/images/kettle_512.png",
                           "style": {
                             "width": "200",
                             "top": "50%-100",
@@ -113,7 +113,7 @@
                   "components": [
                     {
                       "type": "image",
-                      "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
+                      "url": "https://json.trufitportal.com/images/TruFit-Logo.png",
                       "style": {
                         "width": "62%"
                       }
@@ -145,7 +145,7 @@
                   "text": "{{time}}\n{{class_type}}",
                   "class": "input_class",
                   "href": {
-                    "url": "https://jasonbase.com/things/aLej",
+                    "url": "https://json.trufitportal.com/Jason/check_page.json",
                     "transition": "push",
                     "options": {
                       "clsID": "{{clsID}}",
@@ -155,7 +155,7 @@
                       "layers": [
                         {
                           "type": "image",
-                          "url": "https://i.imgur.com/tao8mUD.png",
+                          "url": "https://json.trufitportal.com/images/kettle_512.png",
                           "style": {
                             "width": "200",
                             "top": "50%-100",

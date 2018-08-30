@@ -118,14 +118,14 @@
               "success": {
                 "type": "$href",
                 "options": {
-                  "url": "https://jasonbase.com/things/Kjnz",
+                  "url": "https://json.trufitportal.com/Jason/homepage.json",
                   "transition": "replace",
                   "preload": {
                     "background": "#ffffff",
                     "layers": [
                       {
                         "type": "image",
-                        "url": "https://i.imgur.com/tao8mUD.png",
+                        "url": "https://json.trufitportal.com/images/kettle_512.png",
                         "style": {
                           "width": "200",
                           "top": "50%-100",
@@ -267,7 +267,7 @@
                   "type": "label",
                   "text": "Terms and Conditions",
                   "href": {
-                    "url": "https://jasonbase.com/things/BqM1",
+                    "url": "https://json.trufitportal.com/Jason/tc.json",
                     "transition": "modal"
                   }
                 },

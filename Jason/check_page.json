@@ -16,7 +16,7 @@
         "user_lookup": {
           "type": "$href",
           "options": {
-            "url": "https://jasonbase.com/things/kRg7",
+            "url": "https://json.trufitportal.com/Jason/user_lookup.json",
             "options": {
               "clsID": "{{$params.clsID}}",
               "date": "{{$params.date}}"
@@ -103,7 +103,7 @@
                   "components": [
                     {
                       "type": "image",
-                      "url": "http://trufitstudio.com/wp-content/uploads/2017/07/TruFit-Logo.png",
+                      "url": "https://json.trufitportal.com/images/TruFit-Logo.png",
                       "style": {
                         "width": "62%"
                       }
