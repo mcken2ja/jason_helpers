@@ -132,7 +132,7 @@
                     {
                       "type": "label",
                       "class": "row_normal",
-                      "text": "${{$params.price}}"
+                      "text": "{{$params.price}}"
                     }
                   ]
                 },

@@ -124,7 +124,7 @@
                               "url": "https://json.trufitportal.com/Jason/checkout.json",
                               "options": {
                                 "item": "{{description}}",
-                                "price": "{{prices.dropin}}",
+                                "price": "{{price_formatted}}",
                                 "date": "{{$params.date}}",
                                 "clsID": "{{$params.clsID}}"
                               }
