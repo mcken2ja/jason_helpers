@@ -60,17 +60,30 @@
             "type": "$render"
           }
         },
+        "submit_membership": {
+            "type": "$network.request",
+            "options": {
+                "url": "https://www.trufitportal.com/{{$global.location_key}}/api/submit_membership.json?type={{$params.type}}&id={{$params.id}}&token={{$global.token}}&cardID={{$get.cardID}}"
+            },
+            "success": {
+                "trigger": "go_home"
+            },
+            "error": {
+              "type": "$util.banner",
+              "options": {
+                "title": "Error",
+                "description": "something didn't work. please review and try again",
+                "type": "error"
+              }
+            }
+        },
         "submit_order": {
           "type": "$network.request",
           "options": {
             "url": "https://www.trufitportal.com/{{$global.location_key}}/api/submit_order.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.token}}&cardID={{$get.cardID}}"
           },
           "success": {
-            "type": "$href",
-            "options": {
-              "url":"https://json.trufitportal.com/Jason/homepage.json",
-              "transition": "replace"
-            }
+            "trigger": "go_home"
           },
           "error": {
             "type": "$util.banner",
@@ -80,6 +93,13 @@
               "type": "error"
             }
           }
+        },
+        "go_home": {
+            "type": "$href",
+            "options": {
+              "url":"https://json.trufitportal.com/Jason/homepage.json",
+              "transition": "replace"
+            }
         },
         "add_card": {
           "type": "$href",
@@ -199,9 +219,18 @@
                       "type": "button",
                       "text": "Submit purchase",
                       "class": "btn_main button_ok",
-                      "action": {
-                        "trigger": "submit_order"
-                      }
+                      "action": [
+                          {
+                              "{{#if $params.type == 'dropin'}}": {
+                                "trigger": "submit_order"
+                              }
+                          },
+                          {
+                              "{{#else}}": {
+                                  "trigger": "submit_membership"
+                              }
+                          }
+                      ]
                     }
                   ]
                 }
