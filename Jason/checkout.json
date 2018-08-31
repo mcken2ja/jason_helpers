@@ -72,7 +72,7 @@
               "type": "$util.banner",
               "options": {
                 "title": "Error",
-                "description": "something didn't work. please review and try again",
+                "description": "Membership request did not go so well",
                 "type": "error"
               }
             }
