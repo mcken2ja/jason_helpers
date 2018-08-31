@@ -43,9 +43,9 @@
         }
       },
       "actions": {
-          "$pull": {
-              "type":"$reload"
-          },
+        "$pull": {
+          "type": "$reload"
+        },
         "$load": {
           "trigger": "fetch"
         },
@@ -62,20 +62,23 @@
           "type": "$util.alert",
           "options": {
             "title": "Membership agreement",
-            "description": "I, <CLIENTNAME>, agree to pay TRVFIT <RECURRINGPAYMENT> Monthly. Monthly bill date will be reoccurring as of the initial contract date of <CONTRACTSTARTDATE> and payments will occur on the same date every month as the contract start date. I understand that this membership has a 30 day cancellation notice policy and that I must provide my cancellation notice in writing 30 days prior to the date I wish for my contract to terminate.",
+            "description": "{{$jason.selected_agreement}}",
             "success": "I agree",
             "cancel": "I Decline"
           },
           "success": {
-            "type": "$href",
+            "trigger": "checkout"
+          }
+        },
+        "checkout": {
+          "type": "$href",
+          "options": {
+            "url": "https://json.trufitportal.com/Jason/checkout.json",
             "options": {
-              "url": "https://json.trufitportal.com/Jason/checkout.json",
-              "options": {
-                "item": "{{description}}",
-                "price": "{{prices.dropin}}",
-                "date": "{{$params.date}}",
-                "clsID": "{{$params.clsID}}"
-              }
+              "item": "{{$get.selected_item}}",
+              "price": "{{$get.selected_price}}",
+              "type": "{{$get.type}}",
+              "id": "{{$get.id}}"
             }
           }
         }
@@ -118,14 +121,26 @@
                     {
                       "type": "label",
                       "class": "row_normal",
-                      "text": "Classes: {{classes}}"
+                      "text": "{{classes}} classes"
                     },
                     {
                       "type": "button",
                       "class": "btn_main button_ok",
-                      "text": "Buy for ${{price}}",
+                      "text": "Buy for {{price_formatted}}",
                       "action": {
-                        "trigger": "agree"
+                        "type": "$set",
+                        "options": {
+                          "selected_item": "{{name}}",
+                          "selected_price": "{{price_formatted}}",
+                          "selected_type": "membership",
+                          "selected_id": "{{id}}"
+                        },
+                        "success": {
+                          "trigger": "agree",
+                          "options": {
+                            "selected_agreement": "{{agreement}}"
+                          }
+                        }
                       }
                     }
                   ]
@@ -137,7 +152,7 @@
                 {
                   "type": "label",
                   "class": "label_header",
-                  "text": "Cards"
+                  "text": "Class Cards"
                 }
               ]
             },
@@ -158,12 +173,24 @@
                     {
                       "type": "label",
                       "class": "row_normal",
-                      "text": "Classes: {{Classes}} for {{Validity}}"
+                      "text": "{{Classes}} classes for {{Validity}}"
                     },
                     {
                       "type": "button",
                       "class": "btn_main button_ok",
-                      "text": "Buy for ${{Price}}"
+                      "text": "Buy for {{Price}}",
+                      "action": {
+                        "type": "$set",
+                        "options": {
+                          "selected_item": "{{Name}}",
+                          "selected_price": "{{Price}}",
+                          "selected_type": "class_card",
+                          "selected_id": "{{id}}"
+                        },
+                        "success": {
+                          "trigger": "checkout"
+                        }
+                      }
                     }
                   ]
                 }
