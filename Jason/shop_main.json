@@ -1,71 +1,176 @@
 {
-    "$jason": {
-        "head": {
-            "title": "Shop Main",
-            "description": "",
-            "styles": {
-
-            },
-            "actions": {
-                "fetch": {
-                    "type": "$network.request",
-                    "options": {
-                        "url": "https://www.trufitportal.com/{{$global.location_key}}/api/shop_items.json"
-                    }
-                }
-
-            },
-            "templates": {
-                "body": {
-                    "header": {
-                        "title": "Shop",
-                        "style": {
-                            "theme": "dark"
-                        }
-                    },
-                    "footer": {
-                      "@": "https://json.trufitportal.com/Jason/footer.json"
-                    },
-                    "sections": [
-                        {
-                            "items": [
-                                {
-                                    "type": "label",
-                                    "text": "Check out current pricing on Memberships"
-                                },
-                                {
-                                    "type": "label",
-                                    "text": "Memberships",
-                                    "href": {
-                                        "url": "https://json.trufitportal.com/Jason/shop_items.json",
-                                        "options": {
-                                            "type": "memberships"
-                                        },
-                                        "transition": "push"
-                                    }
-                                },
-                                {
-                                    "type": "label",
-                                    "text": "Check out current pricing on limited time items"
-                                },
-                                {
-                                    "type": "label",
-                                    "text": "Class cards",
-                                    "href": {
-                                        "url": "https://json.trufitportal.com/Jason/shop_items.json",
-                                        "options": {
-                                            "type": "cards"
-                                        },
-                                        "transition": "push"
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
-            "data": {
-            }
+  "$jason": {
+    "head": {
+      "title": "Shop Main",
+      "description": "",
+      "styles": {
+        "row_bold": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold"
+        },
+        "row_normal": {
+          "size": "15"
+        },
+        "button_ok": {
+          "background": "#2377d9"
+        },
+        "button_wl": {
+          "background": "#2377d9"
+        },
+        "button_def": {
+          "background": "#dee3ea"
+        },
+        "cancel_btn": {
+          "background": "#ce0208"
+        },
+        "btn_main": {
+          "width": "50%",
+          "align": "center",
+          "height": "40",
+          "font": "ArialMT",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "color": "#ffffff",
+          "corner_radius": "5",
+          "size": "14"
+        },
+        "label_header": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "align": "center"
         }
+      },
+      "actions": {
+        "$load": {
+          "trigger": "fetch"
+        },
+        "fetch": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/shop_items.json?token={{$global.token}}"
+          },
+          "success": {
+            "type": "$render"
+          }
+        },
+        "agree": {
+          "type": "$util.alert",
+          "options": {
+            "title": "Membership agreement",
+            "description": "I, <CLIENTNAME>, agree to pay TRVFIT <RECURRINGPAYMENT> Monthly. Monthly bill date will be reoccurring as of the initial contract date of <CONTRACTSTARTDATE> and payments will occur on the same date every month as the contract start date. I understand that this membership has a 30 day cancellation notice policy and that I must provide my cancellation notice in writing 30 days prior to the date I wish for my contract to terminate.",
+            "success": "I agree",
+            "cancel": "I Decline"
+          },
+          "success": {
+            "type": "$href",
+            "options": {
+              "url": "https://json.trufitportal.com/Jason/checkout.json",
+              "options": {
+                "item": "{{description}}",
+                "price": "{{prices.dropin}}",
+                "date": "{{$params.date}}",
+                "clsID": "{{$params.clsID}}"
+              }
+            }
+          }
+        }
+      },
+      "templates": {
+        "body": {
+          "header": {
+            "title": "Shop",
+            "style": {
+              "theme": "dark"
+            }
+          },
+          "footer": {
+            "@": "https://json.trufitportal.com/Jason/footer.json"
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "class": "label_header",
+                  "text": "Memberships"
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.memberships}}": {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "space": "25"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "{{name}}"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "Classes: {{classes}}"
+                    },
+                    {
+                      "type": "button",
+                      "class": "btn_main button_ok",
+                      "text": "Buy for ${{price}}",
+                      "action": {
+                        "trigger": "agree"
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "class": "label_header",
+                  "text": "Cards"
+                }
+              ]
+            },
+            {
+              "items": {
+                "{{#each $jason.cards}}": {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "space": "25"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_bold",
+                      "text": "{{Name}}"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "Classes: {{Classes}} for {{Validity}}"
+                    },
+                    {
+                      "type": "button",
+                      "class": "btn_main button_ok",
+                      "text": "Buy for ${{Price}}"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "data": {
+      }
     }
+  }
 }
