@@ -77,8 +77,8 @@
             "options": {
               "item": "{{$get.selected_item}}",
               "price": "{{$get.selected_price}}",
-              "type": "{{$get.type}}",
-              "id": "{{$get.id}}"
+              "type": "{{$get.selected_type}}",
+              "id": "{{$get.selected_id}}"
             }
           }
         }
