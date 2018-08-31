@@ -221,7 +221,7 @@
                       "class": "btn_main button_ok",
                       "action": [
                           {
-                              "{{#if $params.type == 'dropin'}}": {
+                              "{{#if ($params.type == 'dropin')}}": {
                                 "trigger": "submit_order"
                               }
                           },
