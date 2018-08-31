@@ -63,7 +63,7 @@
           "options": {
             "title": "Membership agreement",
             "description": "{{$jason.selected_agreement}}",
-            "success": "I agree",
+            "success": "I Agree",
             "cancel": "I Decline"
           },
           "success": {
