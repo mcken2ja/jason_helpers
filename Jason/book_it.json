@@ -126,6 +126,7 @@
                                 "item": "{{description}}",
                                 "price": "{{price_formatted}}",
                                 "date": "{{$params.date}}",
+                                "type": "dropin",
                                 "clsID": "{{$params.clsID}}"
                               }
                             }
