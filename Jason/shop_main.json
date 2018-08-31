@@ -43,6 +43,9 @@
         }
       },
       "actions": {
+          "$pull": {
+              "type":"$reload"
+          },
         "$load": {
           "trigger": "fetch"
         },
