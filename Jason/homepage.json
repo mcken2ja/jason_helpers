@@ -8,6 +8,16 @@
           "size": "15",
           "font": "HelveticaNeue-Bold"
         },
+        "status_confirmed": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold",
+          "color": "#2377d9"
+        },
+        "status_pending": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold",
+          "color": "#ce0208"
+        },
         "row_normal": {
           "size": "15"
         },
@@ -179,7 +189,14 @@
                         {
                           "type": "label",
                           "text": "Status: {{type}}",
-                          "class": "row_normal"
+                          "class": [
+                            {
+                              "{{#if (type == 'waitlist')}}": "status_pending"
+                            },
+                            {
+                              "{{#else}}": "status_confirmed"
+                            }
+                          ]
                         }
                       ]
                     },
