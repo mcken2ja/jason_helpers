@@ -165,6 +165,7 @@
                   "type": "horizontal",
                   "style": {
                     "distribution": "equalsize",
+                    "align": "center",
                     "spacing": "25"
                   },
                   "components": [
