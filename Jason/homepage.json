@@ -175,6 +175,11 @@
                           "type": "label",
                           "text": "{{time}}",
                           "class": "row_normal"
+                        },
+                        {
+                          "type": "label",
+                          "text": "Status: {{type}}",
+                          "class": "row_normal"
                         }
                       ]
                     },
