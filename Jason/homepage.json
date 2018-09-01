@@ -189,7 +189,7 @@
                         },
                         {
                           "type": "label",
-                          "text": "Status: {{type}}",
+                          "text": "{{type}}",
                           "class": [
                             {
                               "{{#if (type == 'Waitlist')}}": "status_pending"
