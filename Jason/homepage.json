@@ -59,6 +59,17 @@
         "$load": {
           "trigger": "fetch"
         },
+        "worked": {
+          "type": "$util.banner",
+          "options": {
+            "title": "Proccesed",
+            "description": "Your request has been completed",
+            "type": "success"
+          },
+          "success": {
+            "trigger": "fetch"
+          }
+        },
         "fetch": {
           "type": "$network.request",
           "options": {
@@ -221,7 +232,7 @@
                                 "url": "{{link}}"
                               },
                               "success": {
-                                "trigger": "fetch"
+                                "trigger": "worked"
                               }
                             }
                           }
