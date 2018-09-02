@@ -175,7 +175,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Monday {{$jason.data.classes.Monday.date}}",
+                  "text": "{{$jason.data.classes.Monday.date}}",
                   "class": "label_header"
                 }
               ]
@@ -268,7 +268,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Tuesday {{$jason.data.classes.Tuesday.date}}",
+                  "text": "{{$jason.data.classes.Tuesday.date}}",
                   "class": "label_header"
                 }
               ]
@@ -361,7 +361,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Wednesday {{$jason.data.classes.Wednesday.date}}",
+                  "text": "{{$jason.data.classes.Wednesday.date}}",
                   "class": "label_header"
                 }
               ]
@@ -454,7 +454,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Thursday {{$jason.data.classes.Thursday.date}}",
+                  "text": "{{$jason.data.classes.Thursday.date}}",
                   "class": "label_header"
                 }
               ]
@@ -547,7 +547,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Friday {{$jason.data.classes.Friday.date}}",
+                  "text": "{{$jason.data.classes.Friday.date}}",
                   "class": "label_header"
                 }
               ]
@@ -640,7 +640,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Saturday {{$jason.data.classes.Saturday.date}}",
+                  "text": "{{$jason.data.classes.Saturday.date}}",
                   "class": "label_header"
                 }
               ]
@@ -733,7 +733,7 @@
               "items": [
                 {
                   "type": "label",
-                  "text": "Sunday {{$jason.data.classes.Sunday.date}}",
+                  "text": "{{$jason.data.classes.Sunday.date}}",
                   "class": "label_header"
                 }
               ]
