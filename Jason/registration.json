@@ -149,20 +149,7 @@
         }
       },
       "data": {
-        "locations": [
-          {
-            "name": "Fenton, MI",
-            "key": "demo"
-          },
-          {
-            "name": "Hartland, MI",
-            "key": "demo"
-          },
-          {
-            "name": "Howell, MI",
-            "key": "demo"
-          }
-        ]
+          "@": "https://json.trufitportal.com/Jason/studios.json"
       },
       "templates": {
         "body": {
