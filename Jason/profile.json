@@ -16,7 +16,7 @@
         }
       },
       "actions": {
-        "$pull": {
+        "$load": {
           "type": "$network.request",
           "options": {
             "url": "https://www.trufitportal.com/{{$global.location_key}}/api/contact.json"
@@ -141,8 +141,6 @@
             }
           ]
         }
-      },
-      "data": {
       }
     }
   }
