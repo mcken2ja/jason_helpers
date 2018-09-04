@@ -19,7 +19,7 @@
         "$pull": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/contact_info.json"
+            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/contact.json"
           },
           "success": {
             "type": "$render"
@@ -80,9 +80,9 @@
                 {
                   "type": "label",
                   "class": "link",
-                  "text": "810-373-2022",
+                  "text": "{{$jason.studio_phone}}",
                   "href": {
-                    "url": "tel://8103732022",
+                    "url": "tel://{{$jason.studio_phone}}",
                     "view": "app"
                   }
                 },
@@ -100,9 +100,9 @@
                 {
                   "type": "label",
                   "class": "link",
-                  "text": "TRUFITFENTON@GMAIL.COM",
+                  "text": "{{$jason.studio_email}}",
                   "href": {
-                    "url": "mailto:trufitfenton@gmail.com?subject=Question",
+                    "url": "mailto:{{$jason.studio_email}}?subject=Question",
                     "view": "app"
                   }
                 },
@@ -118,13 +118,9 @@
                   "text": "Visit us"
                 },
                 {
-                  "type": "label",
+                  "type": "html",
                   "class": "link",
-                  "text": "1460 Torrey Rd \nFenton, MI 48430",
-                  "href": {
-                    "url": "comgooglemaps://?daddr=1460+Torrey+Road+Fenton,+MI+48430",
-                    "view": "app"
-                  }
+                  "text": "{{$jason.studio_address}}"
                 },
                 {
                   "type": "space",
