@@ -131,7 +131,7 @@
                 {
                   "type": "label",
                   "class": "link",
-                  "text": "TRUFITSTUDIO.COM",
+                  "text": "trufitstudio.com",
                   "href": {
                     "url": "https://trufitstudio.com",
                     "view": "web"
