@@ -118,7 +118,7 @@
                   "text": "Visit us"
                 },
                 {
-                  "type": "html",
+                  "type": "label",
                   "class": "link",
                   "text": "{{$jason.studio_address}}"
                 },
