@@ -1,0 +1,35 @@
+{
+  "$jason": {
+    "head": {
+      "title": "BMR Results",
+      "styles": {
+        "@": "https://json.trufitportal.com/jason/common_styles.json"
+      },
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "class": "label_header",
+                  "text": "Total Daily Calorie Allowance:"
+                },
+                {
+                  "type": "label",
+                  "class": "row_bold",
+                  "text": "5,356"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
