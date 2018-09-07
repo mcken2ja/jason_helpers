@@ -8,7 +8,7 @@
           "options": {
             "items": [
               {
-                "text": "var bmr = function doMath(weight, feet, inches, age, sex, goal) { if (!weight || !feet || !inches || !age) { return 'Missing value for calculation!'; } var weight = parseInt(weight); var feet = parseInt(feet); var inches = parseInt(inches); var age = parseInt(age); if (sex == 'Male') { var answer = 66 + (6.23 * weight) + (12.7 * ((feet * 12) + inches)) - (6.8 * age); } else { var answer = 655 + (4.35 * weight) + (4.7 * ((feet * 12) + inches)) - (4.7 * age); } if (goal == 'Define') { answer += 200 } if (goal == 'Gain') { answer += 500 } return Math.round(answer); };"
+                "text": "var bmr = function doMath(weight, feet, inches, age, sex, goal) { if (!weight || !feet || !inches || !age) { return 'Missing value for calculation!'; } var weight = parseInt(weight); var feet = parseInt(feet); var inches = parseInt(inches); var age = parseInt(age); if (sex == 'Male') { var answer = 66 + (6.23 * weight) + (12.7 * ((feet * 12) + inches)) - (6.8 * age); } else { var answer = 655 + (4.35 * weight) + (4.7 * ((feet * 12) + inches)) - (4.7 * age); } if (goal == 'Define') { answer += 200 } if (goal == 'Gain') { answer += 500 } var x = Math.round(answer); return x.toLocaleString(); };"
               }
             ]
           }
@@ -16,7 +16,7 @@
         "save": {
           "type": "$render",
           "success": {
-            "trigger": "calc"
+            "trigger": "calc_href"
           }
         },
         "calc": {
@@ -26,6 +26,16 @@
             "description": "{{bmr($get.weight, $get.feet, $get.inches, $get.age, $get.sex, $get.goal)}}",
             "success": "Yes",
             "cancel": "No"
+          }
+        },
+        "calc_href": {
+          "type": "$href",
+          "options": {
+            "url": "https://jasonbase.com/things/1xP7",
+            "transition": "modal",
+            "options": {
+              "bmr": "{{bmr($get.weight, $get.feet, $get.inches, $get.age, $get.sex, $get.goal)}}"
+            }
           }
         }
       },

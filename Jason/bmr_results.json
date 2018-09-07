@@ -3,15 +3,69 @@
     "head": {
       "title": "BMR Results",
       "styles": {
-        "@": "https://json.trufitportal.com/jason/common_styles.json"
+        "row_bold": {
+          "size": "15",
+          "font": "HelveticaNeue-Bold"
+        },
+        "row_normal": {
+          "size": "15"
+        },
+        "button_ok": {
+          "color": "#ffffff",
+          "background": "#2377d9"
+        },
+        "button_wl": {
+          "background": "#ffffff",
+          "color": "#2377d9"
+        },
+        "button_def": {
+          "background": "#dee3ea",
+          "color": "#000000"
+        },
+        "cancel_btn": {
+          "color": "#ffffff",
+          "background": "#ce0208"
+        },
+        "btn_main": {
+          "width": "50%",
+          "align": "center",
+          "height": "40",
+          "font": "HelveticaNeue-Bold",
+          "border_width": "1",
+          "border_color": "#a9a9a9",
+          "corner_radius": "5",
+          "size": "14"
+        },
+        "label_header": {
+          "size": "25",
+          "font": "HelveticaNeue-Bold",
+          "background": "#2377d9",
+          "color": "#ffffff",
+          "align": "center"
+        }
       },
       "actions": {
         "$load": {
-          "type": "$render"
+          "trigger": "set_type"
+        },
+        "set_type": {
+          "type": "$set",
+          "options": {
+            "type": "{{$jason.answer || ''}}"
+          },
+          "success": {
+            "type": "$render"
+          }
         }
       },
       "templates": {
         "body": {
+          "header": {
+            "title": "BMR Results",
+            "styles": {
+              "theme": "dark"
+            }
+          },
           "sections": [
             {
               "items": [
@@ -23,11 +77,114 @@
                 {
                   "type": "label",
                   "class": "row_bold",
-                  "text": "5,356"
+                  "style": {
+                    "align": "center",
+                    "size": "23"
+                  },
+                  "text": "{{$params.bmr}}"
+                }
+              ]
+            },
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "class": "row_bold",
+                  "text": "Select your body shape"
+                },
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "url": "https://json.trufitportal.com/images/ectomorph.png",
+                      "style": {
+                        "width": "33%"
+                      },
+                      "action": {
+                        "trigger": "set_type",
+                        "options": {
+                          "answer": "{{ecto}}"
+                        }
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "url": "https://json.trufitportal.com/images/mesomorph.png",
+                      "style": {
+                        "width": "33%"
+                      },
+                      "action": {
+                        "trigger": "set_type",
+                        "options": {
+                          "answer": "{{meso}}"
+                        }
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "url": "https://json.trufitportal.com/images/endomorph.png",
+                      "style": {
+                        "width": "33%"
+                      },
+                      "action": {
+                        "trigger": "set_type",
+                        "options": {
+                          "answer": "{{endo}}"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "style": {
+                    "distribution": "equalsize",
+                    "align": "bottom",
+                    "padding": "15"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{$get.type.carb || '??'}} | CARB"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{$get.type.fat || '??'}} | FAT"
+                    },
+                    {
+                      "type": "label",
+                      "class": "row_normal",
+                      "text": "{{$get.type.protein || '??'}} | PROTEIN"
+                    }
+                  ]
                 }
               ]
             }
           ]
+        }
+      },
+      "data": {
+        "ecto": {
+          "carb": "50%",
+          "protein": "30%",
+          "fat": "20%"
+        },
+        "meso": {
+          "carb": "40%",
+          "protein": "30%",
+          "fat": "30%"
+        },
+        "endo": {
+          "carb": "30%",
+          "protein": "40%",
+          "fat": "30%"
         }
       }
     }
