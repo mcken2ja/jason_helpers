@@ -36,8 +36,12 @@
         "login": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$get.location_key}}/api/demo.json?user={{$get.email}}&key={{$get.password}}",
-            "method": "get"
+            "url": "https://www.trufitportal.com/{{$get.location_key}}/api/demo.json",
+            "method": "post",
+            "data": {
+              "user": "{{$get.email}}",
+              "key": "{{$get.password}}"
+            }
           },
           "success": {
             "trigger": "save"
