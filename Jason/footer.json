@@ -22,18 +22,7 @@
         },
         "url": "https://json.trufitportal.com/Jason/book_class.json",
         "preload": {
-          "background": "#ffffff",
-          "layers": [
-            {
-              "type": "image",
-              "url": "https://json.trufitportal.com/images/kettle_512.png",
-              "style": {
-                "width": "200",
-                "top": "50%-100",
-                "left": "50%-100"
-              }
-            }
-          ]
+          "@": "file://preload.json",
         }
       },
       {
@@ -44,18 +33,7 @@
         },
         "url": "https://json.trufitportal.com/Jason/shop_main.json",
         "preload": {
-          "background": "#ffffff",
-          "layers": [
-            {
-              "type": "image",
-              "url": "https://json.trufitportal.com/images/kettle_512.png",
-              "style": {
-                "width": "200",
-                "top": "50%-100",
-                "left": "50%-100"
-              }
-            }
-          ]
+          "@": "file://preload.json",
         }
       },
       {
@@ -64,7 +42,10 @@
         "style": {
           "height": "30"
         },
-        "url": "https://json.trufitportal.com/Jason/bmr.json"
+        "url": "https://json.trufitportal.com/Jason/bmr.json",
+        "preload": {
+          "@": "file://preload.json",
+        }
       },
       {
         "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/me.png",
@@ -72,7 +53,10 @@
         "style": {
           "height": "30"
         },
-        "url": "https://json.trufitportal.com/Jason/profile.json"
+        "url": "https://json.trufitportal.com/Jason/profile.json",
+        "preload": {
+          "@": "file://preload.json",
+        }
       }
     ]
   }

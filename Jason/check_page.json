@@ -21,7 +21,10 @@
               "clsID": "{{$params.clsID}}",
               "date": "{{$params.date}}"
             },
-            "transition": "modal"
+            "transition": "modal",
+            "preload": {
+              "@": "file://preload.json",
+            }
           }
         },
         "fetch": {
