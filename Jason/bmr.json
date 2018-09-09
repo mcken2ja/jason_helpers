@@ -31,7 +31,7 @@
         "calc_href": {
           "type": "$href",
           "options": {
-            "url": "https://jasonbase.com/things/1xP7",
+            "url": "https://json.trufitportal.com/Jason/bmr_results.json",
             "transition": "modal",
             "options": {
               "bmr": "{{bmr($get.weight, $get.feet, $get.inches, $get.age, $get.sex, $get.goal)}}"
