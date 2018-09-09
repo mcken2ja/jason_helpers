@@ -16,7 +16,7 @@
         "save": {
           "type": "$render",
           "success": {
-            "trigger": "calc"
+            "trigger": "calc_href"
           }
         },
         "calc": {
