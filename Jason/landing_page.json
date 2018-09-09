@@ -21,7 +21,7 @@
               ],
               "transition": "replace",
               "preload": {
-                "@": "file://preload.json",
+                "@": "file://preload.json"
               }
             }
           },
@@ -31,7 +31,7 @@
               "url": "https://raw.githubusercontent.com/mcken2ja/jason_helpers/master/Jason/login.json",
               "transition": "replace",
               "preload": {
-                "@": "file://preload.json",
+                "@": "file://preload.json"
               }
             }
           }
