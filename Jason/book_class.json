@@ -233,7 +233,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
@@ -320,7 +320,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
@@ -407,7 +407,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
@@ -494,7 +494,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
@@ -581,7 +581,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
@@ -668,7 +668,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
@@ -755,7 +755,7 @@
                             "options": {
                               "url": "{{mobileLink}}",
                               "preload": {
-                                "@": "file://preload.json",
+                                "@": "file://preload.json"
                               },
                               "transition": "modal",
                               "options": {
