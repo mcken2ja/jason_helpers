@@ -23,7 +23,7 @@
             },
             "transition": "modal",
             "preload": {
-              "@": "file://preload.json",
+              "@": "file://preload.json"
             }
           }
         },
