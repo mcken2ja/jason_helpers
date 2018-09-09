@@ -22,7 +22,7 @@
         },
         "url": "https://json.trufitportal.com/Jason/book_class.json",
         "preload": {
-          "@": "file://preload.json",
+          "@": "file://preload.json"
         }
       },
       {
@@ -33,7 +33,7 @@
         },
         "url": "https://json.trufitportal.com/Jason/shop_main.json",
         "preload": {
-          "@": "file://preload.json",
+          "@": "file://preload.json"
         }
       },
       {
@@ -44,7 +44,7 @@
         },
         "url": "https://json.trufitportal.com/Jason/bmr.json",
         "preload": {
-          "@": "file://preload.json",
+          "@": "file://preload.json"
         }
       },
       {
@@ -55,7 +55,7 @@
         },
         "url": "https://json.trufitportal.com/Jason/profile.json",
         "preload": {
-          "@": "file://preload.json",
+          "@": "file://preload.json"
         }
       }
     ]
