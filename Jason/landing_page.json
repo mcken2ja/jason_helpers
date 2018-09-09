@@ -13,10 +13,10 @@
             "options": {
               "url": [
                 {
-                  "{{#if $jason.start == 'selfcheckin'}}": "https://raw.githubusercontent.com/mcken2ja/jason_helpers/master/Jason/check_in_classes.json"
+                  "{{#if $jason.start == 'selfcheckin'}}": "https://json.trufitportal.com/Jason/check_in_classes.json"
                 },
                 {
-                  "{{#else}}": "https://raw.githubusercontent.com/mcken2ja/jason_helpers/master/Jason/homepage.json"
+                  "{{#else}}": "https://json.trufitportal.com/Jason/homepage.json"
                 }
               ],
               "transition": "replace",
@@ -28,7 +28,7 @@
           "error": {
             "type": "$href",
             "options": {
-              "url": "https://raw.githubusercontent.com/mcken2ja/jason_helpers/master/Jason/login.json",
+              "url": "https://json.trufitportal.com/Jason/login.json",
               "transition": "replace",
               "preload": {
                 "@": "file://preload.json"
