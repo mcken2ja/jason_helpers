@@ -98,16 +98,7 @@
                     "url": "https://jasonbase.com/things/BqG1",
                     "transition": "replace",
                     "preload": {
-                      "background": "#ffffff",
-                      "layers": [{
-                        "type": "image",
-                        "url": "https://json.trufitportal.com/images/kettle_512.png",
-                        "style": {
-                          "width": "200",
-                          "top": "50%-100",
-                          "left": "50%-100"
-                        }
-                      }]
+                      "@": "file://preload.json"
                     }
                   }
                 }

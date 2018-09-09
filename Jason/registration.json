@@ -121,7 +121,7 @@
                   "url": "https://json.trufitportal.com/Jason/homepage.json",
                   "transition": "replace",
                   "preload": {
-                    "@": "file://preload.json",
+                    "@": "file://preload.json"
                   }
                 }
               }
