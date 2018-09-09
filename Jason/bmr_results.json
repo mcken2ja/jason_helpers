@@ -81,7 +81,7 @@
                     "align": "center",
                     "size": "23"
                   },
-                  "text": "{{$params.bmr}}"
+                  "text": "{{$params.bmr || 'Something went wrong'}}"
                 }
               ]
             },
