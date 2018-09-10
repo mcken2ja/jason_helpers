@@ -110,7 +110,8 @@
                   "type": "horizontal",
                   "style": {
                     "distribution": "equalsize",
-                    "space": "25"
+                    "align": "center",
+                    "spacing": "15"
                   },
                   "components": [
                     {
@@ -162,7 +163,8 @@
                   "type": "horizontal",
                   "style": {
                     "distribution": "equalsize",
-                    "space": "25"
+                    "align": "center",
+                    "spacing": "15"
                   },
                   "components": [
                     {
