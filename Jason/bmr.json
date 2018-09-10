@@ -16,7 +16,14 @@
         "save": {
           "type": "$render",
           "success": {
-            "trigger": "calc_href"
+            "trigger": [
+              {
+                "{{#if $env.device.os.name == 'ios'}}": "calc_href"
+              },
+              {
+                "{{#else}}": "calc"
+              }
+            ]
           }
         },
         "calc": {
