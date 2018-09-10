@@ -127,7 +127,7 @@
                     {
                       "type": "button",
                       "class": "btn_main button_ok",
-                      "text": "Buy for {{price_formatted}}",
+                      "text": "{{price_formatted}}",
                       "action": {
                         "type": "$set",
                         "options": {
@@ -180,7 +180,7 @@
                     {
                       "type": "button",
                       "class": "btn_main button_ok",
-                      "text": "Buy for {{Price}}",
+                      "text": "{{Price}}",
                       "action": {
                         "type": "$set",
                         "options": {
