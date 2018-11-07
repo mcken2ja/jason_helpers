@@ -51,7 +51,7 @@
         "$load": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/get_week.json"
+            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/get_week.json"
           },
           "success": {
             "type": "$set",
@@ -69,7 +69,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/get_classes.json?SortBy=time&week={{$get.week}}&token={{$global.token}}"
+            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/get_classes.json?SortBy=time&week={{$get.week}}&token={{$cache.token}}"
           },
           "success": {
             "type": "$render"
@@ -87,7 +87,7 @@
               "text": "Logout",
               "action": {
                 "options": {
-                  "type": "$global.reset",
+                  "type": "$cache.reset",
                   "items": [
                     "token"
                   ]

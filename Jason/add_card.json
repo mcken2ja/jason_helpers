@@ -17,7 +17,7 @@
           },
           "background": {
             "type": "html",
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/stripe?token={{$global.token}}",
+            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/stripe?token={{$cache.token}}",
             "action": {
               "type": "$default"
             }

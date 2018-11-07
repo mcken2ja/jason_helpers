@@ -16,7 +16,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/checkin_classes.json"
+            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/checkin_classes.json"
           },
           "success": {
             "type": "$render"
@@ -72,7 +72,7 @@
             "menu": {
               "text": "Logout",
               "action": {
-                "type": "$global.reset",
+                "type": "$cache.reset",
                 "options": {
                   "items": [
                     "token"

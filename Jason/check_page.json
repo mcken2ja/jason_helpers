@@ -30,7 +30,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.location_key}}/api/checkin_class.json?clsID={{$params.clsID}}&date={{$params.date}}"
+            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/checkin_class.json?clsID={{$params.clsID}}&date={{$params.date}}"
           },
           "success": {
             "type": "$render"

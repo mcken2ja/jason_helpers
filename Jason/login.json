@@ -107,7 +107,7 @@
           }
         ],
         "gl_login": {
-          "type": "$global.set",
+          "type": "$cache.set",
           "options": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}"
@@ -135,7 +135,7 @@
           }
         },
         "fb_login": {
-          "type": "$global.set",
+          "type": "$cache.set",
           "options": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}"
@@ -161,7 +161,7 @@
           }
         },
         "save": {
-          "type": "$global.set",
+          "type": "$cache.set",
           "options": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}",
@@ -171,7 +171,7 @@
           "success": {
             "type": "$href",
             "options": {
-              "url": "{{$global.start}}",
+              "url": "{{$cache.start}}",
               "transition": "replace",
               "preload": {
                 "@": "file://preload.json"
