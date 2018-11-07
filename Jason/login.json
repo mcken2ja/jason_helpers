@@ -44,7 +44,23 @@
             }
           },
           "success": {
-            "trigger": "save"
+            "type": "$cache.set",
+            "options": {
+              "location_key": "{{$get.location_key}}",
+              "location": "{{$get.location}}",
+              "token": "{{$jason.id}}",
+              "start": "{{$jason.start}}"
+            },
+            "success": {
+              "type": "$href",
+              "options": {
+                "url": "{{$jason.start}}",
+                "transition": "replace",
+                "preload": {
+                  "@": "file://preload.json"
+                }
+              }
+            }
           },
           "error": {
             "type": "$util.banner",
