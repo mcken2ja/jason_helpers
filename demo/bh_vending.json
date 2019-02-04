@@ -1,0 +1,40 @@
+{
+  "$jason": {
+    "head": {
+      "title": "bh_vending",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "http://i.imgur.com/KUJPgGV.png",
+                      "style": {
+                        "width": "50",
+                        "height": "50",
+                        "corner_radius": "25"
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "pokeball"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
