@@ -9,6 +9,16 @@
       },
       "templates": {
         "body": {
+          "header": {
+            "title": "Vending",
+            "style": {
+              "background": "#ffaa00"
+            },
+            "search": {
+              "name": "item_text",
+              "placeholder": "Filter here"
+            }
+          },
           "sections": [
             {
               "items": [
@@ -17,7 +27,55 @@
                   "components": [
                     {
                       "type": "image",
-                      "url": "http://i.imgur.com/KUJPgGV.png",
+                      "url": "https://img.rankedboost.com/wp-content/uploads/2016/07/PokeBall.png",
+                      "style": {
+                        "width": "50",
+                        "height": "50",
+                        "corner_radius": "25"
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "file://item.json",
+                          "options": {
+                            "url": "https://img.rankedboost.com/wp-content/uploads/2016/07/PokeBall.png",
+                            "name": "Poke Ball"
+                          },
+                          "transition": "modal"
+                        }
+                      }
+                    },
+                    {
+                      "type": "vertical",
+                      "components": [
+                        {
+                          "type": "label",
+                          "text": "Poke ball",
+                          "style": {
+                            "size": "18",
+                            "align": "center",
+                            "font": "HelveticaNeue-Bold"
+                          }
+                        },
+                        {
+                          "type": "label",
+                          "text": "Standard for low level pokemon\nfound in A1, B3, J10",
+                          "style": {
+                            "size": "14",
+                            "align": "center",
+                            "font": "HelveticaNeue"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "https://img.rankedboost.com/wp-content/uploads/2016/07/Great-Ball.png",
                       "style": {
                         "width": "50",
                         "height": "50",
@@ -25,8 +83,64 @@
                       }
                     },
                     {
-                      "type": "label",
-                      "text": "pokeball"
+                      "type": "vertical",
+                      "components": [
+                        {
+                          "type": "label",
+                          "text": "Great Ball",
+                          "style": {
+                            "size": "18",
+                            "align": "center",
+                            "font": "HelveticaNeue-Bold"
+                          }
+                        },
+                        {
+                          "type": "label",
+                          "text": "Best for mid level game\nfound in C1, D3",
+                          "style": {
+                            "size": "14",
+                            "align": "center",
+                            "font": "HelveticaNeue"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "https://fevgames-public.s3.amazonaws.com/uploads/2016/07/0003.png",
+                      "style": {
+                        "width": "50",
+                        "height": "50",
+                        "corner_radius": "25"
+                      }
+                    },
+                    {
+                      "type": "vertical",
+                      "components": [
+                        {
+                          "type": "label",
+                          "text": "Ultra Ball",
+                          "style": {
+                            "size": "18",
+                            "align": "center",
+                            "font": "HelveticaNeue-Bold"
+                          }
+                        },
+                        {
+                          "type": "label",
+                          "text": "Best for high level pokemon\nfound in D4",
+                          "style": {
+                            "size": "14",
+                            "align": "center",
+                            "font": "HelveticaNeue"
+                          }
+                        }
+                      ]
                     }
                   ]
                 }

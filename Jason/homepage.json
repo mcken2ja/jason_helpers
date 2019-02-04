@@ -99,10 +99,10 @@
             "menu": {
               "text": "Logout",
               "action": {
-                "type": "$cache.reset",
+                "type": "$global.reset",
                 "options": {
                   "items": [
-                    "token"
+                    "vars.token"
                   ]
                 },
                 "success": {

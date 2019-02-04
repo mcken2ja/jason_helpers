@@ -29,10 +29,12 @@
       },
       "actions": {
         "save": {
-          "type": "$cache.set",
+          "type": "$global.set",
           "options": {
-            "location_key": "{{$cache.location_key}}"
+            "vars": {
+            "location_key": "{{$global.vars.location_key}}"
           }
+        }
         },
         "validate": {
           "trigger": [
@@ -103,7 +105,7 @@
             "method": "get"
           },
           "success": {
-            "type": "$cache.set",
+            "type": "$global.vars.set",
             "options": {
               "location_key": "{{$get.location_key}}",
               "token": "{{$jason.id}}",

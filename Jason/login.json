@@ -44,12 +44,14 @@
             }
           },
           "success": {
-            "type": "$cache.set",
+            "type": "$global.set",
             "options": {
+              "vars": {
               "location_key": "{{$get.location_key}}",
               "location": "{{$get.location}}",
               "token": "{{$jason.id}}",
               "start": "{{$jason.start}}"
+            }
             },
             "success": {
               "type": "$href",
@@ -123,10 +125,12 @@
           }
         ],
         "gl_login": {
-          "type": "$cache.set",
+          "type": "$global.set",
           "options": {
+            "vars": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}"
+            }
           },
           "success": {
             "trigger": "gl_oauth"
@@ -151,10 +155,12 @@
           }
         },
         "fb_login": {
-          "type": "$cache.set",
+          "type": "$global.set",
           "options": {
+            "vars": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}"
+          }
           },
           "success": {
             "trigger": "fb_oauth"
@@ -177,12 +183,14 @@
           }
         },
         "save": {
-          "type": "$cache.set",
+          "type": "$global.set",
           "options": {
+            "vars": {
             "location_key": "{{$get.location_key}}",
             "location": "{{$get.location}}",
             "token": "{{$jason.id}}",
             "start": "{{$jason.start}}"
+          }
           },
           "success": {
             "type": "$href",

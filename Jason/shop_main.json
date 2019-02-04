@@ -52,7 +52,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/shop_items.json?token={{$cache.token}}"
+            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/shop_items.json?token={{$global.vars.token}}"
           },
           "success": {
             "type": "$render"

@@ -19,7 +19,7 @@
         "$load": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$cache.location_key}}/api/contact.json"
+            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/contact.json"
           },
           "success": {
             "type": "$render"
@@ -36,7 +36,7 @@
             "menu": {
               "text": "Logout",
               "action": {
-                "type": "$cache.reset",
+                "type": "$global.reset",
                 "options": {
                   "items": [
                     "token"
