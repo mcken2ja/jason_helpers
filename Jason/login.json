@@ -56,7 +56,7 @@
             "success": {
               "type": "$href",
               "options": {
-                "url": "{{$jason.start || https://json.trufitportal.com/Jason/homepage.json}}",
+                "url": "{{$global.vars.start}}",
                 "transition": "replace",
                 "preload": {
                   "@": "file://preload.json"
