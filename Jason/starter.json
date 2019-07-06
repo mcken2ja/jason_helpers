@@ -1,0 +1,85 @@
+{
+    "$jason": {
+        "head": {
+            "title": "starter",
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                }
+            },
+            "styles": {
+                "sign_up": {
+                    "width": "80%",
+                    "align": "center",
+                    "height": "60",
+                    "font": "ArialMT",
+                    "border_width": "1",
+                    "border_color": "#a9a9a9",
+                    "background": "#2377d9",
+                    "color": "#ffffff",
+                    "corner_radius": "25",
+                    "size": "18"
+                },
+                "sign_in": {
+                    "width": "80%",
+                    "align": "center",
+                    "height": "60",
+                    "font": "ArialMT Bold",
+                    "border_width": "1",
+                    "border_color": "#a9a9a9",
+                    "background": "#2377d9",
+                    "color": "#ffffff",
+                    "corner_radius": "25",
+                    "size": "18"
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "https://json.trufitportal.com/images/background1.jpg",
+                    "style": {
+                        "border": "none"
+                    },
+                    "sections": [
+                        {
+                            "items": [
+                                {
+                                    "type": "vertical",
+                                    "components": [
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "35%"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": "Sign In",
+                                            "class": "sign_in",
+                                            "action": {
+                                                "trigger": "sign_in"
+                                            }
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "15"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": "New Here? Sign Up",
+                                            "class": "sign_up",
+                                            "action": {
+                                                "trigger": "sign_up"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

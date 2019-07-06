@@ -1,0 +1,54 @@
+{
+    "$jason": {
+        "head": {
+            "title": "pick studio",
+            "data": {
+              "@": "https://json.trufitportal.com/Jason/studios.json"
+          },
+          "actions": {
+              "$load": {
+                  "type": "$render"
+              }
+          },
+            "templates": {
+                "body": {
+                    "sections": [
+                        {
+                            "items": [
+                                {
+                                  "type": "button",
+                                  "text": "{{$get.location || 'Select a Studio'}}",
+                                  "class": "input_class",
+                                  "style": {
+                                    "align": "left"
+                                  },
+                                  "action": {
+                                    "type": "$util.picker",
+                                    "options": {
+                                      "title": "Location",
+                                      "items": {
+                                        "{{#each locations}}": {
+                                          "text": "{{name}}",
+                                          "action": {
+                                            "type": "$set",
+                                            "options": {
+                                              "location": "{{name}}",
+                                              "location_key": "{{key}}"
+                                            },
+                                            "success": {
+                                              "type": "$render"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
