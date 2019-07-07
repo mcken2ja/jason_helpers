@@ -1,24 +1,32 @@
 {
 "locations": [
   {
-    "name": "Saline, MI",
-    "key": "saline"
+    "name": "TRVFIT Flushing",
+    "key": "flushing",
+    "address": "1551 E Pierson Rd\nFlushing, MI 48433",
+    "coord": "43.060090,-83.818240"
   },
   {
-    "name": "Fenton, MI",
-    "key": "demo"
+    "name": "TRVFIT Fenton",
+    "key": "demo",
+    "address": "1460 Torrey Rd\nFenton, MI 48430",
+    "coord": "42.818430,-83.725920"
   },
   {
-    "name": "Hartland, MI",
-    "key": "demo"
+    "name": "TRVFIT Hartland",
+    "key": "",
+    "address": "1361 Old US 23\nBrighton, MI 48114",
+    "coord": "42.603610,-83.749010"
   },
   {
-    "name": "Howell, MI",
-    "key": "demo"
+    "name": "TRVFIT Howell",
+    "key": ""
   },
   {
-    "name": "Ann Arbor, MI",
-    "key": "demo"
+    "name": "TRVFIT Perrysberg",
+    "key": "",
+    "address": "117 E 2nd St\nPerrysburg, OH 43551",
+    "coord": "41.559940,-83.628790"
   }
 ]
 }
