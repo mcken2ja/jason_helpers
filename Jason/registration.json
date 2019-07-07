@@ -5,7 +5,7 @@
       "styles": {
         "input_class": {
           "placeholder_color": "#2377d9",
-          "color": "#2377d9",
+          "color": "#000000",
           "background": "rgba(240, 240, 240, 0.5)",
           "font": "ArialMT",
           "padding": "20",
@@ -21,8 +21,8 @@
           "font": "ArialMT",
           "border_width": "1",
           "border_color": "#a9a9a9",
-          "background": "#2377d9",
-          "color": "#ffffff",
+          "background": "#ffffff",
+          "color": "#000000",
           "corner_radius": "25",
           "size": "20"
         }
@@ -139,16 +139,13 @@
           }
         }
       },
-      "data": {
-          "@": "https://json.trufitportal.com/Jason/studios.json"
-      },
       "templates": {
         "body": {
-            "background": "https://json.trufitportal.com/images/background1.jpg",
+            "background": "#333333",
           "header": {
             "title": "Sign up",
             "style": {
-              "background": "#000000"
+              "background": "#222222"
             }
           },
           "sections": [

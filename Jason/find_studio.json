@@ -1,24 +1,38 @@
 {
     "$jason": {
         "head": {
-            "title": "pick studio",
+            "title": "Studio Picker",
+            "description": "Searching anything nearby",
             "data": {
                 "@": "https://json.trufitportal.com/Jason/studios.json"
+            },
+            "styles": {
+                "std_label": {
+                    "color": "#ffffff",
+                    "size": "14"
+                },
+                "input_hd": {
+                    "color": "#ffffff",
+                    "size": "20"
+                }
             },
             "actions": {
                 "$load": {
                     "type": "$render"
                 },
-                "save_data": {
+                "location_picked": {
                     "type": "$global.set",
                     "options": {
                         "studio": {
-                            "name": "{{$get.location}}",
-                            "key": "{{$get.location_key}}"
+                            "name": "{{$jason.name}}",
+                            "key": "{{$jason.key}}"
                         }
                     },
                     "success": {
                         "trigger": "next_page"
+                    },
+                    "error": {
+                        "trigger": "not_ready"
                     }
                 },
                 "next_page": {
@@ -26,104 +40,88 @@
                     "options": {
                         "url": "https://json.trufitportal.com/Jason/starter.json"
                     }
-                }
-            },
-            "styles": {
-                "core_btn": {
-                    "width": "60%",
-                    "align": "center",
-                    "height": "60",
-                    "font": "ArialMT",
-                    "border_width": "1",
-                    "border_color": "#a9a9a9",
-                    "background": "#2377d9",
-                    "color": "#ffffff",
-                    "corner_radius": "25",
-                    "size": "18"
                 },
-                "input_class": {
-                  "placeholder_color": "#2377d9",
-                  "background": "rgba(240, 240, 240, 0.5)",
-                  "color": "#000000",
-                  "font": "ArialMT",
-                  "padding": "20",
-                  "corner_radius": "25",
-                  "width": "60%",
-                  "height": "60",
-                  "size": "20"
+                "not_ready": {
+                    "type": "$util.alert",
+                    "options": {
+                        "title": "Hold Up!",
+                        "description": "We are still working on setting up this location here!",
+                        "success": "NOOO!",
+                        "cancel": "Okay i wil be back!"
+                    }
                 }
             },
             "templates": {
                 "body": {
-                    "background": "https://json.trufitportal.com/images/background1.jpg",
-                    "style": {
-                        "border": "none"
-                    },
+                    "background": "#333333",
                     "header": {
-                        "title": "Select a Studio",
+                        "title": "Pick your Studio",
                         "style": {
-                            "background": "#000000",
+                            "background": "#222222",
                             "color": "#ffffff"
+                        },
+                        "search": {
+                            "name": "query_text",
+                            "placeholder": "Search something...",
+                            "style": {
+                                "background": "#333333"
+                            }
                         }
                     },
                     "sections": [
                         {
-                            "items": [
-                                {
+                            "items": {
+                                "{{#each locations}}": {
                                     "type": "vertical",
-                                    "components": [
-                                        {
-                                            "type": "space",
-                                            "style": {
-                                                "height": "35%"
-                                            }
-                                        },
-                                        {
-                                            "type": "button",
-                                            "text": "{{$get.location || 'Studio...'}}",
-                                            "class": "input_class",
-                                            "style": {
-                                                "align": "center"
+                                    "action": {
+                                        "trigger": [
+                                            {
+                                                "{{#if (key == '')}}": "not_ready"
                                             },
-                                            "action": {
-                                                "type": "$util.picker",
-                                                "options": {
-                                                    "title": "Location",
-                                                    "items": {
-                                                        "{{#each locations}}": {
-                                                            "text": "{{name}}",
-                                                            "action": {
-                                                                "type": "$set",
-                                                                "options": {
-                                                                  "location": "{{name}}",
-                                                                  "location_key": "{{key}}"
-                                                                },
-                                                                "success": {
-                                                                    "type": "$render"
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
+                                            {
+                                                "{{#else}}": "location_picked"
                                             }
-                                        },
-                                        {
-                                            "type": "space",
-                                            "style": {
-                                                "height": "15"
-                                            }
-                                        },
-                                        {
-                                            "type": "button",
-                                            "class": "core_btn",
-                                            "text": "Next step",
-                                            "action": {
-                                                "trigger": "save_data"
-                                            }
+                                            ],
+                                        "options": {
+                                            "key": "{{key}}",
+                                            "name": "{{name}}"
                                         }
-                                    ]
+                                    },
+                                    "components": [{
+                                        "type": "horizontal",
+                                        "components":[{
+                                            "type": "vertical",
+                                            "components":[{
+                                                "type": "label",
+                                                "text": "{{name}}",
+                                                "class": "input_hd"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "class": "std_label",
+                                                "text": "{{address}}"
+                                            }]
+                                        },
+                                        {
+                                            "type": "map",
+                                            "region": {
+                                                "coord": "{{coord}}",
+                                                "width": "350",
+                                                "height": "350"
+                                            },
+                                            "pins": [{
+                                                "title": "This is a pin",
+                                                "description": "It really is.",
+                                                "coord": "{{coord}}"
+                                            }],
+                                            "style": {
+                                                "width": "200",
+                                                "height": "200"
+                                            }
+                                        }]
+                                    }]
                                 }
-                            ]
+                            }
                         }
                     ]
                 }
