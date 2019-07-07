@@ -32,7 +32,7 @@
           "type": "$global.set",
           "options": {
             "vars": {
-            "location_key": "{{$global.vars.location_key}}"
+            "location_key": "{{$global.studio.key}}"
           }
         }
         },
@@ -105,7 +105,7 @@
             "method": "get"
           },
           "success": {
-            "type": "$global.vars.set",
+            "type": "$global.user.set",
             "options": {
               "location_key": "{{$get.location_key}}",
               "token": "{{$jason.id}}",

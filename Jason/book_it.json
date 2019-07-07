@@ -45,7 +45,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/book_class.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.vars.token}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/book_class.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.user.token}}"
           },
           "success": {
             "type": "$render"

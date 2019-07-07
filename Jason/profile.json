@@ -19,7 +19,7 @@
         "$load": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/contact.json"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/contact.json"
           },
           "success": {
             "type": "$render"

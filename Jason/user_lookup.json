@@ -9,7 +9,7 @@
         "get_users": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/get_checkin_users.json"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_checkin_users.json"
           },
           "success": {
             "type": "$render"
@@ -18,7 +18,7 @@
         "check_in": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/manual_checkin.json?clsID={{$params.clsID}}&date={{$params.date}}&cuID={{$get.user_id}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/manual_checkin.json?clsID={{$params.clsID}}&date={{$params.date}}&cuID={{$get.user_id}}"
           },
           "success": {
             "type": "$back"
