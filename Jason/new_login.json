@@ -5,11 +5,11 @@
             "description": "This is the page where you login",
             "styles": {
                 "label_class": {
-                    "color": "#2377d9",
+                    "color": "#000000",
                     "font": "HelveticaNeue-Bold"
                 },
                 "input_class": {
-                    "placeholder_color": "#2377d9",
+                    "placeholder_color": "#a9a9a9",
                     "color": "#000000",
                     "background": "rgba(240, 240, 240, 0.5)",
                     "font": "ArialMT",
@@ -26,8 +26,8 @@
                     "font": "ArialMT",
                     "border_width": "1",
                     "border_color": "#a9a9a9",
-                    "background": "#2377d9",
-                    "color": "#ffffff",
+                    "background": "#ffffff",
+                    "color": "#000000",
                     "corner_radius": "25",
                     "size": "18"
                 }
@@ -171,7 +171,7 @@
                                             "type": "switch",
                                             "name": "agreement",
                                             "style": {
-                                                "color": "#2377d9"
+                                                "color": "#000000"
                                             }
                                         }
                                     ]
