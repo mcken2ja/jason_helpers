@@ -5,6 +5,18 @@
             "actions": {
                 "$load": {
                     "type": "$render"
+                },
+                "sign_in": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/new_login.json"
+                    }
+                },
+                "sign_up": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/registration.json"
+                    }
                 }
             },
             "styles": {
@@ -48,7 +60,7 @@
                                         {
                                             "type": "space",
                                             "style": {
-                                                "height": "35%"
+                                                "height": "45%"
                                             }
                                         },
                                         {
@@ -62,7 +74,7 @@
                                         {
                                             "type": "space",
                                             "style": {
-                                                "height": "15"
+                                                "height": "25"
                                             }
                                         },
                                         {
