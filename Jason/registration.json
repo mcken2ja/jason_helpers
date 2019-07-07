@@ -12,7 +12,7 @@
           "corner_radius": "25",
           "width": "80%",
           "height": "60",
-          "size": "14"
+          "size": "18"
         },
         "btn_class": {
           "width": "80%",
@@ -23,8 +23,8 @@
           "border_color": "#a9a9a9",
           "background": "#2377d9",
           "color": "#ffffff",
-          "corner_radius": "5",
-          "size": "14"
+          "corner_radius": "25",
+          "size": "20"
         }
       },
       "actions": {
@@ -144,10 +144,11 @@
       },
       "templates": {
         "body": {
+            "background": "https://json.trufitportal.com/images/background1.jpg",
           "header": {
-            "title": "Registration form",
+            "title": "Sign up",
             "style": {
-              "theme": "dark"
+              "background": "#000000"
             }
           },
           "sections": [
