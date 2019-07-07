@@ -3,46 +3,125 @@
         "head": {
             "title": "pick studio",
             "data": {
-              "@": "https://json.trufitportal.com/Jason/studios.json"
-          },
-          "actions": {
-              "$load": {
-                  "type": "$render"
-              }
-          },
+                "@": "https://json.trufitportal.com/Jason/studios.json"
+            },
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                },
+                "save_data": {
+                    "type": "$global.set",
+                    "options": {
+                        "studio": {
+                            "name": "{{$get.location}}",
+                            "key": "{{$get.location_key}}"
+                        }
+                    },
+                    "success": {
+                        "trigger": "next_page"
+                    }
+                },
+                "next_page": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/starter.json"
+                    }
+                }
+            },
+            "styles": {
+                "core_btn": {
+                    "width": "60%",
+                    "align": "center",
+                    "height": "60",
+                    "font": "ArialMT",
+                    "border_width": "1",
+                    "border_color": "#a9a9a9",
+                    "background": "#2377d9",
+                    "color": "#ffffff",
+                    "corner_radius": "25",
+                    "size": "18"
+                },
+                "input_class": {
+                  "placeholder_color": "#2377d9",
+                  "background": "rgba(240, 240, 240, 0.5)",
+                  "color": "#000000",
+                  "font": "ArialMT",
+                  "padding": "20",
+                  "corner_radius": "25",
+                  "width": "60%",
+                  "height": "60",
+                  "size": "20"
+                }
+            },
             "templates": {
                 "body": {
+                    "background": "https://json.trufitportal.com/images/background1.jpg",
+                    "style": {
+                        "border": "none"
+                    },
+                    "header": {
+                        "title": "Select a Studio",
+                        "style": {
+                            "background": "#000000",
+                            "color": "#ffffff"
+                        }
+                    },
                     "sections": [
                         {
                             "items": [
                                 {
-                                  "type": "button",
-                                  "text": "{{$get.location || 'Select a Studio'}}",
-                                  "class": "input_class",
-                                  "style": {
-                                    "align": "left"
-                                  },
-                                  "action": {
-                                    "type": "$util.picker",
-                                    "options": {
-                                      "title": "Location",
-                                      "items": {
-                                        "{{#each locations}}": {
-                                          "text": "{{name}}",
-                                          "action": {
-                                            "type": "$set",
-                                            "options": {
-                                              "location": "{{name}}",
-                                              "location_key": "{{key}}"
-                                            },
-                                            "success": {
-                                              "type": "$render"
+                                    "type": "vertical",
+                                    "components": [
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "35%"
                                             }
-                                          }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": "{{$get.location || 'Studio...'}}",
+                                            "class": "input_class",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "action": {
+                                                "type": "$util.picker",
+                                                "options": {
+                                                    "title": "Location",
+                                                    "items": {
+                                                        "{{#each locations}}": {
+                                                            "text": "{{name}}",
+                                                            "action": {
+                                                                "type": "$set",
+                                                                "options": {
+                                                                  "location": "{{name}}",
+                                                                  "location_key": "{{key}}"
+                                                                },
+                                                                "success": {
+                                                                    "type": "$render"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "15"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "class": "core_btn",
+                                            "text": "Next step",
+                                            "action": {
+                                                "trigger": "save_data"
+                                            }
                                         }
-                                      }
-                                    }
-                                  }
+                                    ]
                                 }
                             ]
                         }

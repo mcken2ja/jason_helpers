@@ -1,212 +1,211 @@
 {
-  "$jason": {
-    "head": {
-      "title": "Login Page v2",
-      "description": "This is the page where you login",
-      "styles": {
-        "label_class": {
-          "color": "#2377d9",
-          "font": "HelveticaNeue-Bold"
-        },
-        "input_class": {
-          "placeholder_color": "#2377d9",
-          "color": "#000000",
-          "background": "rgba(240, 240, 240, 0.5)",
-          "font": "ArialMT",
-          "padding": "20",
-          "corner_radius": "25",
-          "width": "80%",
-          "height": "60",
-          "size": "20"
-        },
-        "btn_class": {
-          "width": "60%",
-          "align": "center",
-          "height": "60",
-          "font": "ArialMT",
-          "border_width": "1",
-          "border_color": "#a9a9a9",
-          "background": "#2377d9",
-          "color": "#ffffff",
-          "corner_radius": "25",
-          "size": "18"
-        }
-      },
-      "actions": {
-        "login": {
-          "type": "$network.request",
-          "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.location_key}}/api/demo.json",
-            "method": "post",
-            "data": {
-              "user": "{{$get.email}}",
-              "key": "{{$get.password}}"
-            }
-          },
-          "success": {
-            "type": "$global.set",
-            "options": {
-              "user": {
-                  "token": "{{$jason.id}}",
-                  "start": "{{$jason.start}}"
-              }
+    "$jason": {
+        "head": {
+            "title": "Login Page v2",
+            "description": "This is the page where you login",
+            "styles": {
+                "label_class": {
+                    "color": "#2377d9",
+                    "font": "HelveticaNeue-Bold"
+                },
+                "input_class": {
+                    "placeholder_color": "#2377d9",
+                    "color": "#000000",
+                    "background": "rgba(240, 240, 240, 0.5)",
+                    "font": "ArialMT",
+                    "padding": "20",
+                    "corner_radius": "25",
+                    "width": "80%",
+                    "height": "60",
+                    "size": "20"
+                },
+                "btn_class": {
+                    "width": "60%",
+                    "align": "center",
+                    "height": "60",
+                    "font": "ArialMT",
+                    "border_width": "1",
+                    "border_color": "#a9a9a9",
+                    "background": "#2377d9",
+                    "color": "#ffffff",
+                    "corner_radius": "25",
+                    "size": "18"
+                }
             },
-            "success": {
-              "type": "$href",
-              "options": {
-                "url": "{{$global.user.start}}",
-                "transition": "replace",
-                "preload": {
-                  "@": "file://preload.json"
-                }
-              }
-            }
-          },
-          "error": {
-            "type": "$util.banner",
-            "options": {
-              "title": "Error",
-              "description": "Login failed!",
-              "type": "error"
-            }
-          }
-        },
-        "validate_email": [
-          {
-            "{{#if $get && ($get.agreement != undefined && $get.agreeement != false)}}": {
-              "trigger": "login"
-            }
-          },
-          {
-            "{{#else}}": {
-              "type": "$util.banner",
-              "options": {
-                "title": "Hey!, before we start...",
-                "description": "please select a Studio before logging in & accept the terms",
-                "type": "error"
-              }
-            }
-          }
-        ]
-      },
-      "templates": {
-        "body": {
-          "header": {
-            "style": {
-              "theme": "dark"
-            }
-          },
-          "sections": [
-            {
-              "items": [
-                {
-                  "type": "vertical",
-                  "style": {
-                    "align": "center"
-                  },
-                  "components": [
-                    {
-                      "type": "image",
-                      "url": "https://json.trufitportal.com/images/TruFit-Logo.png",
-                      "style": {
-                        "width": "70%"
-                      }
-                    },
-                    {
-                      "type": "space",
-                      "style": {
-                        "height": "40"
-                      }
-                    },
-                    {
-                      "type": "textfield",
-                      "name": "email",
-                      "keyboard": "email",
-                      "placeholder": "enter your email",
-                      "class": "input_class"
-                    },
-                    {
-                      "type": "space",
-                      "style": {
-                        "height": "20"
-                      }
-                    },
-                    {
-                      "type": "textfield",
-                      "name": "password",
-                      "placeholder": "enter your password",
-                      "class": "input_class",
-                      "style": {
-                        "secure": "true"
-                      }
-                    },
-                    {
-                      "type": "space",
-                      "style": {
-                        "height": "20"
-                      }
-                    }
-                  ]
+            "actions": {
+                "$load": {
+                    "type": "$render"
                 },
-                {
-                  "type": "label",
-                  "text": "Terms and Conditions",
-                  "class": "label_class",
-                  "href": {
-                    "url": "https://json.trufitportal.com/Jason/tc.json",
-                    "transition": "modal"
-                  }
-                },
-                {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize"
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "class": "label_class",
-                      "text": "I have read and agree to the terms"
-                    },
-                    {
-                      "type": "switch",
-                      "name": "agreement",
-                      "style": {
-                        "color": "#2377d9"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "type": "space",
-                  "style": {
-                    "height": "40"
-                  }
-                },
-                {
-                  "type": "vertical",
-                  "style": {
-                    "align": "center"
-                  },
-                  "components": [
-                    {
-                      "type": "button",
-                      "text": "Sign in",
-                      "class": "btn_class",
-                      "action": {
-                        "type": "$render",
-                        "success": {
-                          "trigger": "validate_email"
+                "login": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/demo.json",
+                        "method": "post",
+                        "data": {
+                            "user": "{{$get.email}}",
+                            "key": "{{$get.password}}"
                         }
-                      }
+                    },
+                    "success": {
+                        "type": "$global.set",
+                        "options": {
+                            "user": {
+                                "token": "{{$jason.id}}",
+                                "start": "{{$jason.start}}"
+                            }
+                        },
+                        "success": {
+                            "type": "$href",
+                            "options": {
+                                "url": "{{$global.user.start}}",
+                                "transition": "replace",
+                                "preload": {
+                                    "@": "file://preload.json"
+                                }
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "$util.banner",
+                        "options": {
+                            "title": "Error",
+                            "description": "Login failed!",
+                            "type": "error"
+                        }
                     }
-                  ]
+                },
+                "validate_email": [
+                    {
+                        "{{#if $get && ($get.agreement != undefined && $get.agreeement != false)}}": {
+                            "trigger": "login"
+                        }
+                    },
+                    {
+                        "{{#else}}": {
+                            "type": "$util.banner",
+                            "options": {
+                                "title": "Hey!, before we start...",
+                                "description": "please select a Studio before logging in & accept the terms",
+                                "type": "error"
+                            }
+                        }
+                    }
+                ]
+            },
+            "templates": {
+                "body": {
+                    "style": {
+                        "border": "none"
+                    },
+                    "background": "https://json.trufitportal.com/images/background1.jpg",
+                    "sections": [
+                        {
+                            "items": [
+                                {
+                                    "type": "vertical",
+                                    "style": {
+                                        "align": "center"
+                                    },
+                                    "components": [
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "35%"
+                                            }
+                                        },
+                                        {
+                                            "type": "textfield",
+                                            "name": "email",
+                                            "keyboard": "email",
+                                            "placeholder": "enter your email",
+                                            "class": "input_class"
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "20"
+                                            }
+                                        },
+                                        {
+                                            "type": "textfield",
+                                            "name": "password",
+                                            "placeholder": "enter your password",
+                                            "class": "input_class",
+                                            "style": {
+                                                "secure": "true"
+                                            }
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "20"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "label",
+                                    "text": "Terms and Conditions",
+                                    "class": "label_class",
+                                    "style": {
+                                        "background": "rgba(240, 240, 240, 1)"
+                                    },
+                                    "href": {
+                                        "url": "https://json.trufitportal.com/Jason/tc.json",
+                                        "transition": "modal"
+                                    }
+                                },
+                                {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "background": "rgba(240, 240, 240, 1)"
+                                    },
+                                    "components": [
+                                        {
+                                            "type": "label",
+                                            "class": "label_class",
+                                            "text": "I have read and agree to the terms"
+                                        },
+                                        {
+                                            "type": "switch",
+                                            "name": "agreement",
+                                            "style": {
+                                                "color": "#2377d9"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "40"
+                                    }
+                                },
+                                {
+                                    "type": "vertical",
+                                    "style": {
+                                        "align": "center"
+                                    },
+                                    "components": [
+                                        {
+                                            "type": "button",
+                                            "text": "Sign in to {{$global.studio.name}}",
+                                            "class": "btn_class",
+                                            "action": {
+                                                "type": "$render",
+                                                "success": {
+                                                    "trigger": "validate_email"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
                 }
-              ]
             }
-          ]
         }
-      }
     }
-  }
 }
