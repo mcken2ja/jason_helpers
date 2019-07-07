@@ -73,7 +73,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/get_reservations.json?token={{$global.vars.token}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_reservations.json?token={{$global.user.token}}"
           },
           "success": {
             "type": "$render"
@@ -82,7 +82,7 @@
         "start_trial": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.vars.location_key}}/api/start_trial.json?token={{$global.vars.token}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/start_trial.json?token={{$global.user.token}}"
           },
           "success": {
             "type": "$reload"
@@ -102,13 +102,13 @@
                 "type": "$global.reset",
                 "options": {
                   "items": [
-                    "vars.token"
+                    "user.token"
                   ]
                 },
                 "success": {
                   "type": "$href",
                   "options": {
-                    "url": "https://json.trufitportal.com/Jason/login.json",
+                    "url": "https://json.trufitportal.com/Jason/new_login.json",
                     "transition": "replace",
                     "preload": {
                       "@": "file://preload.json"
