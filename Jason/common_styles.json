@@ -58,14 +58,14 @@
       "size": "18"
   },
   "btn_row": {
-      "width": "50%",
+      "width": "25%",
       "align": "center",
-      "height": "40",
+      "height": "50",
       "font": "HelveticaNeue-Bold",
       "border_width": "1",
       "border_color": "#a9a9a9",
       "corner_radius": "25",
-      "size": "14"
+      "size": "15"
   },
   "button_row_disable": {
     "align": "center",
