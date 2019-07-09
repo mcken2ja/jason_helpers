@@ -1,42 +1,79 @@
 {
-"row_bold": {
-  "size": "15",
-  "font": "HelveticaNeue-Bold"
+  "link_row": {
+    "size": "14",
+    "align": "center",
+    "font": "ArialMT Bold"
+  },
+  "row_bold": {
+    "size": "15",
+    "font": "ArialMT Bold"
+  },
+  "row_normal": {
+    "size": "15"
+  },
+  "button_ok": {
+    "color": "#ffffff",
+    "background": "#2377d9"
+  },
+  "button_wl": {
+    "background": "#ffffff",
+    "color": "#2377d9"
+  },
+  "button_def": {
+    "background": "#dee3ea",
+    "color": "#000000"
+  },
+  "cancel_btn": {
+    "color": "#ffffff",
+    "background": "#ce0208"
+  },
+  "label_header": {
+    "size": "25",
+    "font": "ArialMT Bold",
+    "background": "#ffffff",
+    "color": "#000000",
+    "align": "center"
 },
-"row_normal": {
-  "size": "15"
-},
-"button_ok": {
-  "color": "#ffffff",
-  "background": "#2377d9"
-},
-"button_wl": {
-  "background": "#ffffff",
-  "color": "#2377d9"
-},
-"button_def": {
-  "background": "#dee3ea",
-  "color": "#000000"
-},
-"cancel_btn": {
-  "color": "#ffffff",
-  "background": "#ce0208"
-},
-"btn_main": {
-  "width": "50%",
-  "align": "center",
-  "height": "40",
-  "font": "HelveticaNeue-Bold",
-  "border_width": "1",
-  "border_color": "#a9a9a9",
-  "corner_radius": "5",
-  "size": "14"
-},
-"label_header": {
-  "size": "25",
-  "font": "HelveticaNeue-Bold",
-  "background": "#2377d9",
-  "color": "#ffffff",
-  "align": "center"
-}
+  "std_label": {
+      "color": "#ffffff",
+      "size": "14"
+  },
+  "input_hd": {
+      "color": "#ffffff",
+      "size": "20"
+  },
+  "button_default": {
+      "width": "80%",
+      "align": "center",
+      "height": "60",
+      "font": "ArialMT Bold",
+      "border_width": "1",
+      "border_color": "#a9a9a9",
+      "background": "#ffffff",
+      "color": "#000000",
+      "corner_radius": "25",
+      "size": "18"
+  },
+  "btn_row": {
+      "width": "50%",
+      "align": "center",
+      "height": "40",
+      "font": "ArialMT Bold",
+      "border_width": "1",
+      "border_color": "#a9a9a9",
+      "corner_radius": "25",
+      "size": "14"
+  },
+  "button_row_disable": {
+    "align": "center",
+    "height": "50",
+    "width": "65%",
+    "font": "ArialMT Bold",
+    "color": "#ffffff",
+    "background": "#bdc0c4",
+    "corner_radius": "25",
+    "border_width": "3",
+    "border_color": "#006b5f",
+    "size": "18"
+  }
 }

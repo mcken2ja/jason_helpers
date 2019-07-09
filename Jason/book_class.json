@@ -3,46 +3,7 @@
     "head": {
       "title": "demo",
       "styles": {
-        "row_bold": {
-          "size": "15",
-          "font": "HelveticaNeue-Bold"
-        },
-        "row_normal": {
-          "size": "15"
-        },
-        "button_ok": {
-          "color": "#ffffff",
-          "background": "#2377d9"
-        },
-        "button_wl": {
-          "background": "#ffffff",
-          "color": "#2377d9"
-        },
-        "button_def": {
-          "background": "#dee3ea",
-          "color": "#000000"
-        },
-        "cancel_btn": {
-          "color": "#ffffff",
-          "background": "#ce0208"
-        },
-        "btn_main": {
-          "width": "50%",
-          "align": "center",
-          "height": "40",
-          "font": "HelveticaNeue-Bold",
-          "border_width": "1",
-          "border_color": "#a9a9a9",
-          "corner_radius": "5",
-          "size": "14"
-        },
-        "label_header": {
-          "size": "25",
-          "font": "HelveticaNeue-Bold",
-          "background": "#2377d9",
-          "color": "#ffffff",
-          "align": "center"
-        }
+        "@": "https://json.trufitportal.com/Jason/common_styles.json"
       },
       "actions": {
         "$show": {
@@ -209,13 +170,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
@@ -296,13 +257,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
@@ -383,13 +344,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
@@ -470,13 +431,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
@@ -557,13 +518,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
@@ -644,13 +605,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
@@ -731,13 +692,13 @@
                         }
                       ],
                       "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_main"
+                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_main"
+                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
                         },
                         {
-                          "{{#else}}": "button_def btn_main"
+                          "{{#else}}": "button_def btn_row"
                         }
                       ],
                       "action": [{
