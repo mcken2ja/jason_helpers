@@ -3,40 +3,7 @@
     "head": {
       "title": "Book IT",
       "styles": {
-        "row_bold": {
-          "size": "15",
-          "font": "HelveticaNeue-Bold"
-        },
-        "row_normal": {
-          "size": "15"
-        },
-        "button_ok": {
-          "background": "#2377d9"
-        },
-        "button_wl": {
-          "background": "#2377d9"
-        },
-        "button_def": {
-          "background": "#dee3ea"
-        },
-        "cancel_btn": {
-          "background": "#ce0208"
-        },
-        "btn_main": {
-          "width": "50%",
-          "align": "center",
-          "height": "40",
-          "font": "ArialMT",
-          "border_width": "1",
-          "border_color": "#a9a9a9",
-          "color": "#ffffff",
-          "corner_radius": "5",
-          "size": "14"
-        },
-        "label_header": {
-          "size": "25",
-          "font": "HelveticaNeue-Bold"
-        }
+          "@": "https://json.trufitportal.com/Jason/common_styles.json"
       },
       "actions": {
         "$load": {
