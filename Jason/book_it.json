@@ -21,10 +21,12 @@
       },
       "templates": {
         "body": {
+            "background": "#333333",
           "header": {
             "title": "Confirm selection",
             "style": {
-              "theme": "dark"
+                "background": "#222222",
+                "color": "#ffffff"
             }
           },
           "sections": [
@@ -83,7 +85,7 @@
                       {
                         "{{#if (type == 'Drop in')}}": {
                           "type": "button",
-                          "class": "btn_main button_ok",
+                          "class": "button_default button_ok",
                           "text": "Pay fee",
                           "action": {
                             "type": "$href",
@@ -104,7 +106,7 @@
                         "{{#else}}": {
                           "type": "button",
                           "text": "Book",
-                          "class": "btn_main button_ok",
+                          "class": "button_default button_ok",
                           "action": {
                             "type": "$network.request",
                             "options": {
