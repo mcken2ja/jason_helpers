@@ -2,10 +2,12 @@
   "link_row": {
     "size": "14",
     "align": "center",
+    "color": "#ffffff",
     "font": "ArialMT Bold"
   },
   "row_bold": {
     "size": "15",
+    "color": "#ffffff",
     "font": "ArialMT Bold"
   },
   "row_normal": {

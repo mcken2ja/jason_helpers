@@ -1,734 +1,736 @@
 {
-  "$jason": {
-    "head": {
-      "title": "demo",
-      "styles": {
-        "@": "https://json.trufitportal.com/Jason/common_styles.json"
-      },
-      "actions": {
-        "$show": {
-          "trigger": "fetch"
-        },
-        "$load": {
-          "type": "$network.request",
-          "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_week.json"
-          },
-          "success": {
-            "type": "$set",
-            "options": {
-              "week": "{{$jason.week}}"
+    "$jason": {
+        "head": {
+            "title": "demo",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
             },
-            "success": {
-              "trigger": "fetch"
-            }
-          }
-        },
-        "$pull": {
-          "trigger": "fetch"
-        },
-        "fetch": {
-          "type": "$network.request",
-          "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_classes.json?SortBy=time&week={{$get.week}}&token={{$global.user.token}}"
-          },
-          "success": {
-            "type": "$render"
-          }
-        }
-      },
-      "templates": {
-        "body": {
-          "header": {
-            "title": "Book Classes",
-            "style": {
-              "theme": "dark"
-            },
-            "menu": {
-              "text": "Logout",
-              "action": {
-                "options": {
-                  "type": "$global.reset",
-                  "items": [
-                    "token"
-                  ]
+            "actions": {
+                "$show": {
+                    "trigger": "fetch"
                 },
-                "success": {
-                  "type": "$href",
-                  "options": {
-                    "url": "https://jasonbase.com/things/BqG1",
-                    "transition": "replace",
-                    "preload": {
-                      "@": "file://preload.json"
+                "$load": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_week.json"
+                    },
+                    "success": {
+                        "type": "$set",
+                        "options": {
+                            "week": "{{$jason.week}}"
+                        },
+                        "success": {
+                            "trigger": "fetch"
+                        }
                     }
-                  }
-                }
-              }
-            }
-          },
-          "footer": {
-            "@": "https://json.trufitportal.com/Jason/footer.json"
-          },
-          "sections": [{
-              "items": [{
-                "type": "horizontal",
-                "style": {
-                  "align": "center"
                 },
-                "components": [{
-                    "type": "button",
-                    "url": "https://image.freepik.com/free-icon/arrow-shape-pointing-left_318-32320.jpg",
-                    "style": {
-                      "top": "15",
-                      "right": "10",
-                      "width": "20"
+                "$pull": {
+                    "trigger": "fetch"
+                },
+                "fetch": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_classes.json?SortBy=time&week={{$get.week}}&token={{$global.user.token}}"
                     },
-                    "action": {
-                      "type": "$set",
-                      "options": {
-                        "week": "{{$get.week - 1}}"
-                      },
-                      "success": {
-                        "trigger": "fetch"
-                      }
+                    "success": {
+                        "type": "$render"
                     }
-                  },
-                  {
-                    "type": "space"
-                  },
-                  {
-                    "type": "button",
-                    "url": "https://image.freepik.com/free-icon/move-to-next_318-80203.jpg",
-                    "style": {
-                      "top": "15",
-                      "right": "40",
-                      "width": "20"
-                    },
-                    "action": {
-                      "type": "$set",
-                      "options": {
-                        "week": "{{$get.week + 1}}"
-                      },
-                      "success": {
-                        "trigger": "fetch"
-                      }
-                    }
-                  }
-                ]
-              }]
-            },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Monday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Monday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
-                            }
-                          ],
-                          "class": "row_normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
-                        },
-                        {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "{{#else}}": {}
-                        }
-                      ]
-                    }
-                  ]
                 }
-              }
             },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Tuesday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Tuesday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Book Classes",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
                         },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                        "menu": {
+                            "text": "Logout",
+                            "action": {
+                                "options": {
+                                    "type": "$global.reset",
+                                    "items": [
+                                        "token"
+                                    ]
+                                },
+                                "success": {
+                                    "type": "$href",
+                                    "options": {
+                                        "url": "https://jasonbase.com/things/BqG1",
+                                        "transition": "replace",
+                                        "preload": {
+                                            "@": "file://preload.json"
+                                        }
+                                    }
+                                }
                             }
-                          ],
-                          "class": "row_normal"
                         }
-                      ]
                     },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
-                        },
-                        {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "{{#else}}": {}
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Wednesday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Wednesday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
-                            }
-                          ],
-                          "class": "row_normal"
-                        }
-                      ]
+                    "footer": {
+                        "@": "https://json.trufitportal.com/Jason/footer.json"
                     },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
+                    "sections": [{
+                            "items": [{
+                                "type": "horizontal",
+                                "style": {
+                                    "align": "center"
+                                },
+                                "components": [{
+                                        "type": "button",
+                                        "url": "https://image.freepik.com/free-icon/arrow-shape-pointing-left_318-32320.jpg",
+                                        "style": {
+                                            "top": "15",
+                                            "right": "10",
+                                            "width": "20"
+                                        },
+                                        "action": {
+                                            "type": "$set",
+                                            "options": {
+                                                "week": "{{$get.week - 1}}"
+                                            },
+                                            "success": {
+                                                "trigger": "fetch"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "space"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "url": "https://image.freepik.com/free-icon/move-to-next_318-80203.jpg",
+                                        "style": {
+                                            "top": "15",
+                                            "right": "40",
+                                            "width": "20"
+                                        },
+                                        "action": {
+                                            "type": "$set",
+                                            "options": {
+                                                "week": "{{$get.week + 1}}"
+                                            },
+                                            "success": {
+                                                "trigger": "fetch"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }]
                         },
                         {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Monday.date}}",
+                                "class": "label_header"
+                            }]
                         },
                         {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
+                            "items": {
+                                "{{#each $jason.data.classes.Monday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
                             }
-                          }
                         },
                         {
-                          "{{#else}}": {}
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Tuesday.date}}",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.data.classes.Tuesday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Wednesday.date}}",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.data.classes.Wednesday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Thursday.date}}",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.data.classes.Thursday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Friday.date}}",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.data.classes.Friday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Saturday.date}}",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.data.classes.Saturday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "items": [{
+                                "type": "label",
+                                "text": "{{$jason.data.classes.Sunday.date}}",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.data.classes.Sunday.classes}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{mStart}} to {{mEnd}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{ClassType}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": [{
+                                                            "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
+                                                        }
+                                                    ],
+                                                    "class": "row_normal"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "book"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "waitlist"
+                                                },
+                                                {
+                                                    "{{#else}}": "{{BookingStatus}}"
+                                                }
+                                            ],
+                                            "class": [{
+                                                    "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
+                                                },
+                                                {
+                                                    "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
+                                                },
+                                                {
+                                                    "{{#else}}": "button_def btn_row"
+                                                }
+                                            ],
+                                            "action": [{
+                                                    "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "{{mobileLink}}",
+                                                            "preload": {
+                                                                "@": "file://preload.json"
+                                                            },
+                                                            "transition": "modal",
+                                                            "options": {
+                                                                "clsID": "{{ClassesID}}",
+                                                                "date": "{{Dateformatted}}"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "{{#else}}": {}
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
                         }
-                      ]
-                    }
-                  ]
+                    ]
                 }
-              }
-            },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Thursday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Thursday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
-                            }
-                          ],
-                          "class": "row_normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
-                        },
-                        {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "{{#else}}": {}
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Friday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Friday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
-                            }
-                          ],
-                          "class": "row_normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
-                        },
-                        {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "{{#else}}": {}
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Saturday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Saturday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
-                            }
-                          ],
-                          "class": "row_normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
-                        },
-                        {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "{{#else}}": {}
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "items": [{
-                "type": "label",
-                "text": "{{$jason.data.classes.Sunday.date}}",
-                "class": "label_header"
-              }]
-            },
-            {
-              "items": {
-                "{{#each $jason.data.classes.Sunday.classes}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "spacing": "25"
-                  },
-                  "components": [{
-                      "type": "vertical",
-                      "components": [{
-                          "type": "label",
-                          "text": "{{mStart}} to {{mEnd}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{ClassType}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": [{
-                              "{{#if (CancelledDescription != '')}}": "{{CancelledDescription}}"
-                            },
-                            {
-                              "{{#else}}": "{{Teacher || 'No teacher assigned'}}"
-                            }
-                          ],
-                          "class": "row_normal"
-                        }
-                      ]
-                    },
-                    {
-                      "type": "button",
-                      "text": [{
-                          "{{#if (BookingStatus == 'ok')}}": "book"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "waitlist"
-                        },
-                        {
-                          "{{#else}}": "{{BookingStatus}}"
-                        }
-                      ],
-                      "class": [{
-                          "{{#if (BookingStatus == 'ok')}}": "button_ok btn_row"
-                        },
-                        {
-                          "{{#elseif (BookingStatus == 'full')}}": "button_wl btn_row"
-                        },
-                        {
-                          "{{#else}}": "button_def btn_row"
-                        }
-                      ],
-                      "action": [{
-                          "{{#if (BookingStatus == 'ok' || BookingStatus == 'full')}}": {
-                            "type": "$href",
-                            "options": {
-                              "url": "{{mobileLink}}",
-                              "preload": {
-                                "@": "file://preload.json"
-                              },
-                              "transition": "modal",
-                              "options": {
-                                "clsID": "{{ClassesID}}",
-                                "date": "{{Dateformatted}}"
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "{{#else}}": {}
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
             }
-          ]
         }
-      }
     }
-  }
 }
