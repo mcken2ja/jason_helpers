@@ -15,12 +15,12 @@
     "color": "#ffffff"
   },
   "button_ok": {
-    "color": "#ffffff",
-    "background": "#2377d9"
+    "color": "#000000",
+    "background": "#ffffff"
   },
   "button_wl": {
     "background": "#ffffff",
-    "color": "#2377d9"
+    "color": "#ce0208"
   },
   "button_def": {
     "background": "#dee3ea",

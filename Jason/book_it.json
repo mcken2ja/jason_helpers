@@ -85,7 +85,7 @@
                       {
                         "{{#if (type == 'Drop in')}}": {
                           "type": "button",
-                          "class": "button_default button_ok",
+                          "class": "button_default",
                           "text": "Pay fee",
                           "action": {
                             "type": "$href",
@@ -106,7 +106,7 @@
                         "{{#else}}": {
                           "type": "button",
                           "text": "Book",
-                          "class": "button_default button_ok",
+                          "class": "button_default",
                           "action": {
                             "type": "$network.request",
                             "options": {
