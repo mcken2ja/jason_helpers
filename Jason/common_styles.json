@@ -11,7 +11,8 @@
     "font": "HelveticaNeue-Bold"
   },
   "row_normal": {
-    "size": "15"
+    "size": "15",
+    "color": "#ffffff"
   },
   "button_ok": {
     "color": "#ffffff",
