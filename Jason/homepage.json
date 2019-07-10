@@ -1,293 +1,233 @@
 {
-  "$jason": {
-    "head": {
-      "title": "My Homepage",
-      "description": "The page that is really considered home...",
-      "styles": {
-        "row_bold": {
-          "size": "15",
-          "font": "HelveticaNeue-Bold"
-        },
-        "status_confirmed": {
-          "size": "15",
-          "font": "HelveticaNeue-Bold",
-          "color": "#2377d9"
-        },
-        "status_pending": {
-          "size": "15",
-          "font": "HelveticaNeue-Bold",
-          "color": "#ce0208"
-        },
-        "row_normal": {
-          "size": "15"
-        },
-        "button_ok": {
-          "background": "#2377d9"
-        },
-        "button_wl": {
-          "background": "#2377d9"
-        },
-        "button_def": {
-          "background": "#dee3ea"
-        },
-        "cancel_btn": {
-          "background": "#ce0208"
-        },
-        "btn_main": {
-          "width": "50%",
-          "align": "center",
-          "height": "40",
-          "font": "ArialMT",
-          "border_width": "1",
-          "border_color": "#a9a9a9",
-          "color": "#ffffff",
-          "corner_radius": "5",
-          "size": "14"
-        },
-        "label_header": {
-          "size": "25",
-          "font": "HelveticaNeue-Bold",
-          "background": "#2377d9",
-          "color": "#ffffff",
-          "align": "center"
-        }
-      },
-      "actions": {
-        "$pull": {
-          "type": "$reload"
-        },
-        "$load": {
-          "trigger": "fetch"
-        },
-        "worked": {
-          "type": "$util.banner",
-          "options": {
-            "title": "Proccesed",
-            "description": "Your request has been completed",
-            "type": "success"
-          },
-          "success": {
-            "trigger": "fetch"
-          }
-        },
-        "fetch": {
-          "type": "$network.request",
-          "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_reservations.json?token={{$global.user.token}}"
-          },
-          "success": {
-            "type": "$render"
-          }
-        },
-        "start_trial": {
-          "type": "$network.request",
-          "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/start_trial.json?token={{$global.user.token}}"
-          },
-          "success": {
-            "type": "$reload"
-          }
-        }
-      },
-      "templates": {
-        "body": {
-          "header": {
-            "title": "Home",
-            "style": {
-              "background": "#000000",
-              "color": "#ffffff"
+    "$jason": {
+        "head": {
+            "title": "My Homepage",
+            "description": "The page that is really considered home...",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
             },
-            "menu": {
-              "text": "Logout",
-              "style": {
-                  "color": "#ffffff"
+            "actions": {
+                "$pull": {
+                    "type": "$reload"
+                },
+                "$load": {
+                    "trigger": "fetch"
+                },
+                "worked": {
+                    "type": "$util.banner",
+                    "options": {
+                        "title": "Proccesed",
+                        "description": "Your request has been completed",
+                        "type": "success"
+                    },
+                    "success": {
+                        "trigger": "fetch"
+                    }
+                },
+                "fetch": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_reservations.json?token={{$global.user.token}}"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "start_trial": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/start_trial.json?token={{$global.user.token}}"
+                    },
+                    "success": {
+                        "type": "$reload"
+                    }
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Home",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        },
+                        "menu": {
+                            "text": "Logout",
+                            "style": {
+                                "color": "#ffffff"
 
-              },
-              "action": {
-                "type": "$global.reset",
-                "options": {
-                  "items": [
-                    "user.token"
-                  ]
-                },
-                "success": {
-                  "type": "$href",
-                  "options": {
-                    "url": "https://json.trufitportal.com/Jason/new_login.json",
-                    "transition": "replace",
-                    "preload": {
-                      "@": "file://preload.json"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "footer": {
-            "@": "https://json.trufitportal.com/Jason/footer.json"
-          },
-          "sections": [
-            {
-              "items": [
-                {
-                  "type": "label",
-                  "text": "Announcements",
-                  "class": "label_header"
-                }
-              ]
-            },
-            {
-              "items": {
-                "{{#each $jason.announcements}}": {
-                  "type": "vertical",
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "{{title}}",
-                      "class": "row_bold"
-                    },
-                    {
-                      "type": "label",
-                      "text": "{{annoucement}}",
-                      "class": "row_normal"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "items": [
-                {
-                  "type": "label",
-                  "text": "Upcoming Classes",
-                  "class": "label_header"
-                }
-              ]
-            },
-            {
-              "items": {
-                "{{#each $jason.reservations}}": {
-                  "type": "horizontal",
-                  "style": {
-                    "distribution": "equalsize",
-                    "align": "center",
-                    "spacing": "25"
-                  },
-                  "components": [
-                    {
-                      "type": "vertical",
-                      "components": [
-                        {
-                          "type": "label",
-                          "text": "{{date}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{class_type}}",
-                          "class": "row_bold"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{time}}",
-                          "class": "row_normal"
-                        },
-                        {
-                          "type": "label",
-                          "text": "{{type}}",
-                          "class": [
-                            {
-                              "{{#if (type == 'Waitlist')}}": "status_pending"
                             },
-                            {
-                              "{{#else}}": "status_confirmed"
+                            "action": {
+                                "type": "$global.reset",
+                                "options": {
+                                    "items": [
+                                        "user.token"
+                                    ]
+                                },
+                                "success": {
+                                    "type": "$href",
+                                    "options": {
+                                        "url": "https://json.trufitportal.com/Jason/new_login.json",
+                                        "transition": "replace",
+                                        "preload": {
+                                            "@": "file://preload.json"
+                                        }
+                                    }
+                                }
                             }
-                          ]
                         }
-                      ]
                     },
-                    [
-                      {
-                        "{{#if (link != '')}}": {
-                          "type": "button",
-                          "text": "cancel",
-                          "class": "cancel_btn btn_main",
-                          "action": {
-                            "type": "$util.alert",
-                            "options": {
-                              "title": "Unregister",
-                              "success": "Yes",
-                              "cancel": "No",
-                              "description": "Are you sure you want to cancel your booking for this class?"
-                            },
-                            "success": {
-                              "type": "$network.request",
-                              "options": {
-                                "url": "{{link}}"
-                              },
-                              "success": {
-                                "trigger": "worked"
-                              }
+                    "footer": {
+                        "@": "https://json.trufitportal.com/Jason/footer.json"
+                    },
+                    "sections": [{
+                            "items": [{
+                                "type": "label",
+                                "text": "Announcements",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.announcements}}": {
+                                    "type": "vertical",
+                                    "components": [{
+                                            "type": "label",
+                                            "text": "{{title}}",
+                                            "class": "row_bold"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "text": "{{annoucement}}",
+                                            "class": "row_normal"
+                                        }
+                                    ]
+                                }
                             }
-                          }
+                        },
+                        {
+                            "items": [{
+                                "type": "label",
+                                "text": "Upcoming Classes",
+                                "class": "label_header"
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.reservations}}": {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "distribution": "equalsize",
+                                        "align": "center",
+                                        "spacing": "25"
+                                    },
+                                    "components": [{
+                                            "type": "vertical",
+                                            "components": [{
+                                                    "type": "label",
+                                                    "text": "{{date}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{class_type}}",
+                                                    "class": "row_bold"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{time}}",
+                                                    "class": "row_normal"
+                                                },
+                                                {
+                                                    "type": "label",
+                                                    "text": "{{type}}",
+                                                    "class": [{
+                                                            "{{#if (type == 'Waitlist')}}": "status_pending"
+                                                        },
+                                                        {
+                                                            "{{#else}}": "status_confirmed"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        [{
+                                            "{{#if (link != '')}}": {
+                                                "type": "button",
+                                                "text": "cancel",
+                                                "class": "cancel_btn btn_row",
+                                                "action": {
+                                                    "type": "$util.alert",
+                                                    "options": {
+                                                        "title": "Unregister",
+                                                        "success": "Yes",
+                                                        "cancel": "No",
+                                                        "description": "Are you sure you want to cancel your booking for this class?"
+                                                    },
+                                                    "success": {
+                                                        "type": "$network.request",
+                                                        "options": {
+                                                            "url": "{{link}}"
+                                                        },
+                                                        "success": {
+                                                            "trigger": "worked"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }]
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "items": [{
+                                    "type": "label",
+                                    "text": "Status",
+                                    "class": "label_header"
+                                },
+                                {
+                                    "type": "vertical",
+                                    "components": [{
+                                            "type": "label",
+                                            "class": "row_normal",
+                                            "text": "{{$jason.user_status.description}}"
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "15"
+                                            }
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "row_bold",
+                                            "text": "{{$jason.user_status.status}}"
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "15"
+                                            }
+                                        },
+                                        [{
+                                            "{{#if $jason.user_status.start_trial == 'Yes'}}": {
+                                                "type": "button",
+                                                "text": "Start Trial",
+                                                "class": "button_ok btn_row",
+                                                "action": {
+                                                    "trigger": "start_trial"
+                                                }
+                                            }
+                                        }]
+                                    ]
+                                }
+                            ]
                         }
-                      }
                     ]
-                  ]
                 }
-              }
-            },
-            {
-              "items": [
-                {
-                  "type": "label",
-                  "text": "Status",
-                  "class": "label_header"
-                },
-                {
-                  "type": "vertical",
-                  "components": [
-                    {
-                      "type": "label",
-                      "class": "row_normal",
-                      "text": "{{$jason.user_status.description}}"
-                    },
-                    {
-                      "type": "space",
-                      "style": {
-                        "height": "15"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "class": "row_bold",
-                      "text": "{{$jason.user_status.status}}"
-                    },
-                    {
-                      "type": "space",
-                      "style": {
-                        "height": "15"
-                      }
-                    },
-                    [
-                      {
-                        "{{#if $jason.user_status.start_trial == 'Yes'}}": {
-                          "type": "button",
-                          "text": "Start Trial",
-                          "class": "button_ok btn_main",
-                          "action": {
-                            "trigger": "start_trial"
-                          }
-                        }
-                      }
-                    ]
-                  ]
-                }
-              ]
             }
-          ]
         }
-      }
     }
-  }
 }
