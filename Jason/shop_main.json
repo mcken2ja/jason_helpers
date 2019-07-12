@@ -4,43 +4,7 @@
       "title": "Shop Main",
       "description": "",
       "styles": {
-        "row_bold": {
-          "size": "15",
-          "font": "HelveticaNeue-Bold"
-        },
-        "row_normal": {
-          "size": "15"
-        },
-        "button_ok": {
-          "background": "#2377d9"
-        },
-        "button_wl": {
-          "background": "#2377d9"
-        },
-        "button_def": {
-          "background": "#dee3ea"
-        },
-        "cancel_btn": {
-          "background": "#ce0208"
-        },
-        "btn_main": {
-          "width": "50%",
-          "align": "center",
-          "height": "40",
-          "font": "ArialMT",
-          "border_width": "1",
-          "border_color": "#a9a9a9",
-          "color": "#ffffff",
-          "corner_radius": "5",
-          "size": "14"
-        },
-        "label_header": {
-          "size": "25",
-          "font": "HelveticaNeue-Bold",
-          "background": "#2377d9",
-          "color": "#ffffff",
-          "align": "center"
-        }
+          "@": "https://json.trufitportal.com/Jason/common_styles.json"
       },
       "actions": {
         "$pull": {
@@ -85,10 +49,12 @@
       },
       "templates": {
         "body": {
+            "background": "#333333",
           "header": {
             "title": "Shop",
             "style": {
-              "theme": "dark"
+                "background": "#222222",
+                "color": "#ffffff"
             }
           },
           "footer": {
@@ -126,7 +92,7 @@
                     },
                     {
                       "type": "button",
-                      "class": "btn_main button_ok",
+                      "class": "btn_row button_ok",
                       "text": "{{price_formatted}}",
                       "action": {
                         "type": "$set",
@@ -179,7 +145,7 @@
                     },
                     {
                       "type": "button",
-                      "class": "btn_main button_ok",
+                      "class": "btn_row button_ok",
                       "text": "{{Price}}",
                       "action": {
                         "type": "$set",

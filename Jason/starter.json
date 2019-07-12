@@ -20,30 +20,7 @@
                 }
             },
             "styles": {
-                "sign_up": {
-                    "width": "80%",
-                    "align": "center",
-                    "height": "60",
-                    "font": "ArialMT Bold",
-                    "border_width": "1",
-                    "border_color": "#a9a9a9",
-                    "background": "#ffffff",
-                    "color": "#000000",
-                    "corner_radius": "25",
-                    "size": "18"
-                },
-                "sign_in": {
-                    "width": "80%",
-                    "align": "center",
-                    "height": "60",
-                    "font": "ArialMT Bold",
-                    "border_width": "1",
-                    "border_color": "#a9a9a9",
-                    "background": "#ffffff",
-                    "color": "#000000",
-                    "corner_radius": "25",
-                    "size": "18"
-                }
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
             },
             "templates": {
                 "body": {
@@ -69,7 +46,7 @@
                                         {
                                             "type": "button",
                                             "text": "Sign In",
-                                            "class": "sign_in",
+                                            "class": "button_default",
                                             "action": {
                                                 "trigger": "sign_in"
                                             }
@@ -83,7 +60,7 @@
                                         {
                                             "type": "button",
                                             "text": "New Here? Sign Up",
-                                            "class": "sign_up",
+                                            "class": "button_default",
                                             "action": {
                                                 "trigger": "sign_up"
                                             }

@@ -3,27 +3,7 @@
         "head": {
             "title": "Registration",
             "styles": {
-                "input_class": {
-                    "placeholder_color": "#a9a9a9",
-                    "color": "#000000",
-                    "background": "rgba(240, 240, 240, 0.5)",
-                    "padding": "20",
-                    "corner_radius": "25",
-                    "width": "80%",
-                    "height": "60",
-                    "size": "18"
-                },
-                "btn_class": {
-                    "width": "80%",
-                    "align": "center",
-                    "height": "60",
-                    "border_width": "1",
-                    "border_color": "#a9a9a9",
-                    "background": "#ffffff",
-                    "color": "#000000",
-                    "corner_radius": "25",
-                    "size": "20"
-                }
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
             },
             "actions": {
                 "$load": {
@@ -238,7 +218,7 @@
                                         {
                                             "type": "button",
                                             "text": "Let's Go!",
-                                            "class": "btn_class",
+                                            "class": "button_default",
                                             "action": {
                                                 "type": "$render",
                                                 "success": {

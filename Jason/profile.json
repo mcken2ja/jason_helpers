@@ -4,16 +4,7 @@
       "title": "Profile Page",
       "description": "",
       "styles": {
-        "header": {
-          "size": "25",
-          "font": "HelveticaNeue-Bold",
-          "background": "#2377d9",
-          "color": "#ffffff",
-          "align": "center"
-        },
-        "link": {
-          "size": "18"
-        }
+          "@": "https://json.trufitportal.com/Jason/common_styles.json"
       },
       "actions": {
         "$load": {
@@ -28,10 +19,12 @@
       },
       "templates": {
         "body": {
+            "background": "#333333",
           "header": {
             "title": "Contact",
             "style": {
-              "theme": "dark"
+                "background": "#222222",
+                "color": "#ffffff"
             },
             "menu": {
               "text": "Logout",
