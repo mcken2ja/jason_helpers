@@ -6,7 +6,7 @@
         "$load": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key || 'none'}}/api/usercheck.json?token={{$global.user.token}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/usercheck.json?token={{$global.user.token}}"
           },
           "success": {
             "type": "$href",
@@ -28,7 +28,7 @@
           "error": {
             "type": "$href",
             "options": {
-              "url": "https://json.trufitportal.com/Jason/starter.json",
+              "url": "https://json.trufitportal.com/Jason/find_studio.json",
               "transition": "replace",
               "preload": {
                 "@": "file://preload.json"
