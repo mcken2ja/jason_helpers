@@ -6,7 +6,7 @@
         "$load": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key || ''}}/api/usercheck.json?token={{$global.user.token || ''}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key || ''}}/api/usercheck.json?token={{$global.user.token}}"
           },
           "success": {
             "type": "$href",
