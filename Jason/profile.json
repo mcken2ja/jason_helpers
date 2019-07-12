@@ -20,7 +20,7 @@
       "templates": {
         "body": {
             "background": "#333333",
-          "label_header": {
+          "header": {
             "title": "Contact",
             "style": {
                 "background": "#222222",
