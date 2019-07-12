@@ -55,8 +55,8 @@
                         "menu": {
                             "image": "https://json.trufitportal.com/images/menu.png",
                             "style": {
-                                "color": "#ffffff"
-
+                                "color": "#ffffff",
+                                "size": "17"
                             },
                             "href": {
                                 "url": "https://json.trufitportal.com/Jason/user_settings.json",
