@@ -19,6 +19,9 @@
       },
       "templates": {
         "body": {
+            "style": {
+                "border": "none"
+            },
             "background": "#333333",
           "header": {
             "title": "Contact",
