@@ -3,7 +3,7 @@
     "style": {
       "background": "#333333",
       "color:disabled": "#cecece",
-      "color": "#000000"
+      "color": "#ffffff"
     },
     "items": [
       {
@@ -43,17 +43,6 @@
           "height": "30"
         },
         "url": "https://json.trufitportal.com/Jason/bmr.json",
-        "preload": {
-          "@": "file://preload.json"
-        }
-      },
-      {
-        "image": "https://raw.githubusercontent.com/Jasonette/Twitter-UI-example/master/images/me.png",
-        "text": "My Studio",
-        "style": {
-          "height": "30"
-        },
-        "url": "https://json.trufitportal.com/Jason/profile.json",
         "preload": {
           "@": "file://preload.json"
         }
