@@ -46,6 +46,9 @@
             "templates": {
                 "body": {
                     "background": "#333333",
+                    "style": {
+                        "border": "none"
+                    },
                     "header": {
                         "title": "Home",
                         "style": {
