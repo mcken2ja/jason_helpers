@@ -51,9 +51,6 @@
               }
             }
           },
-          "footer": {
-            "@": "https://json.trufitportal.com/Jason/footer.json"
-          },
           "sections": [
             {
               "items": [
