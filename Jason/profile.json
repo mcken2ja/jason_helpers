@@ -20,7 +20,7 @@
       "templates": {
         "body": {
             "background": "#333333",
-          "header": {
+          "label_header": {
             "title": "Contact",
             "style": {
                 "background": "#222222",
@@ -56,7 +56,7 @@
               "items": [
                 {
                   "type": "label",
-                  "class": "header",
+                  "class": "label_header",
                   "text": "Call us"
                 },
                 {
@@ -76,7 +76,7 @@
                 },
                 {
                   "type": "label",
-                  "class": "header",
+                  "class": "label_header",
                   "text": "Message us"
                 },
                 {
@@ -96,7 +96,7 @@
                 },
                 {
                   "type": "label",
-                  "class": "header",
+                  "class": "label_header",
                   "text": "Visit us"
                 },
                 {

@@ -54,7 +54,7 @@
         "fetch": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.user.location_key}}/api/check_out.json?token={{$global.user.token}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/check_out.json?token={{$global.user.token}}"
           },
           "success": {
             "type": "$render"
@@ -63,7 +63,7 @@
         "submit_membership": {
             "type": "$network.request",
             "options": {
-                "url": "https://www.trufitportal.com/{{$global.user.location_key}}/api/submit_membership.json?type={{$params.type}}&id={{$params.id}}&token={{$global.user.token}}&cardID={{$get.cardID}}"
+                "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/submit_membership.json?type={{$params.type}}&id={{$params.id}}&token={{$global.user.token}}&cardID={{$get.cardID}}"
             },
             "success": {
                 "trigger": "go_home"
