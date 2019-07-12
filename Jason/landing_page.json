@@ -28,7 +28,7 @@
           "error": {
             "type": "$href",
             "options": {
-              "url": "https://json.trufitportal.com/Jason/login.json",
+              "url": "https://json.trufitportal.com/Jason/starter.json",
               "transition": "replace",
               "preload": {
                 "@": "file://preload.json"
