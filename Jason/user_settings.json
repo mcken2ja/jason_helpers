@@ -1,0 +1,81 @@
+{
+    "$jason": {
+        "head": {
+            "title": "User Setting Main page",
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                }
+            },
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Settings",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "sections": [
+                        {
+                            "items": [
+                                {
+                                    "type": "vertical",
+                                    "components": [
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "5"
+                                            }
+                                        },
+                                        {
+                                            "type": "label",
+                                            "text": "Payment Cards",
+                                            "style": {
+                                                "background": "#ffffff",
+                                                "size": "20",
+                                                "padding": "15",
+                                                "color": "#000000"
+                                            },
+                                            "href": {
+                                                "url": "https://json.trufitportal.com/Jason/Profile.json"
+                                            }
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "5"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": "My Studio",
+                                            "style": {
+                                                "background": "#ffffff",
+                                                "align": "left",
+                                                "size": "20",
+                                                "padding": "15",
+                                                "color": "#000000"
+                                            },
+                                            "action": {
+                                                "type": "$href",
+                                                "options": {
+                                                    "url": "https://json.trufitportal.com/Jason/profile.json",
+                                                    "transition": "modal"
+                                                }
+                                            }
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
