@@ -53,28 +53,14 @@
                             "color": "#ffffff"
                         },
                         "menu": {
-                            "text": "Logout",
+                            "image": "https://json.trufitportal.com/images/menu.png",
                             "style": {
                                 "color": "#ffffff"
 
                             },
-                            "action": {
-                                "type": "$global.reset",
-                                "options": {
-                                    "items": [
-                                        "user.token"
-                                    ]
-                                },
-                                "success": {
-                                    "type": "$href",
-                                    "options": {
-                                        "url": "https://json.trufitportal.com/Jason/new_login.json",
-                                        "transition": "replace",
-                                        "preload": {
-                                            "@": "file://preload.json"
-                                        }
-                                    }
-                                }
+                            "href": {
+                                "url": "https://json.trufitportal.com/Jason/user_settings.json",
+                                "transition": "modal"
                             }
                         }
                     },
