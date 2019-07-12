@@ -56,10 +56,9 @@
                             "color": "#ffffff"
                         },
                         "menu": {
-                            "image": "https://json.trufitportal.com/images/menu.png",
+                            "image": "https://json.trufitportal.com/images/bars-solid.png",
                             "style": {
-                                "color": "#ffffff",
-                                "size": "17"
+                                "color": "#ffffff"
                             },
                             "href": {
                                 "url": "https://json.trufitportal.com/Jason/user_settings.json",
