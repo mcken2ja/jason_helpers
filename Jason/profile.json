@@ -28,27 +28,6 @@
             "style": {
                 "background": "#222222",
                 "color": "#ffffff"
-            },
-            "menu": {
-              "text": "Logout",
-              "action": {
-                "type": "$global.reset",
-                "options": {
-                  "items": [
-                    "token"
-                  ]
-                },
-                "success": {
-                  "type": "$href",
-                  "options": {
-                    "url": "https://json.trufitportal.com/Jason/login.json",
-                    "transition": "replace",
-                    "preload": {
-                      "@": "file://preload.json"
-                    }
-                  }
-                }
-              }
             }
           },
           "sections": [

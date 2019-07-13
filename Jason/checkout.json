@@ -111,10 +111,12 @@
       },
       "templates": {
         "body": {
+            "background": "#333333",
           "header": {
             "title": "Checkout",
             "style": {
-              "theme": "dark"
+              "background": "#222222",
+              "color": "#ffffff"
             }
           },
           "sections": [

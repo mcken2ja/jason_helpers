@@ -47,24 +47,13 @@
                             "color": "#ffffff"
                         },
                         "menu": {
-                            "text": "Logout",
-                            "action": {
-                                "options": {
-                                    "type": "$global.reset",
-                                    "items": [
-                                        "token"
-                                    ]
-                                },
-                                "success": {
-                                    "type": "$href",
-                                    "options": {
-                                        "url": "https://jasonbase.com/things/BqG1",
-                                        "transition": "replace",
-                                        "preload": {
-                                            "@": "file://preload.json"
-                                        }
-                                    }
-                                }
+                            "image": "https://json.trufitportal.com/images/bars-solid.png",
+                            "style": {
+                                "color": "#ffffff"
+                            },
+                            "href": {
+                                "url": "https://json.trufitportal.com/Jason/user_settings.json",
+                                "transition": "modal"
                             }
                         }
                     },
