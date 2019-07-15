@@ -82,6 +82,17 @@
                             }
                         },
                         {
+                            "type": "label",
+                            "text": "Previous Week",
+                            "style": {
+                                "top": "90",
+                                "left": "5",
+                                "width": "50",
+                                "padding": "10",
+                                "color": "#00FFFF"
+                            }
+                        },
+                        {
                             "type": "image",
                             "url": "https://png.icons8.com/metro/100/ffffff/chevron-left.png",
                             "style": {
