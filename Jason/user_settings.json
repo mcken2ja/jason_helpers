@@ -36,16 +36,21 @@
                                             }
                                         },
                                         {
-                                            "type": "label",
+                                            "type": "button",
                                             "text": "Payment Cards",
                                             "style": {
                                                 "background": "#ffffff",
+                                                "align": "left",
                                                 "size": "20",
                                                 "padding": "15",
                                                 "color": "#000000"
                                             },
-                                            "href": {
-                                                "url": "https://json.trufitportal.com/Jason/add_payment_card.json"
+                                            "action": {
+                                                "type": "$href",
+                                                "options": {
+                                                    "url": "https://json.trufitportal.com/Jason/add_payment_card.json",
+                                                    "transition": "modal"
+                                                }
                                             }
                                         },
                                         {
