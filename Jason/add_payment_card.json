@@ -43,6 +43,8 @@
                     },
                     "success": {
                         "type": "$network.request",
+                        "data_type": "json",
+                        "content_type": "json",
                         "options": {
                             "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/add_payment_card.json",
                             "method": "post",
