@@ -1,0 +1,169 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Add Payment Card",
+            "actions": {
+                "$load": {
+                    "type": "$set",
+                    "options": {
+                        "loader": "no"
+                    },
+                    "success": {
+                        "trigger": "start"
+                    }
+                },
+                "start": {
+                    "type": "$render"
+                },
+                "waiting": {
+                   "type": "$set",
+                   "options": {
+                       "loader": "yes"
+                   },
+                   "success": {
+                       "type": "$render",
+                       "success": {
+                           "trigger": "get_token",
+                           "options": {
+                               "cc": "{{$get.testcard}}",
+                               "month": "{{$get.month}}",
+                               "year": "{{$get.year}}",
+                               "cvv": "{{$get.cvv}}"
+                           }
+                       }
+                   }
+               },
+                "get_token": {
+                    "type": "$token.getStripeToken",
+                    "options": {
+                        "cc": "{{$jason.cc}}",
+                        "month": "{{$jason.month}}",
+                        "year": "{{$jason.year}}",
+                        "cvv": "{{$jason.cvv}}"
+                    },
+                    "success": {
+                        "type": "$network.request",
+                        "options": {
+                            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/add_payment_card.json",
+                            "method": "post",
+                            "data": {
+                                "card_token": "{{$jason.token}}",
+                                "user_token": "{{$global.user.token}}"
+                            }
+                        },
+                        "success": {
+                            "type": "$util.popup",
+                            "options": {
+                                "title": "Success",
+                                "description": "The card was added to your account",
+                                "text": "OK"
+                            }
+                        },
+                        "error": {
+                            "type": "$util.banner",
+                            "options": {
+                                "type": "error",
+                                "title": "Oops",
+                                "description": "did not work so well"
+                            }
+                        }
+                    },
+                    "error": {
+                        "type": "$util.popup",
+                        "options": {
+                            "title": "Error",
+                            "description": "Something went wrong please review information and try again",
+                            "text": "Let me check"
+                        }
+                    }
+                }
+            },
+            "templates": {
+                "body": {
+                    "sections": [
+                        {
+                            "items": [
+                                {
+                                    "type": "creditcard",
+                                    "name": "testcard",
+                                    "max_length": "16",
+                                    "placeholder": "Credit Card #",
+                                    "style": {
+                                        "size": "22"
+                                    }
+                                },
+                                {
+                                    "type": "label",
+                                    "text": "phone number field"
+                                },
+                                {
+                                    "type": "phone",
+                                    "name": "my_number"
+                                },
+                                {
+                                    "type": "horizontal",
+                                    "style": {
+                                        "align": "center",
+                                        "distribution": "equalsize"
+                                    },
+                                    "components": [
+                                        {
+                                            "type": "textfield",
+                                            "name": "month",
+                                            "max_length": "2",
+                                            "placeholder": "MM",
+                                            "style": {
+                                                "size": "22",
+                                                "align": "right"
+                                            }
+                                        },
+                                        {
+                                            "type": "label",
+                                            "text": "/",
+                                            "style": {
+                                                "size": "22",
+                                                "align": "center"
+                                            }
+                                        },
+                                        {
+                                            "type": "textfield",
+                                            "name": "year",
+                                            "max_length": "2",
+                                            "placeholder": "YY",
+                                            "style": {
+                                                "size": "22",
+                                                "align": "left"
+                                            }
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "width": "25%"
+                                            }
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "textfield",
+                                    "name": "cvv",
+                                    "max_length": "4",
+                                    "placeholder": "CVV",
+                                    "style": {
+                                        "size": "22"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "Test Action",
+                                    "action": {
+                                        "trigger": "waiting"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
