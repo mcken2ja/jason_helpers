@@ -48,42 +48,48 @@
                             "background": "#222222",
                             "color": "#ffffff"
                         },
-                        "sections": [{
-                                "items": [{
+                        "sections": [
+                            {
+                                "items": {
+                                    "{{#each cards}}": {
                                         "type": "vertical",
                                         "components": [{
                                             "type": "horizontal",
-                                            "components": [{
+                                            "components":[{
+                                                "type": "vertical",
+                                                "components":[{
                                                     "type": "label",
-                                                    "class": "std_label",
-                                                    "text": "{{brand}}"
+                                                    "text": "{{name}}",
+                                                    "class": "input_hd"
                                                 },
                                                 {
                                                     "type": "label",
                                                     "class": "std_label",
-                                                    "text": "{{card_num}}"
+                                                    "text": "{{address}}"
+                                                }]
+                                            },
+                                            {
+                                                "type": "map",
+                                                "region": {
+                                                    "coord": "{{coord}}",
+                                                    "width": "350",
+                                                    "height": "350"
                                                 },
-                                                {
-                                                    "type": "label",
-                                                    "class": "std_label",
-                                                    "text": "{{expiration}}"
-                                                },
-                                                {
-                                                    "type": "label",
-                                                    "class": "std_label",
-                                                    "text": "{{defaultCard}}"
+                                                "pins": [{
+                                                    "title": "This is a pin",
+                                                    "description": "It really is.",
+                                                    "coord": "{{coord}}"
+                                                }],
+                                                "style": {
+                                                    "width": "200",
+                                                    "height": "200"
                                                 }
-                                            ]
+                                            }]
                                         }]
-
-                                }]
-                                },{
-                                    "items": [{
-                                        "type": "button",
-                                        "text": "Add new card",
-                                        "class": "button_default"
-                                        }]
-                                    }]
+                                    }
+                                }
+                            }
+                        ]
                         }
                     }
                 },
