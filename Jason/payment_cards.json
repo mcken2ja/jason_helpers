@@ -62,22 +62,19 @@
                                         "components": [{
                                                 "type": "label",
                                                 "class": "row_bold",
-                                                "text": "{{brand}}"
+                                                "text": "{{brand}} {{card_num}}"
                                             },
                                             {
                                                 "type": "label",
                                                 "class": "row_bold",
-                                                "text": "{{card_num}}"
-                                            },
-                                            {
-                                                "type": "label",
-                                                "class": "row_bold",
-                                                "text": "{{expiration}}"
-                                            },
-                                            {
-                                                "type": "label",
-                                                "class": "row_bold",
-                                                "text": "{{defaultCard}}"
+                                                "text": [
+                                                    {
+                                                        "{{#if defaultCard}}": "Default"
+                                                    },
+                                                    {
+                                                        "{{#else}}": "Make Default"
+                                                    }
+                                                ]
                                             }
                                         ]
                                     }
