@@ -1,0 +1,56 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Payment cards",
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Payment Cards",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        },
+                        "sections": [{
+                            "items": [{
+                                "type": "vertical",
+                                "components": {
+                                    "{{#each $jason.cards}}": {
+                                        "type": "horizontal",
+                                        "components": [{
+                                                "type": "label",
+                                                "class": "std_label",
+                                                "text": "{{brand}}"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "class": "std_label",
+                                                "text": "{{card_num}}"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "class": "std_label",
+                                                "text": "{{expiration}}"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "class": "std_label",
+                                                "text": "{{defaultCard}}"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }]
+                        }]
+                    }
+                }
+            }
+
+        }
+    }
+}
