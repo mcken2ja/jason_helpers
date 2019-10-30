@@ -26,10 +26,10 @@
                             "color": "#ffffff"
                         },
                         "sections": [{
-                            "items": [{
-                                    "type": "vertical",
-                                    "components": {
-                                        "{{#each $jason.cards}}": {
+                                "items": {
+                                    "{{#each $jason.cards}}": {
+                                        "type": "vertical",
+                                        "components": [{
                                             "type": "horizontal",
                                             "components": [{
                                                     "type": "label",
@@ -52,20 +52,15 @@
                                                     "text": "{{defaultCard}}"
                                                 }
                                             ]
-                                        }
+                                        }]
                                     }
-                                },
-                                {
-                                    "type": "button",
-                                    "text": "Add new card",
-                                    "class": "button_default"
+
                                 }
-                            ]
-                        }]
+                                }]
+                        }
                     }
                 }
-            }
 
+            }
         }
     }
-}
