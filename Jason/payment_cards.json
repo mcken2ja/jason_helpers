@@ -47,7 +47,7 @@
                         },
                         "sections": [{
                                 "items": {
-                                    "{{#each $jason.data.cards}}": {
+                                    "{{#each $jason.cards[1]}}": {
                                         "type": "vertical",
                                         "components": [{
                                             "type": "horizontal",
