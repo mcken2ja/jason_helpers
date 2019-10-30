@@ -21,6 +21,14 @@
                     },
                     "success": {
                         "trigger": "show_data"
+                    },
+                    "error": {
+                        "type": "$util.banner",
+                        "options": {
+                            "title": "Uh Oh",
+                            "description": "Something went wrong",
+                            "type": "error"
+                        }
                     }
                 }
             },
