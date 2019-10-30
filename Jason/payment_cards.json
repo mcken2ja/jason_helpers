@@ -61,7 +61,7 @@
                                         "type": "horizontal",
                                         "style": {
                                             "padding": "15",
-                                            "align": "fill"
+                                            "align": "fill",
                                             "background": "#ffffff"
                                         },
                                         "components": [{
