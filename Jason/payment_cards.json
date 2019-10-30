@@ -4,7 +4,7 @@
             "title": "Payment cards",
             "actions": {
                 "$load": {
-                    "trigger": "get_cards"
+                    "type": "$render"
                 },
                 "show_data": {
                     "type": "$util.popup",
@@ -47,7 +47,7 @@
                         },
                         "sections": [{
                                 "items": {
-                                    "{{#each $jason.cards[1]}}": {
+                                    "{{#each cards}}": {
                                         "type": "vertical",
                                         "components": [{
                                             "type": "horizontal",
@@ -85,6 +85,45 @@
                                     }]
                         }
                     }
+                },
+                "data": {
+                    "cards": [
+       {
+           "brand": "Discover",
+           "card_num": "XXXX0012",
+           "card_id": 60,
+           "defaultCard": false,
+           "expiration": "2028-02"
+       },
+       {
+           "brand": "Visa",
+           "card_num": "4242",
+           "card_id": 70,
+           "defaultCard": true,
+           "expiration": "4/2029"
+       },
+       {
+           "brand": "American Express",
+           "card_num": "8431",
+           "card_id": 72,
+           "defaultCard": false,
+           "expiration": "10/2020"
+       },
+       {
+           "brand": "Visa",
+           "card_num": "4242",
+           "card_id": 73,
+           "defaultCard": false,
+           "expiration": "4/2024"
+       },
+       {
+           "brand": "Visa",
+           "card_num": "4242",
+           "card_id": 74,
+           "defaultCard": false,
+           "expiration": "10/2022"
+       }
+   ]
                 }
 
             }
