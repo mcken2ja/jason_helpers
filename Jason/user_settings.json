@@ -48,7 +48,7 @@
                                             "action": {
                                                 "type": "$href",
                                                 "options": {
-                                                    "url": "https://json.trufitportal.com/Jason/add_payment_card.json",
+                                                    "url": "https://json.trufitportal.com/Jason/payment_cards.json",
                                                     "transition": "modal"
                                                 }
                                             }
