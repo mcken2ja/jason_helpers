@@ -6,13 +6,21 @@
                 "$load": {
                     "trigger": "get_cards"
                 },
+                "show_data": {
+                    "type": "$util.popup",
+                    "options": {
+                        "title": "Data",
+                        "description": "{{$jason.cards}}",
+                        "text": "Got it"
+                    }
+                },
                 "get_cards": {
                     "type": "$network.request",
                     "options": {
                         "url": "https://www.trufitportal.com/demo/api/get_payment_cards.json"
                     },
                     "success": {
-                        "type": "$render"
+                        "trigger": "show_data"
                     }
                 }
             },
