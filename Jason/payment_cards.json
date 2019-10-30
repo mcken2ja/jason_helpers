@@ -10,12 +10,12 @@
                     "type": "$util.popup",
                     "options": {
                         "title": "Data",
-                        "description": "{{$jason.cards[1]}}",
+                        "description": "{{$jason}}",
                         "text": "Got it"
                     }
                 },
                 "$pull": {
-                    "trigger": "get_cards"
+                    "trigger": "show_data"
                 },
                 "get_cards": {
                     "type": "$network.request",
@@ -24,7 +24,7 @@
                         "data_type": "json"
                     },
                     "success": {
-                        "trigger": "show_data"
+                        "trigger": "$render"
                     },
                     "error": {
                         "type": "$util.banner",
