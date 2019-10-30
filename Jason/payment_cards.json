@@ -47,37 +47,6 @@
                         }
                     },
                     "sections": [{
-                        "items": {
-                            "{{#each $jason.cards}}": {
-                                "type": "vertical",
-                                "components": [{
-                                    "type": "horizontal",
-                                    "components": [{
-                                            "type": "label",
-                                            "class": "std_label",
-                                            "text": "{{brand}}"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "class": "std_label",
-                                            "text": "{{card_num}}"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "class": "std_label",
-                                            "text": "{{expiration}}"
-                                        },
-                                        {
-                                            "type": "label",
-                                            "class": "std_label",
-                                            "text": "{{defaultCard}}"
-                                        }
-                                    ]
-                                }]
-                            }
-
-                        }
-                    }, {
                         "items": [{
                             "type": "button",
                             "text": "Add new card",
