@@ -52,27 +52,31 @@
                     "sections": [{
                         "items": [{
                                 "type": "vertical",
+                                "style": {
+                                  "padding": "50",
+                                  "spacing": "10"
+                                },
                                 "components": {
                                     "{{#each $jason.cards}}": {
                                         "type": "horizontal",
                                         "components": [{
                                                 "type": "label",
-                                                "class": "std_label",
+                                                "class": "row_bold",
                                                 "text": "{{brand}}"
                                             },
                                             {
                                                 "type": "label",
-                                                "class": "std_label",
+                                                "class": "row_bold",
                                                 "text": "{{card_num}}"
                                             },
                                             {
                                                 "type": "label",
-                                                "class": "std_label",
+                                                "class": "row_bold",
                                                 "text": "{{expiration}}"
                                             },
                                             {
                                                 "type": "label",
-                                                "class": "std_label",
+                                                "class": "row_bold",
                                                 "text": "{{defaultCard}}"
                                             }
                                         ]
