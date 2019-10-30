@@ -2,18 +2,15 @@
     "$jason": {
         "head": {
             "title": "Payment cards",
-            "styles": {
-                "@": "https://json.trufitportal.com/Jason/common_styles.json"
-            },
             "actions": {
                 "$load": {
-                    "type": "$render"
+                    "trigger": "get_cards"
                 },
                 "show_data": {
                     "type": "$util.popup",
                     "options": {
                         "title": "Data",
-                        "description": "{{cards}}",
+                        "description": "{{$jason.cards}}",
                         "text": "Got it"
                     }
                 },
@@ -47,92 +44,48 @@
                         "style": {
                             "background": "#222222",
                             "color": "#ffffff"
-                        },
-                        "sections": [
-                            {
-                                "items": {
-                                    "{{#each cards}}": {
-                                        "type": "vertical",
-                                        "components": [{
-                                            "type": "horizontal",
-                                            "components":[{
-                                                "type": "vertical",
-                                                "components":[{
-                                                    "type": "label",
-                                                    "text": "{{name}}",
-                                                    "class": "input_hd"
-                                                },
-                                                {
-                                                    "type": "label",
-                                                    "class": "std_label",
-                                                    "text": "{{address}}"
-                                                }]
-                                            },
-                                            {
-                                                "type": "map",
-                                                "region": {
-                                                    "coord": "{{coord}}",
-                                                    "width": "350",
-                                                    "height": "350"
-                                                },
-                                                "pins": [{
-                                                    "title": "This is a pin",
-                                                    "description": "It really is.",
-                                                    "coord": "{{coord}}"
-                                                }],
-                                                "style": {
-                                                    "width": "200",
-                                                    "height": "200"
-                                                }
-                                            }]
-                                        }]
-                                    }
-                                }
-                            }
-                        ]
                         }
-                    }
-                },
-                "data": {
-                    "cards": [
-       {
-           "brand": "Discover",
-           "card_num": "XXXX0012",
-           "card_id": 60,
-           "defaultCard": false,
-           "expiration": "2028-02"
-       },
-       {
-           "brand": "Visa",
-           "card_num": "4242",
-           "card_id": 70,
-           "defaultCard": true,
-           "expiration": "4/2029"
-       },
-       {
-           "brand": "American Express",
-           "card_num": "8431",
-           "card_id": 72,
-           "defaultCard": false,
-           "expiration": "10/2020"
-       },
-       {
-           "brand": "Visa",
-           "card_num": "4242",
-           "card_id": 73,
-           "defaultCard": false,
-           "expiration": "4/2024"
-       },
-       {
-           "brand": "Visa",
-           "card_num": "4242",
-           "card_id": 74,
-           "defaultCard": false,
-           "expiration": "10/2022"
-       }
-   ]
-                }
+                    },
+                    "sections": [{
+                        "items": {
+                            "{{#each $jason.cards}}": {
+                                "type": "vertical",
+                                "components": [{
+                                    "type": "horizontal",
+                                    "components": [{
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "{{brand}}"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "{{card_num}}"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "{{expiration}}"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "{{defaultCard}}"
+                                        }
+                                    ]
+                                }]
+                            }
 
+                        }
+                    }, {
+                        "items": [{
+                            "type": "button",
+                            "text": "Add new card",
+                            "class": "button_default"
+                        }]
+                    }]
+                }
             }
         }
     }
+}
