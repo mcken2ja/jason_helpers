@@ -87,7 +87,7 @@
                             },
                             {
                                 "type": "button",
-                                "text": "Add new card",
+                                "text": "+ Add new card",
                                 "style": {
                                     "background": "#ffffff",
                                     "align": "left",
