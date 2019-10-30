@@ -14,6 +14,9 @@
                         "text": "Got it"
                     }
                 },
+                "$pull": {
+                    "trigger": "get_cards"
+                },
                 "get_cards": {
                     "type": "$network.request",
                     "options": {
