@@ -47,7 +47,35 @@
                         }
                     },
                     "sections": [{
-                        "items": [{
+                        "items": [
+                            {
+                                "type": "vertical",
+                                "components": [{
+                                    "type": "horizontal",
+                                    "components": [{
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "brand"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "card_num"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "expiration"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "std_label",
+                                            "text": "default?"
+                                        }
+                                    ]
+                                }]
+                            },
+                            {
                             "type": "button",
                             "text": "Add new card",
                             "class": "button_default"
