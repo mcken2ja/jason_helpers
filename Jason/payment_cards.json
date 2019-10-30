@@ -4,7 +4,16 @@
             "title": "Payment cards",
             "actions": {
                 "$load": {
-                    "type": "$render"
+                    "trigger": "get_cards"
+                },
+                "get_cards": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/demo/api/get_payment_cards.json"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
                 }
             },
             "templates": {
