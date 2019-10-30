@@ -55,22 +55,22 @@
                                         "components": [{
                                                 "type": "label",
                                                 "class": "std_label",
-                                                "text": "brand"
+                                                "text": "{{brand}}"
                                             },
                                             {
                                                 "type": "label",
                                                 "class": "std_label",
-                                                "text": "card_num"
+                                                "text": "{{card_num}}"
                                             },
                                             {
                                                 "type": "label",
                                                 "class": "std_label",
-                                                "text": "expiration"
+                                                "text": "{{expiration}}"
                                             },
                                             {
                                                 "type": "label",
                                                 "class": "std_label",
-                                                "text": "default?"
+                                                "text": "{{defaultCard}}"
                                             }
                                         ]
                                     }
