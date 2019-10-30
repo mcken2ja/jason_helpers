@@ -2,6 +2,9 @@
     "$jason": {
         "head": {
             "title": "Payment cards",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
+            },
             "actions": {
                 "$load": {
                     "type": "$render"
