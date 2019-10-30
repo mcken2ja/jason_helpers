@@ -20,7 +20,8 @@
                 "get_cards": {
                     "type": "$network.request",
                     "options": {
-                        "url": "https://www.trufitportal.com/demo/api/get_payment_cards.json"
+                        "url": "https://www.trufitportal.com/demo/api/get_payment_cards.json",
+                        "data_type": "json"
                     },
                     "success": {
                         "trigger": "show_data"
