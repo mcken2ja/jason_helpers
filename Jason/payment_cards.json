@@ -24,7 +24,7 @@
                         "data_type": "json"
                     },
                     "success": {
-                        "trigger": "$render"
+                        "type": "$render"
                     },
                     "error": {
                         "type": "$util.banner",
