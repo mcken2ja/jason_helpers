@@ -59,6 +59,11 @@
                                 "components": {
                                     "{{#each $jason.cards}}": {
                                         "type": "horizontal",
+                                        "style": {
+                                            "padding": "15",
+                                            "align": "fill"
+                                            "background": "#ffffff"
+                                        },
                                         "components": [{
                                                 "type": "label",
                                                 "class": "row_bold",
