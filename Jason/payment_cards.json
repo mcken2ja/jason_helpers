@@ -10,7 +10,7 @@
                     "type": "$util.popup",
                     "options": {
                         "title": "Data",
-                        "description": "{{$jason.cards}}",
+                        "description": "version 3",
                         "text": "Got it"
                     }
                 },
