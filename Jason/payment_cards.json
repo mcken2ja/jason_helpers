@@ -56,7 +56,13 @@
                                     }
 
                                 }
-                                }]
+                                },{
+                                    "items": [{
+                                        "type": "button",
+                                        "text": "Add new card",
+                                        "class": "button_default"
+                                        }]
+                                    }]
                         }
                     }
                 }
