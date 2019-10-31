@@ -71,6 +71,15 @@
                             "title": "Error",
                             "description": "Something went wrong please review information and try again",
                             "text": "Let me check"
+                        },
+                        "success": {
+                            "type": "$set",
+                            "options": {
+                                "loader": "no"
+                            },
+                            "success": {
+                                "type": "$render"
+                            }
                         }
                     }
                 }
@@ -173,7 +182,13 @@
                                 {
                                     "type": "button",
                                     "text": "Test Action",
-                                    "class": "button_default",
+                                    "style": {
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
                                     "action": {
                                         "trigger": "waiting"
                                     }
