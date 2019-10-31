@@ -113,16 +113,9 @@
                                     "max_length": "16",
                                     "placeholder": "Credit Card #",
                                     "style": {
+                                        "align": "center",
                                         "size": "22"
                                     }
-                                },
-                                {
-                                    "type": "label",
-                                    "text": "phone number field"
-                                },
-                                {
-                                    "type": "phone",
-                                    "name": "my_number"
                                 },
                                 {
                                     "type": "horizontal",
@@ -173,12 +166,14 @@
                                     "max_length": "4",
                                     "placeholder": "CVV",
                                     "style": {
+                                        "align": "center",
                                         "size": "22"
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "Test Action",
+                                    "class": "button_default"
                                     "action": {
                                         "trigger": "waiting"
                                     }
