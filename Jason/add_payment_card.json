@@ -123,7 +123,8 @@
                                     "placeholder": "Credit Card #",
                                     "style": {
                                         "align": "center",
-                                        "size": "22"
+                                        "size": "22",
+                                        "color": "#ffffff"
                                     }
                                 },
                                 {
@@ -140,7 +141,8 @@
                                             "placeholder": "MM",
                                             "style": {
                                                 "size": "22",
-                                                "align": "right"
+                                                "align": "right",
+                                                "color": "#ffffff"
                                             }
                                         },
                                         {
@@ -148,7 +150,8 @@
                                             "text": "/",
                                             "style": {
                                                 "size": "22",
-                                                "align": "center"
+                                                "align": "center",
+                                                "color": "#ffffff"
                                             }
                                         },
                                         {
@@ -176,13 +179,15 @@
                                     "placeholder": "CVV",
                                     "style": {
                                         "align": "center",
-                                        "size": "22"
+                                        "size": "22",
+                                        "color": "#ffffff"
                                     }
                                 },
                                 {
                                     "type": "button",
-                                    "text": "Test Action",
+                                    "text": " Add",
                                     "style": {
+                                        "font": "FontAwesome",
                                         "background": "#ffffff",
                                         "align": "left",
                                         "size": "20",
