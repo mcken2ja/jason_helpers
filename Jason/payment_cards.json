@@ -17,6 +17,12 @@
                         "text": "Got it"
                     }
                 },
+                "add_card": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/add_card.json"
+                    }
+                },
                 "card_details": {
                     "type": "$href",
                     "options": {
@@ -102,6 +108,9 @@
                                     "size": "20",
                                     "padding": "15",
                                     "color": "#000000"
+                                },
+                                "action": {
+                                    "trigger": "add_card"
                                 }
                             }
                         ]
