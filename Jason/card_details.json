@@ -17,7 +17,7 @@
                     "success": {
                         "type": "$network.request",
                         "options": {
-                            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/remove_card?pmID={{$params.id}}"
+                            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/remove_card.json?pmID={{$params.id}}"
                         },
                         "success": {
                             "type": "$back"
