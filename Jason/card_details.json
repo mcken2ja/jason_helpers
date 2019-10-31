@@ -4,7 +4,13 @@
             "title": "Card Info",
             "actions": {
                 "$load": {
-                    "type": "$render"
+                    "type": "$set",
+                    "options": {
+                        "loader": "no"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
                 },
                 "remove_card": {
                     "type": "$util.alert",
@@ -22,6 +28,15 @@
                         "success": {
                             "type": "$back"
                         }
+                    }
+                },
+                "make_default": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/make_default.json?pmID={{$params.id}}&user={{$global.user.token}}"
+                    },
+                    "success": {
+                        "type": "$back"
                     }
                 },
                 "is_default": {
@@ -48,8 +63,7 @@
                                 "color": "#ffffff"
                             },
                             "action": {
-                                "trigger": [
-                                    {
+                                "trigger": [{
                                         "{{#if $params.defaultCard}}": "is_default"
                                     },
                                     {
@@ -59,11 +73,26 @@
                             }
                         }
                     },
-                    "sections": [
-                        {
-                            "items": [{
-                                "type": "vertical",
-                                "components": [{
+                    "layers": [{
+                        "type": "image",
+                        "url": [{
+                                "{{#if $get.loader == 'yes'}}": "https://json.trufitportal.com/images/285.gif"
+                            },
+                            {
+                                "{{#else}}": ""
+                            }
+                        ],
+                        "style": {
+                            "top": "50%-50",
+                            "width": "100",
+                            "height": "100",
+                            "left": "50%-50"
+                        }
+                    }],
+                    "sections": [{
+                        "items": [{
+                            "type": "vertical",
+                            "components": [{
                                     "type": "label",
                                     "style": {
                                         "font": "FontAwesome",
@@ -73,8 +102,7 @@
                                         "padding": "15",
                                         "color": "#000000"
                                     },
-                                    "text": [
-                                        {
+                                    "text": [{
                                             "{{#if $params.brand == 'Discover'}}": " Discover"
                                         },
                                         {
@@ -87,33 +115,63 @@
                                             "{{#else}}": " {{$params.brand}}"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "label",
+                                    "style": {
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
                                     },
-                                    {
-                                        "type": "label",
-                                        "style": {
-                                            "background": "#ffffff",
-                                            "align": "left",
-                                            "size": "20",
-                                            "padding": "15",
-                                            "color": "#000000"
+                                    "text": "{{$params.number}}"
+                                },
+                                {
+                                    "type": "label",
+                                    "style": {
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
+                                    "text": "{{$params.exp}}"
+                                }
+                            ]
+                        },{
+                            "type": "button",
+                            "text": [{
+                                "{{#if $params.defaultCard}}": "Default card"
+                                },
+                            {
+                                "{{#else}}": "Make default card"
+                                }],
+                            "style": {
+                                "background": "#ffffff",
+                                "align": "left",
+                                "size": "20",
+                                "padding": "15",
+                                "color": "#000000"
+                            },
+                            "action": [
+                                {
+                                    "{{#if $params.defaultCard}}": {}
+                                },
+                                {
+                                    "{{#else}}":{
+                                        "type": "$set",
+                                        "option": {
+                                            "loader": "yes"
                                         },
-                                        "text": "{{$params.number}}"
-                                        },
-                                    {
-                                        "type": "label",
-                                        "style": {
-                                            "background": "#ffffff",
-                                            "align": "left",
-                                            "size": "20",
-                                            "padding": "15",
-                                            "color": "#000000"
-                                        },
-                                        "text": "{{$params.exp}}"
+                                        "success": {
+                                            "trigger": "make_default"
+                                        }
                                     }
-                                ]
-                                }]
-                        }
-                    ]
+                                }
+                            ]
+                            }]
+                    }]
                 }
             }
         }
