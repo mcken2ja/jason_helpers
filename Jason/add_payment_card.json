@@ -90,6 +90,25 @@
                             "color": "#ffffff"
                         }
                     },
+                    "layers": [
+                        {
+                            "type": "image",
+                            "url": [
+                                {
+                                    "{{#if $get.loader == 'yes'}}": "https://json.trufitportal.com/images/285.gif"
+                                },
+                                {
+                                    "{{#else}}": ""
+                                }
+                            ],
+                            "style": {
+                                "top": "50%-50",
+                                "width": "100",
+                                "height": "100",
+                                "left": "50%-50"
+                            }
+                        }
+                    ],
                     "sections": [
                         {
                             "items": [
