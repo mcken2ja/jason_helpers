@@ -44,7 +44,7 @@
         "submit_order": {
           "type": "$network.request",
           "options": {
-            "url": "https://www.trufitportal.com/{{$global.user.location_key}}/api/submit_order.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.user.token}}&cardID={{$get.cardID}}"
+            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/submit_order.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.user.token}}&cardID={{$get.cardID}}"
           },
           "success": {
             "trigger": "go_home"
