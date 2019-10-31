@@ -28,7 +28,7 @@
             "title": "Membership agreement",
             "description": "{{$jason.selected_agreement}}",
             "success": "I Agree",
-            "cancel": "I Decline"
+            "cancel": "Cancel"
           },
           "success": {
             "trigger": "checkout"

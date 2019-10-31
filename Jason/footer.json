@@ -12,7 +12,10 @@
         "style": {
           "height": "30"
         },
-        "url": "https://json.trufitportal.com/Jason/homepage.json"
+        "url": "https://json.trufitportal.com/Jason/homepage.json",
+        "preload": {
+          "@": "file://preload.json"
+        }
       },
       {
         "image": "https://i.imgur.com/OJLW7MH.png",
