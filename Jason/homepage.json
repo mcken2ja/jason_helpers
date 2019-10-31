@@ -57,11 +57,12 @@
                             "background": "#222222",
                             "color": "#ffffff"
                         },
-                        "menu": {
-                            "image": "https://json.trufitportal.com/images/bars-solid.png",
-                            "style": {
-                                "color": "#ffffff"
-                            },
+                        "text": "",
+                        "style": {
+                            "font": "FontAwesome",
+                            "size": "20",
+                            "color": "#ffffff"
+                        },
                             "href": {
                                 "url": "https://json.trufitportal.com/Jason/user_settings.json",
                                 "transition": "push"
