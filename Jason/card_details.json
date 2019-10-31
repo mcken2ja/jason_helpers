@@ -1,0 +1,75 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Card Info",
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                },
+                "remove_card": {
+                    "type": "$util.alert",
+                    "options": {
+                        "title": "Confirm",
+                        "description": "Are you sure you want to delete this card?",
+                        "success": "Delete",
+                        "cancel": "Cancel"
+                    }
+                },
+                "is_default": {
+                    "type": "$util.popup",
+                    "options": {
+                        "title": "Hold up",
+                        "description": "You cannot delete the default card",
+                        "text": "OK"
+                    }
+                }
+            },
+            "templates": {
+                "body": {
+                    "header": {
+                        "background": "#333333",
+                        "title": "Card Info",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        },
+                        "menu": {
+                            "image": "https://json.trufitportal.com/images/bars-solid.png",
+                            "style": {
+                                "color": "#ffffff"
+                            },
+                            "action": {
+                                "trigger": [
+                                    {
+                                        "{{#if $params.defaultCard}}": "is_default"
+                                    },
+                                    {
+                                        "{{#else}}": "remove_card"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "sections": [
+                        {
+                            "items": [{
+                                "type": "vertical",
+                                "components": [{
+                                    "type": "button",
+                                    "style": {
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
+                                    "text": "card number"
+                                    }]
+                                }]
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
