@@ -78,6 +78,27 @@
                                                     "transition": "modal"
                                                 }
                                             }
+                                        },
+                                        {
+                                            "type": "button",
+                                            "text": " Logout",
+                                            "style": {
+                                                "font": "FontAwesome",
+                                                "background": "#ffffff",
+                                                "align": "left",
+                                                "size": "20",
+                                                "padding": "15",
+                                                "color": "#000000"
+                                            },
+                                            "action": {
+                                                "type": "$util.alert",
+                                                "options": {
+                                                    "title": "Confirm",
+                                                    "description": "Are you sure you want to logout?",
+                                                    "success": "Logout",
+                                                    "cancel": "Cancel"
+                                                }
+                                            }
                                         }
                                     ]
                                 }
