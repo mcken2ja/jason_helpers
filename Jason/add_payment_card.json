@@ -82,6 +82,14 @@
             },
             "templates": {
                 "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Add card",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
                     "sections": [
                         {
                             "items": [

@@ -1,29 +1,31 @@
 {
-  "$jason": {
-    "head": {
-      "title": "Add Card",
-      "actions": {
-        "$load": {
-          "type": "$render"
-        }
-      },
-      "templates": {
-        "body": {
-          "header": {
+    "$jason": {
+        "head": {
             "title": "Add Card",
-            "style": {
-              "background": "#ecf0f5"
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Add Card",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "background": {
+                        "type": "html",
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/stripe?token={{$global.vars.token}}",
+                        "action": {
+                            "type": "$default"
+                        }
+                    }
+                }
             }
-          },
-          "background": {
-            "type": "html",
-            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/stripe?token={{$global.vars.token}}",
-            "action": {
-              "type": "$default"
-            }
-          }
         }
-      }
     }
-  }
 }
