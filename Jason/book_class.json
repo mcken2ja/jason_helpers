@@ -50,6 +50,7 @@
                             "text": "",
                             "style": {
                                 "font": "FontAwesome",
+                                "size": "20",
                                 "color": "#ffffff"
                             },
                             "href": {
