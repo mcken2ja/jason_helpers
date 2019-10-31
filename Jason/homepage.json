@@ -57,6 +57,7 @@
                             "background": "#222222",
                             "color": "#ffffff"
                         },
+                        "menu": {
                         "text": "",
                         "style": {
                             "font": "FontAwesome",
