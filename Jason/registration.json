@@ -71,8 +71,14 @@
                 "register": {
                     "type": "$network.request",
                     "options": {
-                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/register.json?email={{$get.email}}&password={{$get.password}}&fname={{$get.first_name}}&lname={{$get.last_name}}",
-                        "method": "get"
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/register.json",
+                        "method": "post",
+                        "data": {
+                            "email": "{{$get.email}}",
+                            "fname": "{{$get.fname}}",
+                            "lname": "{{$get.lname}}",
+                            "password": "{{$get.password}}"
+                        }
                     },
                     "success": {
                         "type": "$global.set",
