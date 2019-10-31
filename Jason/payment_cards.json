@@ -22,7 +22,11 @@
                     "options": {
                         "url": "https://json.trufitportal.com/Jason/card_details.json",
                         "options": {
-                            "defaultCard": "{{$jason.cardDefault}}"
+                            "defaultCard": "{{$jason.cardDefault}}",
+                            "brand": "{{$jason.cardBrand}}",
+                            "exp": "{{$jason.cardExp}}",
+                            "number": "{{$jason.cardNum}}",
+                            "id": "{{$jason.cardID}}"
                         }
                     }
                 },
@@ -79,7 +83,11 @@
                                         "action": {
                                             "trigger": "card_details",
                                             "options": {
-                                                "cardDefault": "{{defaultCard}}"
+                                                "cardDefault": "{{defaultCard}}",
+                                                "cardID": "{{card_id}}",
+                                                "cardBrand": "{{brand}}",
+                                                "cardNum": "{{card_num}}",
+                                                "cardExp": "{{expiration}}"
                                             }
                                         }
                                     }

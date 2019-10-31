@@ -55,7 +55,7 @@
                             "items": [{
                                 "type": "vertical",
                                 "components": [{
-                                    "type": "button",
+                                    "type": "label",
                                     "style": {
                                         "background": "#ffffff",
                                         "align": "left",
@@ -63,8 +63,20 @@
                                         "padding": "15",
                                         "color": "#000000"
                                     },
-                                    "text": "card number"
-                                    }]
+                                    "text": "{{$params.brand}} {{$params.number}}"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "style": {
+                                            "background": "#ffffff",
+                                            "align": "left",
+                                            "size": "20",
+                                            "padding": "15",
+                                            "color": "#000000"
+                                        },
+                                        "text": "{{$params.exp}}"
+                                    }
+                                ]
                                 }]
                         }
                     ]
