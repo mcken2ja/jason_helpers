@@ -54,12 +54,7 @@
                             }
                         },
                         "success": {
-                            "type": "$util.popup",
-                            "options": {
-                                "title": "Success",
-                                "description": "The card was added to your account",
-                                "text": "OK"
-                            }
+                            "type": "$back"
                         },
                         "error": {
                             "type": "$util.banner",
