@@ -58,30 +58,15 @@
                                 },
                                 "components": {
                                     "{{#each $jason.cards}}": {
-                                        "type": "horizontal",
+                                        "type": "button",
+                                        "text": "{{brand}} {{card_num}}",
                                         "style": {
+                                            "background": "#ffffff",
+                                            "align": "left",
+                                            "size": "20",
                                             "padding": "15",
-                                            "align": "fill",
-                                            "background": "#ffffff"
-                                        },
-                                        "components": [{
-                                                "type": "label",
-                                                "class": "row_bold",
-                                                "text": "{{brand}} {{card_num}}"
-                                            },
-                                            {
-                                                "type": "label",
-                                                "class": "row_bold",
-                                                "text": [
-                                                    {
-                                                        "{{#if defaultCard}}": "Default"
-                                                    },
-                                                    {
-                                                        "{{#else}}": ""
-                                                    }
-                                                ]
-                                            }
-                                        ]
+                                            "color": "#000000"
+                                        }
                                     }
                                 }
                             },
