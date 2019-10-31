@@ -130,7 +130,6 @@
                                 {
                                     "type": "horizontal",
                                     "style": {
-                                        "align": "center",
                                         "distribution": "equalsize"
                                     },
                                     "components": [
