@@ -13,6 +13,15 @@
                         "description": "Are you sure you want to delete this card?",
                         "success": "Delete",
                         "cancel": "Cancel"
+                    },
+                    "success": {
+                        "type": "$network.request",
+                        "options": {
+                            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/remove_card?pmID={{$params.id}}"
+                        },
+                        "success": {
+                            "type": "$back"
+                        }
                     }
                 },
                 "is_default": {

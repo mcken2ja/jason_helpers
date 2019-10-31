@@ -9,6 +9,9 @@
                 "$load": {
                     "trigger": "get_cards"
                 },
+                "$show": {
+                  "type": "$reload"
+                },
                 "show_data": {
                     "type": "$util.popup",
                     "options": {
