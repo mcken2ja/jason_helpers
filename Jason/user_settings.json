@@ -5,6 +5,19 @@
             "actions": {
                 "$load": {
                     "type": "$render"
+                },
+                "exit": {
+                    "type":"$global.set",
+                    "options": {
+                        "studio": {
+                            "name": "",
+                            "key": ""
+                        },
+                        "user": {
+                            "token": "",
+                            "start": ""
+                        }
+                    }
                 }
             },
             "styles": {
@@ -97,6 +110,9 @@
                                                     "description": "Are you sure you want to logout?",
                                                     "success": "Logout",
                                                     "cancel": "Cancel"
+                                                },
+                                                "success": {
+                                                    "trigger": "exit"
                                                 }
                                             }
                                         }
