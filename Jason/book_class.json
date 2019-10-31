@@ -47,8 +47,9 @@
                             "color": "#ffffff"
                         },
                         "menu": {
-                            "text": "Settings",
+                            "text": "",
                             "style": {
+                                "font": "FontAwesome",
                                 "color": "#ffffff"
                             },
                             "href": {
