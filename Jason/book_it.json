@@ -1,131 +1,168 @@
 {
-  "$jason": {
-    "head": {
-      "title": "Book IT",
-      "styles": {
-          "@": "https://json.trufitportal.com/Jason/common_styles.json"
-      },
-      "actions": {
-        "$load": {
-          "trigger": "fetch"
-        },
-        "fetch": {
-          "type": "$network.request",
-          "options": {
-            "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/book_class.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.user.token}}"
-          },
-          "success": {
-            "type": "$render"
-          }
-        }
-      },
-      "templates": {
-        "body": {
-            "background": "#333333",
-          "header": {
-            "title": "Confirm selection",
-            "style": {
-                "background": "#222222",
-                "color": "#ffffff"
-            }
-          },
-          "sections": [
-            {
-              "items": [
-                {
-                  "type": "vertical",
-                  "style": {
-                    "align": "center"
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "class": "row_normal",
-                      "text": "{{$jason.content.class_date}}"
-                    },
-                    {
-                      "type": "label",
-                      "class": "row_bold",
-                      "text": "{{$jason.content.class_time + ' ' + $jason.content.class_type}}"
-                    },
-                    {
-                      "type": "label",
-                      "class": "row_normal",
-                      "text": "Booking option"
-                    }
-                  ]
-                }
-              ]
+    "$jason": {
+        "head": {
+            "title": "Book IT",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
             },
-            {
-              "items": {
-                "{{#each $jason.content.options}}": {
-                  "type": "vertical",
-                  "style": {
-                    "align": "center"
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "class": "row_normal",
-                      "text": "{{type}}"
+            "actions": {
+                "$load": {
+                    "type": "$set",
+                    "options": {
+                        "loader": "no"
                     },
-                    {
-                      "type": "label",
-                      "class": "row_bold",
-                      "text": "{{description}}"
+                    "success": {
+                        "trigger": "fetch"
+                    }
+                },
+                "fetch": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/book_class.json?clsID={{$params.clsID}}&date={{$params.date}}&token={{$global.user.token}}"
                     },
-                    {
-                      "type": "space",
-                      "style": {
-                        "height": "60"
-                      }
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "waiting": {
+                    "type": "$set",
+                    "options": {
+                        "loader": "yes"
                     },
-                    [
-                      {
-                        "{{#if (type == 'Drop in')}}": {
-                          "type": "button",
-                          "class": "button_default",
-                          "text": "Pay fee",
-                          "action": {
-                            "type": "$href",
-                            "options": {
-                              "url": "https://json.trufitportal.com/Jason/checkout.json",
-                              "options": {
-                                "item": "{{description}}",
-                                "price": "{{price_formatted}}",
-                                "date": "{{$params.date}}",
-                                "type": "dropin",
-                                "clsID": "{{$params.clsID}}"
-                              }
-                            }
-                          }
+                    "success": {
+                        "type": "$render",
+                        "success": {
+                            "trigger": "login"
                         }
-                      },
-                      {
-                        "{{#else}}": {
-                          "type": "button",
-                          "text": "Book",
-                          "class": "button_default",
-                          "action": {
-                            "type": "$network.request",
-                            "options": {
-                              "url": "{{button}}"
-                            },
-                            "success": {
-                              "type": "$back"
-                            }
-                          }
-                        }
-                      }
-                    ]
-                  ]
+                    }
                 }
-              }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Confirm selection",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "layers": [{
+                        "type": "image",
+                        "url": [{
+                                "{{#if $get.loader == 'yes'}}": "https://json.trufitportal.com/images/285.gif"
+                            },
+                            {
+                                "{{#else}}": ""
+                            }
+                        ],
+                        "style": {
+                            "top": "50%-50",
+                            "width": "100",
+                            "height": "100",
+                            "left": "50%-50"
+                        }
+                    }],
+                    "sections": [{
+                            "items": [{
+                                "type": "vertical",
+                                "style": {
+                                    "align": "center"
+                                },
+                                "components": [{
+                                        "type": "label",
+                                        "class": "row_normal",
+                                        "text": "{{$jason.content.class_date}}"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "class": "row_bold",
+                                        "text": "{{$jason.content.class_time + ' ' + $jason.content.class_type}}"
+                                    },
+                                    {
+                                        "type": "label",
+                                        "class": "row_normal",
+                                        "text": "Booking option"
+                                    }
+                                ]
+                            }]
+                        },
+                        {
+                            "items": {
+                                "{{#each $jason.content.options}}": {
+                                    "type": "vertical",
+                                    "style": {
+                                        "align": "center"
+                                    },
+                                    "components": [{
+                                            "type": "label",
+                                            "class": "row_normal",
+                                            "text": "{{type}}"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "row_bold",
+                                            "text": "{{description}}"
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "60"
+                                            }
+                                        },
+                                        [{
+                                                "{{#if (type == 'Drop in')}}": {
+                                                    "type": "button",
+                                                    "class": "button_default",
+                                                    "text": "Pay fee",
+                                                    "action": {
+                                                        "type": "$href",
+                                                        "options": {
+                                                            "url": "https://json.trufitportal.com/Jason/checkout.json",
+                                                            "options": {
+                                                                "item": "{{description}}",
+                                                                "price": "{{price_formatted}}",
+                                                                "date": "{{$params.date}}",
+                                                                "type": "dropin",
+                                                                "clsID": "{{$params.clsID}}"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "{{#else}}": {
+                                                    "type": "button",
+                                                    "text": "Book",
+                                                    "class": "button_default",
+                                                    "action": {
+                                                        "type": "$set",
+                                                        "options": {
+                                                            "loader": "yes"
+                                                        },
+                                                        "success": {
+                                                            "type": "$render",
+                                                            "success": {
+                                                                "type": "$network.request",
+                                                                "options": {
+                                                                    "url": "{{button}}"
+                                                                },
+                                                                "success": {
+                                                                    "type": "$back"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
             }
-          ]
         }
-      }
     }
-  }
 }
