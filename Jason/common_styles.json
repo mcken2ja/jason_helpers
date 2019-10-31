@@ -5,6 +5,17 @@
         "color": "#ffffff",
         "font": "HelveticaNeue-Bold"
     },
+    "input_class": {
+        "placeholder_color": "#a9a9a9",
+        "color": "#000000",
+        "background": "rgba(240, 240, 240, 0.5)",
+        "font": "ArialMT",
+        "padding": "20",
+        "corner_radius": "25",
+        "width": "80%",
+        "height": "60",
+        "size": "20"
+    },
     "row_bold": {
         "size": "15",
         "color": "#ffffff",
