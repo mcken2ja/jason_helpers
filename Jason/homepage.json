@@ -64,7 +64,7 @@
                             },
                             "href": {
                                 "url": "https://json.trufitportal.com/Jason/user_settings.json",
-                                "transition": "modal"
+                                "transition": "push"
                             }
                         }
                     },
