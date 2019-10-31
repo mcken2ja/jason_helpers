@@ -37,8 +37,9 @@
                                         },
                                         {
                                             "type": "button",
-                                            "text": "Payment Cards",
+                                            "text": " Payment Cards",
                                             "style": {
+                                                "font": "FontAwesome",
                                                 "background": "#ffffff",
                                                 "align": "left",
                                                 "size": "20",
@@ -61,8 +62,9 @@
                                         },
                                         {
                                             "type": "button",
-                                            "text": "My Studio",
+                                            "text": " My Studio",
                                             "style": {
+                                                "font": "FontAwesome",
                                                 "background": "#ffffff",
                                                 "align": "left",
                                                 "size": "20",
