@@ -47,7 +47,7 @@
                             "color": "#ffffff"
                         },
                         "menu": {
-                            "image": "https://json.trufitportal.com/images/bars-solid.png",
+                            "text": "Settings"
                             "style": {
                                 "color": "#ffffff"
                             },
