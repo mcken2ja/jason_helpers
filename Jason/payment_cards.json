@@ -20,7 +20,7 @@
                 "card_details": {
                     "type": "$href",
                     "options": {
-                        "url": "https://json.trufitportal.com/Jason/card_details.json"
+                        "url": "https://json.trufitportal.com/Jason/card_details.json",
                         "options": {
                             "defaultCard": "{{$jason.cardDefault}}"
                         }
