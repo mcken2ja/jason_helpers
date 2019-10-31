@@ -173,7 +173,7 @@
                                 {
                                     "type": "button",
                                     "text": "Test Action",
-                                    "class": "button_default"
+                                    "class": "button_default",
                                     "action": {
                                         "trigger": "waiting"
                                     }
