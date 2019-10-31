@@ -26,8 +26,8 @@
             },
             "templates": {
                 "body": {
+                    "background": "#333333",
                     "header": {
-                        "background": "#333333",
                         "title": "Card Info",
                         "style": {
                             "background": "#222222",
