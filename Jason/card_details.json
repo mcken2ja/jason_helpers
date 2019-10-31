@@ -66,13 +66,27 @@
                                 "components": [{
                                     "type": "label",
                                     "style": {
+                                        "font": "FontAwesome"
                                         "background": "#ffffff",
                                         "align": "left",
                                         "size": "20",
                                         "padding": "15",
                                         "color": "#000000"
                                     },
-                                    "text": "{{$params.brand}}"
+                                    "text": [
+                                        {
+                                            "{{#if $params.brand == 'Discover'}}": " Discover"
+                                        },
+                                        {
+                                            "{{#elseif $params.brand == 'American Express'}}": " AMEX"
+                                        },
+                                        {
+                                            "{{#elseif $params.brand === 'Visa'}}": " Visa"
+                                        },
+                                        {
+                                            "{{#else}}": " {{$params.brand}}"
+                                        }
+                                    ]
                                     },
                                     {
                                         "type": "label",
