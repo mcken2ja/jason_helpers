@@ -63,13 +63,24 @@
                                         "padding": "15",
                                         "color": "#000000"
                                     },
-                                    "text": "{{$params.brand}} {{$params.number}}"
+                                    "text": "{{$params.brand}}"
                                     },
                                     {
                                         "type": "label",
                                         "style": {
                                             "background": "#ffffff",
                                             "align": "left",
+                                            "size": "20",
+                                            "padding": "15",
+                                            "color": "#000000"
+                                        },
+                                        "text": "{{$params.number}}"
+                                        },
+                                    {
+                                        "type": "label",
+                                        "style": {
+                                            "background": "#ffffff",
+                                            "align": "center",
                                             "size": "20",
                                             "padding": "15",
                                             "color": "#000000"
