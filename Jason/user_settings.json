@@ -17,6 +17,13 @@
                             "token": "",
                             "start": ""
                         }
+                    },
+                    "success": {
+                        "type": "$href",
+                        "options": {
+                            "url": "https://json.trufitportal.com/Jason/landing_page.json",
+                            "transition": "replace"
+                        }
                     }
                 }
             },
