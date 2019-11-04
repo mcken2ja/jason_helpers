@@ -41,9 +41,6 @@
                         "search": {
                             "name": "query_text",
                             "placeholder": "Search name"
-                        },
-                        "style": {
-                            "theme": "dark"
                         }
                     },
                     "sections": [
