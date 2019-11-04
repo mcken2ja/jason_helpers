@@ -1,0 +1,282 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Charge Card",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
+            },
+            "actions": {
+                "$load": {
+                    "trigger": "step_2"
+                },
+                "$pull": {
+                    "type": "$reload"
+                },
+                "step_2": {
+                    "type":"$set",
+                    "options": {
+                        "items": [
+                            {
+                                "price": 2,
+                                "name":"Protein bar"
+                            },
+                            {
+                                "price": 49,
+                                "name": "Protein powder"
+                            },
+                            {
+                                "price": 10,
+                                "name": "Top-rack clothes"
+                            },
+                            {
+                                "price": 30,
+                                "name": "Pre-workout"
+                            }
+                        ]
+                    },
+                    "success":{
+                        "type": "$render"
+                    }
+                },
+                "reset_cart": {
+                    "type": "$global.reset",
+                    "options": {
+                        "items": [
+                            "cart",
+                            "total"
+                        ]
+                    },
+                    "success":{
+                        "type": "$render"
+                    }
+                },
+                "submit_order": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/demo/api/quick_charge.json",
+                        "method": "post",
+                        "data_type": "json",
+                        "content_type": "json",
+                        "data": {
+                            "amount": "{{$global.total}}",
+                            "user": "5",
+                            "opened_by": "ZTGO71rFe3PSUg85fPWEYhch67eqly"
+                        }
+                    },
+                    "success": {
+                        "trigger": "reset_cart"
+                    },
+                    "error": {
+                        "type": "$util.popup",
+                        "options": {
+                            "title": "Error",
+                            "description": "Something didn't work",
+                            "text": "What!"
+                        }
+                    }
+                },
+                "update_cart": {
+                    "type": "$global.set",
+                    "options": {
+                        "cart": "{{'cart' in $global ? [{ item_name: $jason.name, price: $jason.price, key: $global.current_key + 1 }].concat($global.cart) : [{ item_name: $jason.name, price: $jason.price, key: 1 }]}}",
+                        "current_key": "{{'current_key' in $global ? $global.current_key+1 : 0}}",
+                        "total": "{{'total' in $global ? $global.total+$jason.price : $jason.price}}"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "remove_item": {
+                    "type": "$global.set",
+                    "options": {
+                        "cart": "{{var cart = $global.cart; cart.splice($jason.key, 1); return cart;}}",
+                        "total": "{{var total = $global.total; total=total-$jason.sub; return total;}}"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Charge Card",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        },
+                        "menu": {
+                            "text": "Reset",
+                            "style": {
+                                "font": "FontAwesome",
+                                "size": "20",
+                                "color": "#ffffff"
+                            },
+                            "action": {
+                                "trigger": "reset_cart"
+                            }
+                        }
+                    },
+                    "sections": [{
+                        "items": [{
+                            "type": "vertical",
+                            "style": {
+                                "spacing": "10"
+                            },
+                            "components": [
+                                {
+                                    "type": "label",
+                                    "class": "row_normal",
+                                    "text": "Select an item below to add to cart"
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "{{$get.item_name || 'Select an item'}}",
+                                    "class": "input_class",
+                                    "style": {
+                                        "align": "left"
+                                    },
+                                    "action": {
+                                        "type": "$util.picker",
+                                        "options": {
+                                            "title": "items",
+                                            "items": {
+                                                "{{#each $get.items}}": {
+                                                    "text": "{{name}}",
+                                                    "action": {
+                                                        "type": "$set",
+                                                        "options": {
+                                                            "item_name": "{{name}}",
+                                                            "item_price": "{{price}}"
+                                                        },
+                                                        "success": {
+                                                            "type": "$render"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "class": "button_default",
+                                    "text": "add to cart",
+                                    "action": {
+                                        "trigger": "update_cart",
+                                        "options": {
+                                            "name": "{{$get.item_name}}",
+                                            "price": "{{$get.item_price}}"
+                                        }
+                                    }
+                                }
+                            ]
+                        }]
+                    },
+                    {
+                        "items": [
+                            {
+                                "{{#if 'cart' in $global}}": {
+                                    "{{#each $global.cart}}": {
+                                        "type": "horizontal",
+                                        "style": {
+                                            "spacing": "10",
+                                            "align": "center"
+                                        },
+                                        "components": [
+                                            {
+                                                "type": "label",
+                                                "class": "row_normal",
+                                                "text": "{{item_name}}"
+                                            },
+                                            {
+                                                "type": "label",
+                                                "class": "row_bold",
+                                                "text": "${{price}}"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "style": {
+                                                    "size": "25",
+                                                    "color": "#ff6347",
+                                                    "font": "FontAwesome"
+                                                },
+                                                "text": "",
+                                                "action": {
+                                                    "trigger": "remove_item",
+                                                    "options": {
+                                                        "key": "{{$index}}",
+                                                        "sub": "{{price}}"
+                                                    }
+                                                }
+                                            }]
+                                    }
+                                }
+                            },
+                            {
+                                "{{#else}}": [{
+                                    "type": "vertical",
+                                    "style": {
+                                        "align": "center"
+                                    },
+                                    "components": [{
+                                        "type": "label",
+                                        "style": {
+                                            "color": "#ffffff",
+                                            "font": "HelveticaNeue",
+                                            "size": "12",
+                                            "align": "center",
+                                            "padding": "10"
+                                        },
+                                        "text": "add items to your cart"
+                                    }]
+                                }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "items": [{
+                            "type": "vertical",
+                            "components":[{
+                                "type": "button",
+                                "class": "button_default",
+                                "text": "Submit Order ${{$global.total || '0'}}",
+                                "action": {
+                                    "trigger": "submit_order"
+                                }
+                            }]
+                        }
+                        ]
+                    }]
+                }
+            },
+            "data": {
+                "items": [
+                    {
+                        "price": 2,
+                        "name":"Protein bar"
+                    },
+                    {
+                        "price": 49,
+                        "name": "Protein powder"
+                    },
+                    {
+                        "price": 10,
+                        "name": "Top-rack clothes"
+                    },
+                    {
+                        "price": 30,
+                        "name": "Pre-workout"
+                    }
+                ],
+                "cards": [
+                    {
+                        "Number": "Discover 0938"
+                    }
+                ]
+            }
+        }
+    }
+}
