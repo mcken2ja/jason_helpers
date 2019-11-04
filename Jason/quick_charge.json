@@ -60,7 +60,7 @@
                         "data": {
                             "amount": "{{$global.total}}",
                             "user": "{{$params.cuID}}",
-                            "opened_by": "ZTGO71rFe3PSUg85fPWEYhch67eqly"
+                            "opened_by": "{{$global.user.token}}"
                         }
                     },
                     "success": {
