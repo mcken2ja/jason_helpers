@@ -1,0 +1,80 @@
+{
+    "$jason": {
+        "head": {
+            "title": "User Lookup",
+            "actions": {
+                "$load": {
+                    "trigger": "get_users"
+                },
+                "get_users": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_checkin_users.json"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "go_charge": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/quick_charge.json",
+                        "transition": "modal",
+                        "options": {
+                            "cuID": "{{$jason.cuID}}"
+                        }
+                    }
+                }
+            },
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        },
+                        "title": "User Search",
+                        "search": {
+                            "name": "query_text",
+                            "placeholder": "Search name"
+                        },
+                        "style": {
+                            "theme": "dark"
+                        }
+                    },
+                    "sections": [
+                        {
+                            "items": {
+                                "{{#each $jason.users}}": {
+                                    "type": "horizontal",
+                                    "action": {
+                                        "trigger": "go_charge",
+                                        "options": {
+                                            "cuID": "{{id}}"
+                                        }
+                                    },
+                                    "components": [
+                                        {
+                                            "type": "label",
+                                            "class": "link_row",
+                                            "text": "{{name}}"
+                                        },
+                                        {
+                                            "type": "label",
+                                            "class": "link_row",
+                                            "text": "{{email}}"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

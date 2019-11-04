@@ -107,6 +107,31 @@
                                         },
                                         {
                                             "type": "button",
+                                            "text": " Quick Charge",
+                                            "style": {
+                                                "font": "FontAwesome",
+                                                "background": "#ffffff",
+                                                "align": "left",
+                                                "size": "20",
+                                                "padding": "15",
+                                                "color": "#000000"
+                                            },
+                                            "action": {
+                                                "type": "$href",
+                                                "options": {
+                                                    "url": "https://json.trufitportal.com/Jason/members.json",
+                                                    "transition": "modal"
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "space",
+                                            "style": {
+                                                "height": "5"
+                                            }
+                                        },
+                                        {
+                                            "type": "button",
                                             "text": " Logout",
                                             "style": {
                                                 "font": "FontAwesome",
