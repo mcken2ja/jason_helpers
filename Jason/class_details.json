@@ -1,0 +1,107 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Class Details",
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "Class Details"
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "sections": [{
+                        "items": [{
+                            "type": "vertical",
+                            "styles": {
+                                "spacing": "10"
+                            },
+                            "components": {
+                                "{{#each reservation}}": {
+                                    "type": "horizontal",
+                                    "components": [{
+                                        "type": "label",
+                                        "text": "{{name}}"
+                                    }]
+                                }
+                            }
+                        }]
+                    }, {
+                        "items": [{
+                                "{{#if waitlist.length > 0}}": {
+                                    "{{#each waitlist}}": {
+                                        "type": "horizontal",
+                                        "style": {
+                                            "spacing": "10",
+                                            "align": "center"
+                                        },
+                                        "components": [{
+                                                "type": "label",
+                                                "class": "row_normal",
+                                                "text": "{{name}}"
+                                            },
+                                            {
+                                                "type": "button",
+                                                "style": {
+                                                    "size": "25",
+                                                    "color": "#88B04B",
+                                                    "font": "FontAwesome"
+                                                },
+                                                "text": " Confirm",
+                                                "action": {
+                                                    "trigger": "approve_user",
+                                                    "options": {
+                                                        "crID": "{{crID}}",
+                                                        "cuID": "{{user_id}}"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "{{#else}}": [{
+                                    "type": "vertical",
+                                    "style": {
+                                        "align": "center"
+                                    },
+                                    "components": [{
+                                        "type": "label",
+                                        "style": {
+                                            "color": "#ffffff",
+                                            "font": "HelveticaNeue",
+                                            "size": "12",
+                                            "align": "center",
+                                            "padding": "10"
+                                        },
+                                        "text": "Waitlist is empty"
+                                    }]
+                                }]
+                            }
+                        ]
+                    }]
+                }
+            },
+            "data": {
+                "reservations": [{
+                    "crID": 102,
+                    "user_id": 27,
+                    "name": "Tony Slatton"
+                }],
+                "waitlist": [{
+                    "crID": 107,
+                    "user_id": 5,
+                    "name": "Tester Testing"
+                }]
+            }
+        }
+    }
+}
