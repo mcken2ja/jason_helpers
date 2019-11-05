@@ -32,7 +32,7 @@
                 "details": {
                     "type": "$href",
                     "options": {
-                        "url": "https://json.trufitportal.com/Jason/class_details",
+                        "url": "https://json.trufitportal.com/Jason/class_details.json",
                         "transition": "modal",
                         "options": {
                             "date": "{{$jason.date}}",
