@@ -55,14 +55,350 @@
                         "items": [{
                                 "type": "label",
                                 "class": "label_header",
-                                "text": "{{$jason.classes.Saturday.date}}"
+                                "text": "{{$jason.data.classes.Monday.date}}"
                             },
                             {
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.classes.Saturday.length > 0}}": {
-                                            "{{#each $jason.classes.Saturday.classes}}": {
+                                        "{{#if $jason.data.classes.Monday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Monday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.data.classes.Tuesday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.data.classes.Tuesday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Tuesday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.data.classes.Wednesday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.data.classes.Wednesday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Wednesday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.data.classes.Thursday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.data.classes.Thursday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Thursday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.data.classes.Friday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.data.classes.Friday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Friday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.data.classes.Saturday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.data.classes.Saturday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Saturday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.data.classes.Sunday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.data.classes.Sunday.length > 0}}": {
+                                            "{{#each $jason.data.classes.Sunday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
                                                     "trigger": "details",
