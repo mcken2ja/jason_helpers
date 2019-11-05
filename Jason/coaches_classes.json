@@ -1,0 +1,104 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Coach Classes",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
+            },
+            "actions": {
+                "$load": {
+                    "type": "fetch"
+                },
+                "fetch": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/demo/api/get_classes.json?token={{$global.user.token}}&TeacherID=1"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "details": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/class_details",
+                        "transition": "modal",
+                        "options": {
+                            "date": "{{$jason.date}}",
+                            "clsID": "{{$jason.clsID}}"
+                        }
+                    }
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "header": {
+                        "title": "My Classes",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "sections": [{
+                        "items": [{
+                                "type": "label",
+                                "class": "label_header",
+                                "text": "{{$jason.classes.Saturday.date}}"
+                            },
+                            {
+                                "type": "vertical",
+                                "components": [
+                                    {
+                                        "{{#if $jason.classes.Saturday.length > 0}}": {
+                                            "{{#each $jason.classes.Saturday.classes}}": {
+                                                "type": "horizontal",
+                                                "action": {
+                                                    "trigger": "details",
+                                                    "options": {
+                                                        "date": "{{Dateformatted}}",
+                                                        "clsID": "{{ClassesID}}"
+                                                    }
+                                                },
+                                                "components": [{
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "Type: {{ClassType}}"
+                                                    },
+                                                    {
+                                                        "type": "label",
+                                                        "class": "row_normal",
+                                                        "text": "{{CountReservations}}/{{MaxStudents}}"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "{{#else}}": [{
+                                            "type": "vertical",
+                                            "style": {
+                                                "align": "center"
+                                            },
+                                            "components": [{
+                                                "type": "label",
+                                                "style": {
+                                                    "color": "#ffffff",
+                                                    "font": "HelveticaNeue",
+                                                    "size": "12",
+                                                    "align": "center",
+                                                    "padding": "10"
+                                                },
+                                                "text": "No classes"
+                                            }]
+                                        }]
+                                    }
+                                ]
+                            }
+                        ]
+                    },]
+                }
+            }
+        }
+    }
+}
