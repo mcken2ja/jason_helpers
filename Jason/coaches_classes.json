@@ -61,7 +61,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Monday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Monday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Monday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
@@ -117,7 +117,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Tuesday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Tuesday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Tuesday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
@@ -173,7 +173,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Wednesday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Wednesday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Wednesday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
@@ -229,7 +229,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Thursday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Thursday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Thursday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
@@ -285,7 +285,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Friday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Friday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Friday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
@@ -341,7 +341,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Saturday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Saturday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Saturday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
@@ -397,7 +397,7 @@
                                 "type": "vertical",
                                 "components": [
                                     {
-                                        "{{#if $jason.data.classes.Sunday.length > 0}}": {
+                                        "{{#if $jason.data.classes.Sunday.classes.length > 0}}": {
                                             "{{#each $jason.data.classes.Sunday.classes}}": {
                                                 "type": "horizontal",
                                                 "action": {
