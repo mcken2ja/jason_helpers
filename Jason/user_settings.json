@@ -48,13 +48,11 @@
                             "items": [
                                 {
                                     "type": "vertical",
+                                    "style": {
+                                        "spacing": "15"
+                                    },
                                     "components": [
-                                        {
-                                            "type": "space",
-                                            "style": {
-                                                "height": "5"
-                                            }
-                                        },
+
                                         {
                                             "type": "button",
                                             "text": " Payment Cards",
@@ -74,12 +72,7 @@
                                                 }
                                             }
                                         },
-                                        {
-                                            "type": "space",
-                                            "style": {
-                                                "height": "5"
-                                            }
-                                        },
+
                                         {
                                             "type": "button",
                                             "text": " My Studio",
@@ -100,11 +93,25 @@
                                             }
                                         },
                                         {
-                                            "type": "space",
+                                            "type": "button",
+                                            "text": " My Classes",
                                             "style": {
-                                                "height": "5"
+                                                "font": "FontAwesome",
+                                                "background": "#ffffff",
+                                                "align": "left",
+                                                "size": "20",
+                                                "padding": "15",
+                                                "color": "#000000"
+                                            },
+                                            "action": {
+                                                "type": "$href",
+                                                "options": {
+                                                    "url": "https://json.trufitportal.com/Jason/coaches_classes.json",
+                                                    "transition": "modal"
+                                                }
                                             }
                                         },
+
                                         {
                                             "type": "button",
                                             "text": " Quick Charge",
@@ -124,12 +131,7 @@
                                                 }
                                             }
                                         },
-                                        {
-                                            "type": "space",
-                                            "style": {
-                                                "height": "5"
-                                            }
-                                        },
+
                                         {
                                             "type": "button",
                                             "text": " Logout",
