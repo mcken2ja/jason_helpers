@@ -4,14 +4,49 @@
             "title": "Class Details",
             "actions": {
                 "$load": {
-                    "type": "$render"
+                    "trigger": "fetch"
+                },
+                "waiting": {
+                    "type": "$set",
+                    "options": {
+                        "loader": "yes"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "fetch": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_class_details.json?date={{$params.date}}&clsID={{$params.clsID}}",
+                        "method": "get"
+                    },
+                    "success": {
+                        "type": "$render"
+                    }
+                },
+                "confirm": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/confirm_reservation.json",
+                        "data": {
+                            "crID": "{{$jason.crID}}"
+                        },
+                        "method": "post"
+                    },
+                    "success": {
+                        "trigger": "fetch"
+                    }
                 }
+            },
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
             },
             "templates": {
                 "body": {
                     "background": "#333333",
                     "header": {
-                        "title": "Class Details"
+                        "title": "Class Details",
                         "style": {
                             "background": "#222222",
                             "color": "#ffffff"
@@ -19,88 +54,82 @@
                     },
                     "sections": [{
                         "items": [{
-                            "type": "vertical",
-                            "styles": {
-                                "spacing": "10"
-                            },
-                            "components": {
-                                "{{#each reservation}}": {
-                                    "type": "horizontal",
-                                    "components": [{
-                                        "type": "label",
-                                        "text": "{{name}}"
-                                    }]
-                                }
+                            "type": "label",
+                            "text": "Reservations",
+                            "class": "label_header"
+                        }]
+                    },{
+                        "items": {
+                            "{{#each $jason.reservations}}": {
+                                "type": "horizontal",
+                                "components": [{
+                                    "type": "label",
+                                    "class": "row_normal",
+                                    "text": "{{name}}"
+                                }]
                             }
+                        }
+                    },{
+                        "items": [{
+                            "type": "label",
+                            "text": "Waitlist",
+                            "class": "label_header"
                         }]
                     }, {
                         "items": [{
-                                "{{#if waitlist.length > 0}}": {
-                                    "{{#each waitlist}}": {
-                                        "type": "horizontal",
-                                        "style": {
-                                            "spacing": "10",
-                                            "align": "center"
-                                        },
-                                        "components": [{
-                                                "type": "label",
-                                                "class": "row_normal",
-                                                "text": "{{name}}"
-                                            },
-                                            {
-                                                "type": "button",
-                                                "style": {
-                                                    "size": "25",
-                                                    "color": "#88B04B",
-                                                    "font": "FontAwesome"
-                                                },
-                                                "text": " Confirm",
-                                                "action": {
-                                                    "trigger": "approve_user",
-                                                    "options": {
-                                                        "crID": "{{crID}}",
-                                                        "cuID": "{{user_id}}"
-                                                    }
-                                                }
-                                            }
-                                        ]
-                                    }
-                                }
-                            },
-                            {
-                                "{{#else}}": [{
-                                    "type": "vertical",
+                            "{{#if waitlist.length > 0}}": {
+                                "{{#each $jason.waitlist}}": {
+                                    "type": "horizontal",
                                     "style": {
+                                        "spacing": "10",
                                         "align": "center"
                                     },
                                     "components": [{
                                         "type": "label",
+                                        "class": "row_normal",
+                                        "text": "{{name}}"
+                                    },
+                                    {
+                                        "type": "button",
                                         "style": {
-                                            "color": "#ffffff",
-                                            "font": "HelveticaNeue",
-                                            "size": "12",
-                                            "align": "center",
-                                            "padding": "10"
+                                            "size": "25",
+                                            "color": "#88B04B",
+                                            "font": "FontAwesome"
                                         },
-                                        "text": "Waitlist is empty"
-                                    }]
-                                }]
+                                        "text": " Confirm",
+                                        "action": {
+                                            "trigger": "confirm",
+                                            "options": {
+                                                "crID": "{{crID}}"
+                                            }
+                                        }
+                                    }
+                                    ]
+                                }
                             }
+                        },
+                        {
+                            "{{#else}}": [{
+                                "type": "vertical",
+                                "style": {
+                                    "align": "center"
+                                },
+                                "components": [{
+                                    "type": "label",
+                                    "style": {
+                                        "color": "#ffffff",
+                                        "font": "HelveticaNeue",
+                                        "size": "12",
+                                        "align": "center",
+                                        "padding": "10"
+                                    },
+                                    "text": "Waitlist is empty"
+                                }]
+                            }]
+                        }
                         ]
                     }]
                 }
-            },
-            "data": {
-                "reservations": [{
-                    "crID": 102,
-                    "user_id": 27,
-                    "name": "Tony Slatton"
-                }],
-                "waitlist": [{
-                    "crID": 107,
-                    "user_id": 5,
-                    "name": "Tester Testing"
-                }]
             }
         }
     }
