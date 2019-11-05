@@ -7,7 +7,7 @@
                     "type": "$render"
                 },
                 "exit": {
-                    "type":"$global.set",
+                    "type": "$global.set",
                     "options": {
                         "studio": {
                             "name": "",
@@ -43,124 +43,120 @@
                             "color": "#ffffff"
                         }
                     },
-                    "sections": [
-                        {
-                            "items": [
+                    "sections": [{
+                        "items": [{
+                            "type": "vertical",
+                            "style": {
+                                "spacing": "15"
+                            },
+                            "components": [
+
                                 {
-                                    "type": "vertical",
+                                    "type": "button",
+                                    "text": " Payment Cards",
                                     "style": {
-                                        "spacing": "15"
+                                        "font": "FontAwesome",
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
                                     },
-                                    "components": [
-
-                                        {
-                                            "type": "button",
-                                            "text": " Payment Cards",
-                                            "style": {
-                                                "font": "FontAwesome",
-                                                "background": "#ffffff",
-                                                "align": "left",
-                                                "size": "20",
-                                                "padding": "15",
-                                                "color": "#000000"
-                                            },
-                                            "action": {
-                                                "type": "$href",
-                                                "options": {
-                                                    "url": "https://json.trufitportal.com/Jason/payment_cards.json",
-                                                    "transition": "modal"
-                                                }
-                                            }
-                                        },
-
-                                        {
-                                            "type": "button",
-                                            "text": " My Studio",
-                                            "style": {
-                                                "font": "FontAwesome",
-                                                "background": "#ffffff",
-                                                "align": "left",
-                                                "size": "20",
-                                                "padding": "15",
-                                                "color": "#000000"
-                                            },
-                                            "action": {
-                                                "type": "$href",
-                                                "options": {
-                                                    "url": "https://json.trufitportal.com/Jason/profile.json",
-                                                    "transition": "modal"
-                                                }
-                                            }
-                                        },
-                                        {
-                                            "type": "button",
-                                            "text": " My Classes",
-                                            "style": {
-                                                "font": "FontAwesome",
-                                                "background": "#ffffff",
-                                                "align": "left",
-                                                "size": "20",
-                                                "padding": "15",
-                                                "color": "#000000"
-                                            },
-                                            "action": {
-                                                "type": "$href",
-                                                "options": {
-                                                    "url": "https://json.trufitportal.com/Jason/coaches_classes.json",
-                                                    "transition": "modal"
-                                                }
-                                            }
-                                        },
-
-                                        {
-                                            "type": "button",
-                                            "text": " Quick Charge",
-                                            "style": {
-                                                "font": "FontAwesome",
-                                                "background": "#ffffff",
-                                                "align": "left",
-                                                "size": "20",
-                                                "padding": "15",
-                                                "color": "#000000"
-                                            },
-                                            "action": {
-                                                "type": "$href",
-                                                "options": {
-                                                    "url": "https://json.trufitportal.com/Jason/members.json",
-                                                    "transition": "modal"
-                                                }
-                                            }
-                                        },
-
-                                        {
-                                            "type": "button",
-                                            "text": " Logout",
-                                            "style": {
-                                                "font": "FontAwesome",
-                                                "background": "#ffffff",
-                                                "align": "left",
-                                                "size": "20",
-                                                "padding": "15",
-                                                "color": "#000000"
-                                            },
-                                            "action": {
-                                                "type": "$util.alert",
-                                                "options": {
-                                                    "title": "Confirm",
-                                                    "description": "Are you sure you want to logout?",
-                                                    "success": "Logout",
-                                                    "cancel": "Cancel"
-                                                },
-                                                "success": {
-                                                    "trigger": "exit"
-                                                }
-                                            }
+                                    "action": {
+                                        "type": "$href",
+                                        "options": {
+                                            "url": "https://json.trufitportal.com/Jason/payment_cards.json",
+                                            "transition": "modal"
                                         }
-                                    ]
+                                    }
+                                },
+
+                                {
+                                    "type": "button",
+                                    "text": " My Studio",
+                                    "style": {
+                                        "font": "FontAwesome",
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
+                                    "action": {
+                                        "type": "$href",
+                                        "options": {
+                                            "url": "https://json.trufitportal.com/Jason/profile.json",
+                                            "transition": "modal"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": " My Classes",
+                                    "style": {
+                                        "font": "FontAwesome",
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
+                                    "action": {
+                                        "type": "$href",
+                                        "options": {
+                                            "url": "https://json.trufitportal.com/Jason/coaches_classes.json",
+                                            "transition": "modal"
+                                        }
+                                    }
+                                },
+
+                                {
+                                    "type": "button",
+                                    "text": " Quick Charge",
+                                    "style": {
+                                        "font": "FontAwesome",
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
+                                    "action": {
+                                        "type": "$href",
+                                        "options": {
+                                            "url": "https://json.trufitportal.com/Jason/members.json",
+                                            "transition": "modal"
+                                        }
+                                    }
+                                },
+
+                                {
+                                    "type": "button",
+                                    "text": " Logout",
+                                    "style": {
+                                        "font": "FontAwesome",
+                                        "background": "#ffffff",
+                                        "align": "left",
+                                        "size": "20",
+                                        "padding": "15",
+                                        "color": "#000000"
+                                    },
+                                    "action": {
+                                        "type": "$util.alert",
+                                        "options": {
+                                            "title": "Confirm",
+                                            "description": "Are you sure you want to logout?",
+                                            "success": "Logout",
+                                            "cancel": "Cancel"
+                                        },
+                                        "success": {
+                                            "trigger": "exit"
+                                        }
+                                    }
                                 }
                             ]
-                        }
-                    ]
+                        }]
+                    }]
                 }
             }
         }
