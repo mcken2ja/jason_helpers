@@ -7,7 +7,7 @@
             },
             "actions": {
                 "$load": {
-                    "type": "fetch"
+                    "trigger": "fetch"
                 },
                 "fetch": {
                     "type": "$network.request",
@@ -107,7 +107,7 @@
                                 ]
                             }
                         ]
-                    },]
+                    }]
                 }
             }
         }
