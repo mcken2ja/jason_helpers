@@ -16,6 +16,17 @@
                     },
                     "success": {
                         "type": "$render"
+                    },
+                    "error": {
+                        "type": "$util.popup",
+                        "options": {
+                            "title": "Error",
+                            "description": "Unable to load content",
+                            "text": "Take me back"
+                        },
+                        "success": {
+                            "type": "$back"
+                        }
                     }
                 },
                 "details": {
