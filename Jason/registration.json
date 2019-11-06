@@ -12,13 +12,7 @@
                 "validate": {
                     "trigger": [
                         {
-                            "{{#if ($get.password != $get.password_confirm) || ($get.password == '')}}": "mismatch_pass"
-                        },
-                        {
-                            "{{#elseif  ($get.password.length < 8)}}": "short_pass"
-                        },
-                        {
-                            "{{#elseif ($get.email.indexOf('@') == -1)}}": "invaid_email"
+                            "{{#if ($get.email.indexOf('@') == -1)}}": "invaid_email"
                         },
                         {
                             "{{#elseif ($get.first_name == '' || $get.last_name == '')}}": "missing_value"
@@ -75,16 +69,17 @@
                         "method": "post",
                         "data": {
                             "email": "{{$get.email}}",
-                            "fname": "{{$get.fname}}",
-                            "lname": "{{$get.lname}}",
-                            "password": "{{$get.password}}"
+                            "fname": "{{$get.first_name}}",
+                            "lname": "{{$get.last_name}}"
                         }
                     },
                     "success": {
                         "type": "$global.set",
                         "options": {
-                            "user": {
-                                "token": "{{$jason.id}}"
+                            "code": "{{$jason.code}}",
+                            "temp": {
+                                "token": "{{$jason.id}}",
+                                "start": "{{$jason.start}}"
                             }
                         },
                         "success": {
@@ -96,8 +91,8 @@
                             "success": {
                                 "type": "$href",
                                 "options": {
-                                    "url": "https://json.trufitportal.com/Jason/homepage.json",
-                                    "transition": "replace",
+                                    "url": "https://json.trufitportal.com/Jason/confirm_code.json",
+                                    "transition": "push",
                                     "preload": {
                                         "@": "file://preload.json"
                                     }
@@ -162,24 +157,6 @@
                                             "placeholder": "Email...",
                                             "keyboard": "email",
                                             "class": "input_class"
-                                        },
-                                        {
-                                            "type": "textfield",
-                                            "name": "password",
-                                            "placeholder": "Password...",
-                                            "class": "input_class",
-                                            "style": {
-                                                "secure": "true"
-                                            }
-                                        },
-                                        {
-                                            "type": "textfield",
-                                            "name": "password_confirm",
-                                            "placeholder": "Repeat Password...",
-                                            "class": "input_class",
-                                            "style": {
-                                                "secure": "true"
-                                            }
                                         }
                                     ]
                                 },
