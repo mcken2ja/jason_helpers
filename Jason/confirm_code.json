@@ -32,7 +32,7 @@
                     "type": "$util.popup",
                     "options": {
                         "title": "Code Error",
-                        "description": "Code did not work please try again.",
+                        "description": "Code did not work we expected {{$jason.code}}",
                         "text": "try again"
                     }
                 }
@@ -64,11 +64,12 @@
                                 },
                                 {
                                     "type": "label",
-                                    "text": "Enter the code sent to {{$global.user.email}}"
+                                    "class": "link_row",
+                                    "text": "Enter the code sent to your email"
                                 },
                                 {
                                     "type": "textfield",
-                                    "class": "link_row",
+                                    "class": "input_class",
                                     "name": "code",
                                     "placeholder": "XXXX",
                                     "keyboard": "number",
@@ -79,7 +80,7 @@
                                     "text": "Confirm",
                                     "class": "button_row",
                                     "action": [{
-                                            "{{#if $get.code == $global.code}}": {
+                                            "{{#if $get.code.toString() == $global.code.toString()}}": {
                                                 "trigger": "valid"
                                             }
                                         },

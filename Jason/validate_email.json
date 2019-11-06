@@ -40,35 +40,34 @@
                 "verify": {
                     "type": "$href",
                     "options": {
-                        "url": "https://json.trufitportal.com/Jason/validate_code.json",
+                        "url": "https://json.trufitportal.com/Jason/confirm_code.json",
                         "transition": "push"
                     }
                 }
-            }
-        },
-        "templates": {
-            "body": {
-                "style": {
-                    "border": "none"
-                },
-                "header": {
+            },
+            "templates": {
+                "body": {
                     "background": "#333333",
-                    "title": "Auth",
                     "style": {
-                        "background": "#222222",
-                        "color": "#ffffff"
-                    }
-                },
-                "sections": [{
-                    "items": [{
-                        "type": "vertical",
+                        "border": "none"
+                    },
+                    "header": {
+                        "title": "Auth",
                         "style": {
-                            "align": "center",
-                            "padding": "10",
-                            "spacing": "35"
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "sections": [{
+                        "items": [{
+                            "type": "vertical",
+                            "style": {
+                                "align": "center",
+                                "padding": "10",
+                                "spacing": "35"
 
-                        },
-                        "components": [{
+                            },
+                            "components": [{
                                 "type": "space",
                                 "style": {
                                     "height": "25%"
@@ -97,9 +96,10 @@
                                     "trigger": "get_code"
                                 }
                             }
-                        ]
+                            ]
+                        }]
                     }]
-                }]
+                }
             }
         }
     }
