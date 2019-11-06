@@ -147,8 +147,12 @@
                                         [{
                                             "{{#if (link != '')}}": {
                                                 "type": "button",
-                                                "text": "cancel",
-                                                "class": "cancel_btn btn_row",
+                                                "style": {
+                                                    "size": "15",
+                                                    "color": "#ff6347",
+                                                    "font": "FontAwesome"
+                                                },
+                                                "text": "",
                                                 "action": {
                                                     "type": "$util.alert",
                                                     "options": {
