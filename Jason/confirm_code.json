@@ -80,7 +80,7 @@
                                     "text": "Confirm",
                                     "class": "button_row",
                                     "action": [{
-                                            "{{#if $get.code.toString() == $global.code.toString()}}": {
+                                            "{{#if $get.code == $global.code}}": {
                                                 "trigger": "valid"
                                             }
                                         },
