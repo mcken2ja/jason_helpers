@@ -32,7 +32,7 @@
                     "type": "$util.popup",
                     "options": {
                         "title": "Code Error",
-                        "description": "Code did not work we expected {{$global.code}}",
+                        "description": "Code did not work",
                         "text": "try again"
                     }
                 }
@@ -57,40 +57,43 @@
                                 "align": "center"
                             },
                             "components": [{
-                                    "type": "space",
-                                    "style": {
-                                        "height": "25%"
+                                "type": "space",
+                                "style": {
+                                    "height": "25%"
+                                }
+                            },
+                            {
+                                "type": "label",
+                                "class": "link_row",
+                                "text": "Enter the code sent to your email"
+                            },
+                            {
+                                "type": "textfield",
+                                "class": "input_class",
+                                "name": "code",
+                                "placeholder": "XXXX",
+                                "keyboard": "number",
+                                "focus": "true"
+                            },
+                            {
+                                "type": "button",
+                                "text": "Confirm",
+                                "class": "button_row",
+                                "action":{
+                                    "type": "$render",
+                                    "success":[{
+                                    "{{#if ($global.code == $get.code)}}": {
+                                        "trigger": "valid"
                                     }
                                 },
                                 {
-                                    "type": "label",
-                                    "class": "link_row",
-                                    "text": "Enter the code sent to your email"
-                                },
-                                {
-                                    "type": "textfield",
-                                    "class": "input_class",
-                                    "name": "code",
-                                    "placeholder": "XXXX",
-                                    "keyboard": "number",
-                                    "focus": "true"
-                                },
-                                {
-                                    "type": "button",
-                                    "text": "Confirm",
-                                    "class": "button_row",
-                                    "action": [{
-                                            "{{#if $get.code == $global.code}}": {
-                                                "trigger": "valid"
-                                            }
-                                        },
-                                        {
-                                            "{{#else}}": {
-                                                "trigger": "wrong"
-                                            }
-                                        }
-                                    ]
+                                    "{{#else}}": {
+                                        "trigger": "wrong"
+                                    }
                                 }
+                                ]
+                                }
+                            }
                             ]
                         }]
                     }]

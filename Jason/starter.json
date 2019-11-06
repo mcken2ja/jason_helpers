@@ -9,13 +9,15 @@
                 "sign_in": {
                     "type": "$href",
                     "options": {
-                        "url": "https://json.trufitportal.com/Jason/new_login.json"
+                        "url": "https://json.trufitportal.com/Jason/validate_email.json",
+                        "transition": "push"
                     }
                 },
                 "sign_up": {
                     "type": "$href",
                     "options": {
-                        "url": "https://json.trufitportal.com/Jason/registration.json"
+                        "url": "https://json.trufitportal.com/Jason/registration.json",
+                        "transition": "push"
                     }
                 }
             },
