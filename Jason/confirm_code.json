@@ -32,7 +32,7 @@
                     "type": "$util.popup",
                     "options": {
                         "title": "Code Error",
-                        "description": "Code did not work we expected {{$jason.code}}",
+                        "description": "Code did not work we expected {{$global.code}}",
                         "text": "try again"
                     }
                 }
