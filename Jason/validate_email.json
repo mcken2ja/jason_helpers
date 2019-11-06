@@ -1,0 +1,106 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Validate user",
+            "styles": {
+                "@": "http://json.trufitportal.com/Jason/common_styles.json"
+            },
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                },
+                "get_code": {
+                    "type": "$network.request",
+                    "options": {
+                        "url": "https://www.trufitportal.com/{{$global.studio.key}}/api/get_code.json?email={{$get.email}}",
+                        "method": "get",
+                        "content_type": "json"
+                    },
+                    "success": {
+                        "type": "$global.set",
+                        "options": {
+                            "code": "{{$jason.code}}",
+                            "temp": {
+                                "id": "{{$jason.id}}",
+                                "start": "{{$jason.start}}"
+                            }
+                        },
+                        "success": {
+                            "trigger": "verify"
+                        }
+                    },
+                    "error": {
+                        "type": "$util.banner",
+                        "options": {
+                            "title": "Error",
+                            "description": "This did not work very well?"
+                        }
+                    }
+                },
+                "verify": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/validate_code.json",
+                        "transition": "push"
+                    }
+                }
+            }
+        },
+        "templates": {
+            "body": {
+                "style": {
+                    "border": "none"
+                },
+                "header": {
+                    "background": "#333333",
+                    "title": "Auth",
+                    "style": {
+                        "background": "#222222",
+                        "color": "#ffffff"
+                    }
+                },
+                "sections": [{
+                    "items": [{
+                        "type": "vertical",
+                        "style": {
+                            "align": "center",
+                            "padding": "10",
+                            "spacing": "35"
+
+                        },
+                        "components": [{
+                                "type": "space",
+                                "style": {
+                                    "height": "25%"
+                                }
+                            },
+                            {
+                                "type": "label",
+                                "class": "link_row",
+                                "text": "Enter your email"
+
+                            },
+                            {
+                                "type": "textfield",
+
+                                "class": "input_class",
+                                "name": "email",
+                                "placeholder": "Enter email...",
+                                "keyboard": "email",
+                                "focus": "true"
+                            },
+                            {
+                                "type": "button",
+                                "text": "Submit",
+                                "class": "button_row",
+                                "action": {
+                                    "trigger": "get_code"
+                                }
+                            }
+                        ]
+                    }]
+                }]
+            }
+        }
+    }
+}

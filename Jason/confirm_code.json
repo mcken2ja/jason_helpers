@@ -1,0 +1,100 @@
+{
+    "$jason": {
+        "head": {
+            "title": "Code confirm",
+            "styles": {
+                "@": "https://json.trufitportal.com/Jason/common_styles.json"
+            },
+            "actions": {
+                "$load": {
+                    "type": "$render"
+                },
+                "valid": {
+                    "type": "$global.set",
+                    "options": {
+                        "user": {
+                            "token": "{{$global.temp.id}}",
+                            "start": "{{$global.temp.start}}"
+                        }
+                    },
+                    "success": {
+                        "trigger": "go_home"
+                    }
+                },
+                "go_home": {
+                    "type": "$href",
+                    "options": {
+                        "url": "https://json.trufitportal.com/Jason/homepage.json",
+                        "transition": "replace"
+                    }
+                },
+                "wrong": {
+                    "type": "$util.popup",
+                    "options": {
+                        "title": "Code Error",
+                        "description": "Code did not work please try again.",
+                        "text": "try again"
+                    }
+                }
+            },
+            "templates": {
+                "body": {
+                    "background": "#333333",
+                    "style": {
+                        "border": "none"
+                    },
+                    "header": {
+                        "title": "Enter Code",
+                        "style": {
+                            "background": "#222222",
+                            "color": "#ffffff"
+                        }
+                    },
+                    "sections": [{
+                        "items": [{
+                            "type": "vertical",
+                            "style": {
+                                "align": "center"
+                            },
+                            "components": [{
+                                    "type": "space",
+                                    "style": {
+                                        "height": "25%"
+                                    }
+                                },
+                                {
+                                    "type": "label",
+                                    "text": "Enter the code sent to {{$global.user.email}}"
+                                },
+                                {
+                                    "type": "textfield",
+                                    "class": "link_row",
+                                    "name": "code",
+                                    "placeholder": "XXXX",
+                                    "keyboard": "number",
+                                    "focus": "true"
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "Confirm",
+                                    "class": "button_row",
+                                    "action": [{
+                                            "{{#if $get.code == $global.code}}": {
+                                                "trigger": "valid"
+                                            }
+                                        },
+                                        {
+                                            "{{#else}}": {
+                                                "trigger": "wrong"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        }]
+                    }]
+                }
+            }
+        }
+    }
+}
